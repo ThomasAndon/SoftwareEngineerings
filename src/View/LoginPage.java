@@ -12,11 +12,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class LoginPage {
-
+/*
     @FXML
     private PasswordField pwInput;
 
@@ -43,13 +42,6 @@ public class LoginPage {
 
     @FXML
     private TextField height;
-    /**
-    * @Description:  实现页面跳转
-    * @Param:
-    * @return:
-    * @Author: CloudKing
-    * @Date: 2021/3/29
-    */
 
 
     @FXML
@@ -95,5 +87,7 @@ public class LoginPage {
         System.out.println(Weight);
       //todo 将输入的信息保存到txt文件当中
 
-    }
+    }*/
+
+
 }
