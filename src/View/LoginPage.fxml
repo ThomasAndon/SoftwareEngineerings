@@ -22,7 +22,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="154.0" prefWidth="439.0" styleClass="title" stylesheets="@style.css" text="London Gym Online" wrapText="true">
+                  <Label alignment="CENTER" prefHeight="179.0" prefWidth="358.0" styleClass="title" stylesheets="@style.css" text="London Gym Online" wrapText="true">
                      <font>
                         <Font name="System Bold" size="43.0" />
                      </font>
@@ -111,7 +111,7 @@
                               <Image url="@image/key.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="idInput2" prefHeight="26.0" prefWidth="224.0" promptText="Password (letters and numbers)" styleClass="transparent" stylesheets="@style.css" />
+                        <PasswordField  fx:id="regPw" prefHeight="26.0" prefWidth="224.0" promptText="Password (letters and numbers)" styleClass="transparent" stylesheets="@style.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="398.0" spacing="10.0">
@@ -121,12 +121,12 @@
                               <Image url="@image/key.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="idInput3" prefHeight="26.0" prefWidth="224.0" promptText="Confirm Password" styleClass="transparent" stylesheets="@style.css" />
+                        <PasswordField fx:id="regPwConfirm" prefHeight="26.0" prefWidth="224.0" promptText="Confirm Password" styleClass="transparent" stylesheets="@style.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="loginBtn1" mnemonicParsing="false" onAction="#onLoginBtn1Clicked" prefHeight="41.0" prefWidth="157.0" style="-fx-background-color: #ffffff;" styleClass="login-reg-btn-radius" stylesheets="@style.css" text="Register" />
+                        <Button fx:id="loginBtn1" mnemonicParsing="false" onAction="#onRegBtnClicked" prefHeight="41.0" prefWidth="157.0" style="-fx-background-color: #ffffff;" styleClass="login-reg-btn-radius" stylesheets="@style.css" text="Register" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" />

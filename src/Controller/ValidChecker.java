@@ -1,8 +1,9 @@
 package Controller;
 
 
-import java.security.PublicKey;
-import java.util.HashMap;
+import NetBeans.User;
+import javafx.scene.control.Alert;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,117 +15,49 @@ public class ValidChecker {
     //todo 所有需要检查的方法都写在这里，比如检查用户名、密码是否符合规范，等等。
 
 
-    /**
-     * @Description: check the validation of the input Id and Password
-     * @return: boolean
-     * @Author: CloudKing
-     * @Date: 2021/3/30
-     */
-    public boolean isInvalidID(String id) {
+
+    public boolean isIDValid(String id) {
         //todo 实现id检查逻辑，只能包括大小写字母和数字，长度在4-15位。
-        if (id.length() >= 4 && id.length() <= 15) {
+        if(id.length()>=4 && id.length()<=15) {
             String regex = "[ _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！ @#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
             Pattern pattern = Pattern.compile(regex);
             Matcher hasSpecial = pattern.matcher(id);
-            if (!hasSpecial.find()) {
-                return hasSpecial.find();
-            } else {
+            if(hasSpecial.find()==false){
                 return hasSpecial.find();
             }
-        } else {
-            return true;
+            else {
+                return hasSpecial.find();
+            }
         }
+        else { return  true; }
     }
 
-    public boolean isInvalidPw(String pw) {
-        return isInvalidID(pw);
+    public boolean isPwValid(String pw) {
+        if(pw.length()>=4 && pw.length()<=15) {
+            String regex = "[ _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！ @#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher hasSpecial = pattern.matcher(pw);
+            if(hasSpecial.find()==false){
+                return hasSpecial.find();
+            }
+            else {
+                return hasSpecial.find();
+            }
+        }
+        else { return  true; }
     }
 
+    
 
-    public boolean isSameString(String s1, String s2) {
+    public boolean isSameString (String s1, String s2) {
         return s1.equals(s2);
     }
 
-
-    /**
-     * This method checks whether the account belongs to a valid user.
-     *
-     * @param id User ID
-     * @param pw User password
-     * @return Whether this account is valid
-     * @throws Exception
-     */
-    public boolean isValidAccount(String id, String pw) throws Exception {
-
-/*        // Instantiate an all-accounts hashmap, it contains all accounts.
-        HashMap accounts = new IOClass().readAllAccount();
-
-
-        // if there is no such ID, then false is returned.
-        if (!accounts.containsKey(id)){
-            return false;
-        }
-
-        // there is this ID, but the pw is wrong. false is returned.
-        if (!pw.equals(accounts.get(id))) {
-            return false;
-        }
-
-        return true;*/
-        return isAccountExists(new IOClass().userAccountFilePath, id, pw);
-    }
-
-
-    public boolean isValidAccount(String path, String id, String pw) throws Exception {
-        return isAccountExists(path, id, pw);
-    }
-
-
-
-    public boolean isAccountExists(String path, String id, String pw) throws Exception {
-
-        // Instantiate an all-accounts hashmap, it contains all accounts.
-        HashMap accounts = new IOClass().readAllAccount(path);
-
-
-        // if there is no such ID, then false is returned.
-        if (!accounts.containsKey(id)) {
-            return false;
-        }
-
-        // there is this ID, but the pw is wrong. false is returned.
-        if (!pw.equals(accounts.get(id))) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * This method checks whether this ID has already exists.
-     *
-     * @param id
-     * @return Whether this is an existed ID.
-     * @throws Exception
-     * @author Thomas Andon
-     */
-    public boolean checkIDExists(String id) throws Exception {
-        HashMap accounts = new IOClass().readAllAccount();
-        if (accounts.containsKey(id)) {
-            return true;
-        }
+    public boolean isValidAccount (String s1, String s2) {
+        //todo 如果有这个user就true
         return false;
     }
-
-    public boolean checkIDExists(String path, String id) throws Exception {
-        HashMap accounts = new IOClass().readAllAccount(path);
-        if (accounts.containsKey(id)) {
-            return true;
-        }
-        return false;
-    }
-
-
+    
 
 
 }
