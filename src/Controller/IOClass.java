@@ -76,27 +76,9 @@ public class IOClass {
      * @throws IOException
      */
     public boolean writeNewUser(String id, String pw) throws Exception {
-/*        File f = new File(accountFilePath);
-        if (!(f.isFile() && f.exists())) {
-            System.out.println("Writing - Account file doesn't exist, new one created");
-        }
-
-        if (new ValidChecker().checkIDExists(id)) {
-            return false;
-        }
-
-        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f,true));
-        BufferedWriter bw = new BufferedWriter(out);
-        out.write(id+" " + pw + " " + "#\n");
-        bw.close();
-        return true;*/
 
         return writeAccounts(userAccountFilePath, id, pw);
 
-    }
-
-    public boolean writeNewUser(String path, String id, String pw) throws Exception {
-        return writeAccounts(path, id, pw);
     }
 
 

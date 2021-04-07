@@ -97,18 +97,18 @@ public class LoginPage {
 
 
         //Below is instantiating the user and passing it to the next window.
-        FXMLLoader loader = new FXMLLoader();
+        /*FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/ProfileInfo.fxml"));
         Parent root = loader.load();
-        ProfileInfo controller = loader.getController();
+        ProfileInfo controller = loader.getController();*/
+
+        ProfileInfo controller= GoPage.go_to_Userpage().getController();
 
         //instantiating a user
         User user = new User(id,pw);
 
         controller.initData(user);
-        stage.setTitle("Hello World");
-        stage.setScene(new Scene(root, 1000, 700));
-        stage.show();
+
 
 
 
