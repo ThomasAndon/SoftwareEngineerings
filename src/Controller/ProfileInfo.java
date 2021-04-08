@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,7 +26,10 @@ public class ProfileInfo implements Initializable {
     private TextField weightInput;
 
     @FXML
-    private ChoiceBox<String> genderSelection = new ChoiceBox<String>(FXCollections.observableArrayList("Male","Female"));;
+    private CheckBox male;
+
+    @FXML
+    private CheckBox female;
 
     @FXML
     private Button saveBtn;
@@ -51,6 +55,29 @@ public class ProfileInfo implements Initializable {
 
     @FXML
     void onSaveBtnClicked(ActionEvent event) {
+        String M=male.getText();
+        String FM=female.getText();
+        System.out.println(M+FM);
 
     }
+
+    @FXML
+    void  SelectM(MouseEvent event) {
+        String gender=male.getText();
+        //System.out.println(gender);
+
+
+    }
+
+    @FXML
+    void SelectFM(MouseEvent event) {
+        String gender=female.getText();
+        //System.out.println(gender);
+
+    }
+
+
+
+
+
 }

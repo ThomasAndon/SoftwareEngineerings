@@ -44,7 +44,7 @@ public class LoginPage {
     @FXML
     private Label adminLogin;
 
-
+    GoPage page=new GoPage();
     /**
      * @Description: Login and register check, check if the input string is correct.
      * @Param:
@@ -89,8 +89,7 @@ public class LoginPage {
 
         System.out.println("Login success");
 
-        Stage stage = (Stage) loginBtn.getScene().getWindow();
-        stage.close();
+
 //        ProfileInfo pi = new ProfileInfo();
 
 
@@ -101,13 +100,11 @@ public class LoginPage {
         loader.setLocation(getClass().getResource("../view/ProfileInfo.fxml"));
         Parent root = loader.load();
         ProfileInfo controller = loader.getController();*/
-
-        ProfileInfo controller= GoPage.go_to_Userpage().getController();
-
-        //instantiating a user
         User user = new User(id,pw);
+        System.out.println(user);
+        ProfileInfo controller = page.go_to_Userpage().getController();
+        //controller.initData(user);
 
-        controller.initData(user);
 
 
 

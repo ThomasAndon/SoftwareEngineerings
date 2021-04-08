@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
@@ -13,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProfileInfo">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProfileInfo">
    <children>
       <TabPane prefHeight="700.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -77,7 +82,8 @@
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                  <children>
                                     <Label styleClass="label-holders" stylesheets="@Profile.css" text="Gender" />
-                                    <ChoiceBox fx:id="genderSelection" prefHeight="26.0" prefWidth="115.0" stylesheets="@Profile.css" />
+                                    <CheckBox fx:id="male" mnemonicParsing="false" onMouseClicked="#SelectM" text="Male" />
+                                    <CheckBox fx:id="female" mnemonicParsing="false" onMouseClicked="#SelectFM" text="Female" />
                                  </children>
                               </HBox>
                            </children>
