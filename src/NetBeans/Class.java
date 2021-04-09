@@ -13,6 +13,7 @@ public class Class {
     int session;
     String note;
     //String time;
+    //11
 
     public Class(String time){
         //this.setId(id);
