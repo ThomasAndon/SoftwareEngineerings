@@ -24,13 +24,13 @@ public class GoPage {
     }
 
 
-    public static FXMLLoader go_to_Userpage() throws IOException {
+    public static FXMLLoader go_to_UserPage() throws IOException {
 
         return getFxmlLoader("ProfileInfo");
     }
 
-    public static FXMLLoader go_to_Coachpage() throws IOException {
-        return getFxmlLoader("CoachInfo");
+    public static FXMLLoader go_to_CoachPage() throws IOException {
+        return getFxmlLoader("CoachPage");
 
     }
 

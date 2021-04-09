@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CoachPage">
+    <children>
+        <TabPane prefHeight="700.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab style="-fx-background-color: #87c9ff; -fx-font-family: &quot;Futura&quot;;" text="Personal Info">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="658.0" prefWidth="1000.0" styleClass="bg-color" stylesheets="@style.css">
+                            <children>
+                                <VBox alignment="CENTER" layoutX="97.0" layoutY="52.0" prefHeight="469.0" prefWidth="345.0">
+                                    <children>
+                                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                            <children>
+                                                <Label prefHeight="17.0" prefWidth="44.0" styleClass="label-holders" stylesheets="@Profile.css" text="ID" />
+                                                <Label fx:id="IDHolder" styleClass="info-holders" stylesheets="@Profile.css" text="(userID)" />
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="232.0" spacing="20.0">
+                                            <children>
+                                                <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="61.0" prefWidth="151.0" styleClass="label-holders" stylesheets="@Profile.css" text="Name" />
+                                                <TextField fx:id="nameInput" prefWidth="101.0">
+                                                    <stylesheets>
+                                                        <URL value="@Profile.css" />
+                                                        <URL value="@style.css" />
+                                                    </stylesheets>
+                                                    <styleClass>
+                                                        <String fx:value="info-holders" />
+                                                        <String fx:value="transparent" />
+                                                    </styleClass>
+                                                </TextField>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                            <children>
+                                                <Label styleClass="label-holders" stylesheets="@Profile.css" text="Height (cm)" />
+                                                <TextField fx:id="heightInput">
+                                                    <stylesheets>
+                                                        <URL value="@Profile.css" />
+                                                        <URL value="@style.css" />
+                                                    </stylesheets>
+                                                    <styleClass>
+                                                        <String fx:value="info-holders" />
+                                                        <String fx:value="transparent" />
+                                                    </styleClass>
+                                                </TextField>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                            <children>
+                                                <Label prefHeight="18.0" prefWidth="76.0" styleClass="label-holders" stylesheets="@Profile.css" text="Weight(kG)" />
+                                                <TextField fx:id="weightInput">
+                                                    <stylesheets>
+                                                        <URL value="@Profile.css" />
+                                                        <URL value="@style.css" />
+                                                    </stylesheets>
+                                                    <styleClass>
+                                                        <String fx:value="info-holders" />
+                                                        <String fx:value="transparent" />
+                                                    </styleClass>
+                                                </TextField>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="357.0" spacing="20.0">
+                                            <children>
+                                                <Label styleClass="label-holders" stylesheets="@Profile.css" text="Gender" />
+                                                <CheckBox fx:id="male" mnemonicParsing="false" text="Male" />
+                                                <CheckBox fx:id="female" mnemonicParsing="false" text="Female" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                                <Button fx:id="saveBtn" layoutX="175.0" layoutY="557.0" mnemonicParsing="false" styleClass="saveButton" stylesheets="@Profile.css" text="Save" textFill="WHITE">
+                                    <font>
+                                        <Font size="19.0" />
+                                    </font>
+                                </Button>
+                                <VBox layoutX="564.0" layoutY="188.0" prefHeight="252.0" prefWidth="294.0">
+                                    <children>
+                                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="394.0">
+                                            <children>
+                                                <HBox alignment="CENTER" prefHeight="88.0" prefWidth="219.0">
+                                                    <children>
+                                                        <Label text="Your current courses:">
+                                                            <font>
+                                                                <Font name="Futura Medium" size="13.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="166.0" prefWidth="294.0">
+                                 <children>
+                                                  <Label fx:id="VIPLevelHolder" prefHeight="126.0" prefWidth="223.0" text="course" wrapText="true">
+                                                      <font>
+                                                          <Font name="System Italic" size="68.0" />
+                                                      </font>
+                                                  </Label>
+                                 </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab style="-fx-background-color: #87c9ff; -fx-font-family: &quot;Futura&quot;;" text="Weekly routing">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="bg-color" stylesheets="@style.css">
+                     <children>
+                        <TableView fx:id="routing" layoutX="9.0" layoutY="57.0" prefHeight="495.0" prefWidth="601.0">
+                          <columns>
+                              <TableColumn fx:id="timeColumn" prefWidth="67.0" text="Time" />
+                              <TableColumn prefWidth="67.0" text="Monday" />
+                              <TableColumn prefWidth="77.0" text="Tuesday" />
+                              <TableColumn prefWidth="81.0" text="Wednesday" />
+                              <TableColumn prefWidth="75.0" text="Thursday" />
+                              <TableColumn prefWidth="75.0" text="Friday" />
+                              <TableColumn prefWidth="75.0" text="Saturday" />
+                              <TableColumn prefWidth="83.0" text="Sunday" />
+                              <TableColumn prefWidth="75.0" text="Column X" />
+                              
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab style="-fx-background-color: #87c9ff; -fx-font-family: &quot;Futura&quot;;" text="Create Live Session">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="bg-color" stylesheets="@style.css" />
+                    </content>
+                </Tab>
+            <Tab style="-fx-background-color: #87c9ff; -fx-font-family: &quot;Futura&quot;;" text="Community">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

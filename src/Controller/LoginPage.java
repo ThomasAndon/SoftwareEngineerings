@@ -102,7 +102,7 @@ public class LoginPage {
         ProfileInfo controller = loader.getController();*/
         User user = new User(id,pw);
         System.out.println(user);
-        ProfileInfo controller = page.go_to_Userpage().getController();
+        ProfileInfo controller = page.go_to_CoachPage().getController();
         //controller.initData(user);
 
 
@@ -196,8 +196,10 @@ public class LoginPage {
 
         }
 
+
         // todo 此处是登录成功
         System.out.println("Coach login OK");
+        ProfileInfo controller = page.go_to_CoachPage().getController();
     }
 
 

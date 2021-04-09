@@ -17,7 +17,7 @@
 
 @font-face {
     -fx-font-family: futuraHeavyOblique;
-    -fx-font-family-src: url("font/futura.otf");
+    //-fx-font-family-src: url("font/futura.otf");
 }
 
 .saveButton {
