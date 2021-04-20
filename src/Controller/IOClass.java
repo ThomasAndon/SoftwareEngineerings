@@ -172,7 +172,7 @@ public class IOClass {
 
 
     public boolean writeUserProfile(User user) throws IOException {
-        String info = "#" + user.getId() + "#" + user.getGender() + "#" + user.getHeight()
+        String info = user.getId() + "#" + user.getGender() + "#" + user.getHeight()
             + "#" + user.getWeight() + "#" + user.getLevel() +"#" + user.getName();
 
         File f = new File(profileInfoFolderPath+user.getId()+".txt");
@@ -198,10 +198,6 @@ public class IOClass {
         bw.close();
         return true;
     }
-
-
-
-
 
 
 

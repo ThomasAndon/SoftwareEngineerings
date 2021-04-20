@@ -116,7 +116,7 @@
                                     <VBox alignment="CENTER" prefHeight="166.0" prefWidth="300.0" spacing="30.0">
                                        <children>
                                           <Label text="Date of Expiration" />
-                                          <Label text="(Date)" />
+                                          <Label fx:id="expDateHolder" text="(Date)" />
                                        </children>
                                     </VBox>
                                  </children>

@@ -105,7 +105,15 @@ public class LoginPage {
         //instantiating a user
         User user = new User(id,pw);
 
-        controller.initData(user);
+        try {
+            User user1 = new IOClass().setUserProfile(user);
+            controller.initData(user1);
+        } catch (Exception e) {
+            System.out.println("Login Exception Caught");
+            controller.initData(user);
+        }
+//        user = new IOClass().setUserProfile(user);
+//        controller.initData(user);
         stage.setTitle("Hello World");
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();

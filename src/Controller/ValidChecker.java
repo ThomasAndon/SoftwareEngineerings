@@ -20,7 +20,6 @@ public class ValidChecker {
      * @Date: 2021/3/30
      */
     public boolean isInvalidID(String id) {
-        //todo 实现id检查逻辑，只能包括大小写字母和数字，长度在4-15位。
         if (id.length() >= 4 && id.length() <= 15) {
             String regex = "[ _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！ @#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
             Pattern pattern = Pattern.compile(regex);
@@ -123,6 +122,25 @@ public class ValidChecker {
         return false;
     }
 
+    public boolean isNameValid(String name) {
+
+        int length = name.length();
+        if (length < 4 || length > 15) {
+            return false;
+        }
+        for (int i = 0;i<length;i++) {
+            char a = name.charAt(i);
+            if ((a<'A'||a>'Z') && (a<'a' || a>'z')) {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
+
+
 
     public static String[] concat(String[] a, String[] b) {
         String[] c = new String[a.length + b.length];
@@ -132,4 +150,9 @@ public class ValidChecker {
     }
 
 
+//    public static void main(String[] args) {
+//        System.out.println(new ValidChecker().isNameValid(""));
+//    }
 }
+
+
