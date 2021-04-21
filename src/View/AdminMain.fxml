@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminMain">
+    <children>
+        <Button fx:id="userInfo" layoutX="184.0" layoutY="91.0" mnemonicParsing="false" onAction="#toUserInfo" prefHeight="45.0" prefWidth="207.0" text="UserInfo" />
+        <Button fx:id="coachInfo" layoutX="184.0" layoutY="155.0" mnemonicParsing="false" onAction="#toCoachInfo" prefHeight="45.0" prefWidth="207.0" text="CoachInfo" />
+        <Button fx:id="sessionInfo" layoutX="184.0" layoutY="213.0" mnemonicParsing="false" onAction="#toSessionInfo" prefHeight="45.0" prefWidth="207.0" text="SessionInfo" />
+        <Button fx:id="add" layoutX="184.0" layoutY="274.0" mnemonicParsing="false" onAction="#addCoach" prefHeight="45.0" prefWidth="207.0" text="Add coach" />
+        <Button fx:id="edit" layoutX="184.0" layoutY="335.0" mnemonicParsing="false" onAction="#editAd" prefHeight="45.0" prefWidth="207.0" text="EditAdvertisement" />
+        <Text fill="#007bff" layoutX="468.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit" underline="true" />
+        <Label layoutX="87.0" layoutY="27.0" prefHeight="54.0" prefWidth="401.0" text="Welcome Admin">
+            <font>
+                <Font size="42.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
