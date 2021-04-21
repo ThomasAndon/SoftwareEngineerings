@@ -92,7 +92,7 @@ public class BookSession implements Initializable{
     @FXML
     void addSession (ActionEvent event) throws Exception{
         Session session = new Session();
-        session.setStudentID(user.getId());
+        session.setUserID(user.getId());
 
         user.setTrainerID("8159"); //just for test!
 
@@ -111,7 +111,7 @@ public class BookSession implements Initializable{
             session.setPhysicalAbility(selected2.getText());
             session.setNote(snote.getText());
             session.setTime(time);
-            if(writeSession("src//Data//Session//"+session.getStudentID()+".csv","src//Data//Schedule.csv",session)){
+            if(writeSession("src//Data//Session//"+session.getUserID()+".csv","src//Data//Schedule.csv",session)){
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("../view/BookSuccessful.fxml"));
                 Parent root = loader.load();
@@ -157,7 +157,7 @@ public class BookSession implements Initializable{
             System.out.println("creat success");
             bw.write("userID,trainerID,time,target,physical ability,note,detail\n");
         }else {
-            bw.write(session.getStudentID()+","+session.getTrainerID()+","
+            bw.write(session.getUserID()+","+session.getTrainerID()+","
                     + session.getTime()+","+ session.getTarget() +","+session.getPhysicalAbility()+ ","
                     + session.getNote()+ ","+ session.getDetail()+ "\n");
             bw.flush();
@@ -175,7 +175,7 @@ public class BookSession implements Initializable{
             f2.createNewFile();
             bw2.write("userID,trainerID,time\n");
         }else {
-            bw2.write(session.getStudentID() + "," + session.getTrainerID() + "," + session.getTime() + "\n");
+            bw2.write(session.getUserID() + "," + session.getTrainerID() + "," + session.getTime() + "\n");
             bw2.flush();
             bw2.close();
 

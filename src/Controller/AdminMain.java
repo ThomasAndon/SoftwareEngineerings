@@ -41,10 +41,30 @@ public class AdminMain {
         stage.show();
     }
 
-    public void toCoachInfo(ActionEvent actionEvent) {
+    public void toCoachInfo(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) coachInfo.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/CoachCsv.fxml"));
+        Parent root = loader.load();
+        CoachCsvControl controller = loader.getController();
+        //instantiating a user
+        controller.init();
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
     }
 
-    public void toSessionInfo(ActionEvent actionEvent) {
+    public void toSessionInfo(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) sessionInfo.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/SessionCsv.fxml"));
+        Parent root = loader.load();
+        SessionCsvControl controller = loader.getController();
+        //instantiating a user
+        controller.init();
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
     }
 
     public void addCoach(ActionEvent actionEvent) {

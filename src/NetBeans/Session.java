@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Session {
     String trainerID;
-    String studentID;
+    String userID;
     String time;
     String target;
     String physicalAbility;
@@ -20,12 +20,10 @@ public class Session {
         this.trainerID = trainerID;
     }
 
-    public String getStudentID() {
-        return studentID;
-    }
+    public String getUserID() { return userID; }
 
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getTime() {
