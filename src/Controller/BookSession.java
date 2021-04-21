@@ -152,28 +152,34 @@ public class BookSession implements Initializable{
         File f1 = new File(path1);
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f1,true));
         BufferedWriter bw = new BufferedWriter(out);
-        if (f1.length()==0) {
+        if(!f1.exists()){
+            f1.createNewFile();
+            System.out.println("creat success");
             bw.write("userID,trainerID,time,target,physical ability,note,detail\n");
-          //  bw.write("userID\ttrainerID\tdate\ttime\ttarget\tphysical ability\tnote\tdetail\n");
-        }
-        bw.write(session.getStudentID()+","+session.getTrainerID()+","
-                + session.getTime()+","+ session.getTarget() +","+session.getPhysicalAbility()+ ","
-                + session.getNote()+ ","+ session.getDetail()+ "\n");
-        bw.flush();
+        }else {
+            bw.write(session.getStudentID()+","+session.getTrainerID()+","
+                    + session.getTime()+","+ session.getTarget() +","+session.getPhysicalAbility()+ ","
+                    + session.getNote()+ ","+ session.getDetail()+ "\n");
+            bw.flush();
 //        bw.write(session.getStudentID()+"\t"+session.getTrainerID()+"\t"+session.getDate()+ "\t"
 //                + session.getTime()+"\t"+ session.getTarget() +"\t"+session.getpAbility()+ "\t"
 //                + session.getNote()+ "\t"+ session.getDetail()+ "#\n");
-        bw.close();
+            bw.close();
+        }
+
 
         File f2 = new File(path2);
         OutputStreamWriter out2 = new OutputStreamWriter(new FileOutputStream(f2,true));
         BufferedWriter bw2 = new BufferedWriter(out2);
-        if (f2.length()==0) {
+        if(!f2.exists()){
+            f2.createNewFile();
             bw2.write("userID,trainerID,time\n");
+        }else {
+            bw2.write(session.getStudentID() + "," + session.getTrainerID() + "," + session.getTime() + "\n");
+            bw2.flush();
+            bw2.close();
+
         }
-        bw2.write(session.getStudentID()+","+session.getTrainerID()+","+ session.getTime()+ "\n");
-        bw2.flush();
-        bw2.close();
         return true;
     }
 
