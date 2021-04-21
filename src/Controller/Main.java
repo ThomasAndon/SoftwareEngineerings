@@ -29,7 +29,7 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         primaryStage.setTitle("Login");
         Parent root = FXMLLoader.load(getClass().getResource("../view/LoginPage.fxml"));
-
+        //Parent root = FXMLLoader.load(getClass().getResource("../view/UserInterf.fxml"));
         //todo 在这里读取所有表格
 
         Scene scene = new Scene(root, 800, 600);
