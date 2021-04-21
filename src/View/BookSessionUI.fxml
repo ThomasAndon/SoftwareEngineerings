@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections ?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BookSession">
+   <children>
+      <Text layoutX="150.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book a LIVE session" textAlignment="CENTER">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Text>
+      <Label layoutX="81.0" layoutY="99.0" text="Target" />
+      <Label layoutX="82.0" layoutY="145.0" text="Physical ability" />
+      <Label layoutX="81.0" layoutY="189.0" text="Note" />
+      <Label layoutX="82.0" layoutY="237.0" text="Date" />
+      <RadioButton layoutX="160.0" layoutY="99.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="103.0" text="Cutting">
+         <toggleGroup>
+            <ToggleGroup fx:id="target" />
+         </toggleGroup>      </RadioButton>
+      <RadioButton layoutX="276.0" layoutY="99.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="81.0" text="Bulk" toggleGroup="$target" />
+      <RadioButton layoutX="366.0" layoutY="99.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="153.0" text="Bodybuilding" toggleGroup="$target" />
+      <RadioButton layoutX="224.0" layoutY="145.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="81.0" text="High">
+         <toggleGroup>
+            <ToggleGroup fx:id="pability" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="312.0" layoutY="145.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="110.0" text="Medium" toggleGroup="$pability" />
+      <RadioButton layoutX="429.0" layoutY="145.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="81.0" text="Low" toggleGroup="$pability" />
+      <TextField id="Note" fx:id="snote" layoutX="157.0" layoutY="183.0" prefHeight="36.0" prefWidth="301.0" />
+      <DatePicker id="SDate" fx:id="sdate" editable="false" layoutX="157.0" layoutY="231.0" pickOnBounds="false" prefHeight="36.0" prefWidth="301.0" promptText="select date" />
+      <Label layoutX="81.0" layoutY="281.0" text="Time" />
+      <ComboBox id="STime" fx:id="stime" layoutX="157.0" layoutY="281.0" prefHeight="36.0" prefWidth="301.0">
+       <items>
+           <FXCollections fx:factory="observableArrayList">
+               <String fx:value="9:00-10:00" />
+               <String fx:value="10:00-11:00" />
+               <String fx:value="11:00-12:00" />
+               <String fx:value="13:00-14:00" />
+               <String fx:value="14:00-15:00" />
+               <String fx:value="15:00-16:00" />
+               <String fx:value="16:00-17:00" />
+               <String fx:value="18:00-19:00" />
+               <String fx:value="19:00-20:00" />
+           </FXCollections>
+       </items>
+      </ComboBox>
+      <Button fx:id="bookBtn" layoutX="252.0" layoutY="333.0" mnemonicParsing="false" onAction="#addSession" text="Book NOW" />
+   </children>
+</AnchorPane>

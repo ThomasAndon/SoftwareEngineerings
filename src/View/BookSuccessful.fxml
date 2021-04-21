@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserInterf">
+   <children>
+      <Text layoutX="123.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Successful!" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="42.0" />
+         </font>
+      </Text>
+      <Text fx:id="viewSchedule" fill="#0018f5" layoutX="99.0" layoutY="271.0" onMouseClicked="#toSchedule" strokeType="OUTSIDE" strokeWidth="0.0" text="View my schedule" underline="true" />
+      <Text fx:id="mainPage" fill="#0018f5" layoutX="351.0" layoutY="271.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page" underline="true" />
+   </children>
+</AnchorPane>
