@@ -1,7 +1,6 @@
 package Controller;
 
 import NetBeans.Session;
-import NetBeans.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,9 +11,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class SessionCsvControl {
+public class SessionCsvControl implements Comparator< Session > {
 
     @FXML
     private TableView<Session> table;
@@ -36,24 +36,24 @@ public class SessionCsvControl {
             int i=0;
             //第三步：将文档的下一行数据赋值给lineData，并判断是否为空，若不为空则输出
             while ((lineDta = textFile.readLine()) != null){
+                System.out.println(lineDta);
                 Session s = new Session();
                 s.setUserID(lineDta.split(",")[0]);
                 s.setTrainerID(lineDta.split(",")[1]);
                 s.setTime((lineDta.split(",")[2]));
                 list.add(s);
+
             }
             ScheduleController comparator = new ScheduleController();
             list.sort( comparator );
             slist.addAll(list);
-            //    Arrays.sort(slist);
-
-
             textFile.close();
         }catch (FileNotFoundException e){
             System.out.println("没有找到指定文件");
         }catch (IOException e){
             System.out.println("文件读写出错");
         }
+        table.setItems(slist);
         TableColumn<Session, String> table_user_id= new TableColumn<Session, String>("UserId");
         TableColumn<Session, String> table_trainer_id= new TableColumn<Session, String>("TrainerId");
         TableColumn<Session, LocalDate> table_date= new TableColumn<Session, LocalDate>("Time");//创建TableColumn  列名为序号
@@ -69,6 +69,18 @@ public class SessionCsvControl {
         table.getColumns().add(table_trainer_id);
         table.getColumns().add(table_date);
 
+    }
+    @Override
+    public int compare(Session o1, Session o2) {
+        if ( o1.equals( o2 ) || o1.getTime().equals(o2.getTime()) ) {
+            return 0;
+        }
+        else if ( o1.getTime().compareTo(o2.getTime())>0 ) {
+            return 1;
+        }
+        else {
+            return -1;
+        }
     }
 }
 
