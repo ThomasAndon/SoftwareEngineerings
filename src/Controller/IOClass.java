@@ -161,10 +161,6 @@ public class IOClass {
     public String[] parseProfileString(String info) {
 
         String[] res = info.split("#");
-
-        for(int i = 0;i<res.length;i++){
-            System.out.println(res[i]);
-        }
         return res;
     }
 
