@@ -67,9 +67,29 @@ public class AdminMain {
         stage.show();
     }
 
-    public void addCoach(ActionEvent actionEvent) {
-    }
+    /*public void addCoach(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) add.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/SessionCsv.fxml"));
+        Parent root = loader.load();
+        AddCoach controller = loader.getController();
+        //instantiating a user
+        controller.init();
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
+    }*/
 
-    public void editAd(ActionEvent actionEvent) {
+    public void editAd(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) edit.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/EditAd.fxml"));
+        Parent root = loader.load();
+        EditAd controller = loader.getController();
+        //instantiating a user
+        controller.init();
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
     }
 }

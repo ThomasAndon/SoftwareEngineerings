@@ -16,6 +16,7 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
+        <Text fx:id="adminMain" fill="#0018f5" layoutX="401.0" layoutY="371.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page" underline="true" />
         
     </children>
 </AnchorPane>

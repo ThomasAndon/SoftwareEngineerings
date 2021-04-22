@@ -5,10 +5,17 @@ import NetBeans.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,8 +24,11 @@ import java.util.List;
 public class UserCsvControl {
     @FXML
     private TableView<User> table;
+    @FXML
+    private Text adminMain;
 
     public void init(){
+
         readCSV();
     }
     public void readCSV()  {
@@ -68,5 +78,15 @@ public class UserCsvControl {
         table.getColumns().add(table_pw);
         table.getColumns().add(table_gender);
 
+    }
+
+    public void toMainPage(MouseEvent actionEvent) throws IOException {
+        Stage stage = (Stage) adminMain.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/AdminMain.fxml"));
+        Parent root = loader.load();
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
     }
 }
