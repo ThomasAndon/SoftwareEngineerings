@@ -10,16 +10,10 @@
             <Font size="42.0" />
         </font>
     </Label>
-   <TextField fx:id="CoachName" layoutX="362.0" layoutY="169.0" prefHeight="23.0" prefWidth="212.0" />
-   <Label layoutX="301.0" layoutY="169.0" prefHeight="23.0" prefWidth="46.0" text="Name" />
    <Label layoutX="296.0" layoutY="234.0" text="CoachId" />
    <Label layoutX="296.0" layoutY="285.0" text="Password" />
-   <Label layoutX="302.0" layoutY="343.0" text="Gender" />
-    <Label layoutX="306.0" layoutY="392.0" text="Phone" />
    <TextField fx:id="CoachId" layoutX="362.0" layoutY="230.0" prefHeight="23.0" prefWidth="212.0" />
    <TextField fx:id="CoachPw" layoutX="362.0" layoutY="289.0" prefHeight="23.0" prefWidth="212.0" />
-   <TextField fx:id="CoachGender" layoutX="362.0" layoutY="339.0" prefHeight="23.0" prefWidth="212.0" />
-    <TextField fx:id="CoachPhone" layoutX="362.0" layoutY="388.0" prefHeight="23.0" prefWidth="212.0" />
-   <Button layoutX="438.0" layoutY="449.0" mnemonicParsing="false" onAction="#SaveInfo" text="Save" />
-    <Text fx:id="backBt" fill="#f520c7" layoutX="561.0" layoutY="465.0" onMouseClicked="#toLastPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back" underline="true" />
+   <Button layoutX="438.0" layoutY="366.0" mnemonicParsing="false" onAction="#SaveInfo" text="Save" />
+    <Text fx:id="backBt" fill="#f520c7" layoutX="547.0" layoutY="382.0" onMouseClicked="#toLastPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back" underline="true" />
 </AnchorPane>

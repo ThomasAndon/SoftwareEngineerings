@@ -12,8 +12,16 @@ public class Trainer {
     String Tel;
     String experience;
     String Intro;
+    String height;
+    String weight;
     ArrayList<String>students;
+    public  Trainer(){
 
+    }
+    public Trainer(String id, String pw) {
+        this.setTrainerID(id);
+        this.setTrainerPw(pw);
+    }
     public String getTrainerID() {
         return trainerID;
     }
@@ -87,7 +95,9 @@ public class Trainer {
         this.students = students;
     }
 
+    public String getHeight(){return height;}
+    public void setHeight(String height) {this.height=height; }
 
-
-
+    public String getWeight(){return weight;}
+    public void setWeight(String height) {this.weight=weight; }
 }

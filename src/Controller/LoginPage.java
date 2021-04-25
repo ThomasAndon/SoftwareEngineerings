@@ -1,5 +1,6 @@
 package Controller;
 
+import NetBeans.Trainer;
 import NetBeans.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -210,6 +211,22 @@ public class LoginPage {
 
         // todo 此处是登录成功
         System.out.println("Coach login OK");
+        Stage stage = (Stage) CALogin.getScene().getWindow();
+        stage.close();
+
+        //Below is instantiating the user and passing it to the next window.
+        FXMLLoader loader = new FXMLLoader();;
+        loader.setLocation(getClass().getResource("../view/CoachMain.fxml"));
+        Parent root = loader.load();
+
+        CoachMain controller = loader.getController();
+        Trainer trainer= new Trainer(id,pw);
+        controller.initData(trainer);
+
+        stage.setTitle("Hello Coach" + id);
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
+
     }
 
 
@@ -236,7 +253,7 @@ public class LoginPage {
         // todo 此处是登录成功
         System.out.println("Admin Login OK");
 
-        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        Stage stage = (Stage) adminLogin.getScene().getWindow();
         stage.close();
 
         //Below is instantiating the user and passing it to the next window.
