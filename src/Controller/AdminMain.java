@@ -10,6 +10,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+*@Description: Main page of the admin
+*@param:
+*@return:
+*@Author:Jin TianYu
+*@Date:2021/4/25
+*/
 public class AdminMain {
 
     @FXML

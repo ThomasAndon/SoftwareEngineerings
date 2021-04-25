@@ -13,6 +13,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+/**
+*@Description: Main page for the coaches
+*@param:
+*@return:
+*@Author:Jin TianYu
+*@Date:2021/4/25
+*/
 public class CoachMain {
     @FXML
     private Button schedule;

@@ -16,7 +16,7 @@ public class ValidChecker {
     /**
      * @Description: check the validation of the input Id and Password
      * @return: boolean
-     * @Author: CloudKing
+     * @Author: Jin Tianyu
      * @Date: 2021/3/30
      */
     public boolean isInvalidID(String id) {
@@ -137,16 +137,6 @@ public class ValidChecker {
 
         return true;
 
-    }
-
-
-
-
-    public static String[] concat(String[] a, String[] b) {
-        String[] c = new String[a.length + b.length];
-        System.arraycopy(a, 0, c, 0, a.length);
-        System.arraycopy(b, 0, c, a.length, b.length);
-        return c;
     }
 
 

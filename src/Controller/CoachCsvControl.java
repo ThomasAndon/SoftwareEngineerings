@@ -20,6 +20,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+*@Description: Read the Coach Profile from the existing files and print the information in a table
+*@param:
+*@return:
+*@Author:Jin TianYu
+*@Date:2021/4/25
+*/
 public class CoachCsvControl {
     @FXML
     private TableView<Trainer> table;

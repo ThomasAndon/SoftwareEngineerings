@@ -12,6 +12,13 @@ import javafx.stage.Stage;
 
 import java.io.*;
 
+/**
+*@Description: For the admin to add a coach
+*@param:
+*@return:
+*@Author:Jin TianYu
+*@Date:2021/4/25
+*/
 public class AddCoach {
 
     @FXML

@@ -21,6 +21,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+*@Description: Print the all users' information , administrators can view thees information
+*@param:
+*@return:
+*@Author:Jin TianYu
+*@Date:2021/4/25
+*/
 public class UserCsvControl {
     @FXML
     private TableView<User> table;

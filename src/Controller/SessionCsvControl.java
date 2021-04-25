@@ -20,6 +20,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+*@Description: Print the all sessions' information , administrators can view these sessions
+*@param:
+*@return:
+*@Author:Jin TianYu
+*@Date:2021/4/25
+*/
 public class SessionCsvControl implements Comparator< Session > {
 
     @FXML

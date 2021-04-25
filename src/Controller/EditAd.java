@@ -13,6 +13,13 @@ import javafx.event.ActionEvent;
 
 import java.io.*;
 
+/**
+*@Description: Used for the admin to edit the advertisement displayed in the main page
+*@param:
+*@return:
+*@Author:Jin TianYu
+*@Date:2021/4/25
+*/
 public class EditAd {
     @FXML
     private Text adminMain;
