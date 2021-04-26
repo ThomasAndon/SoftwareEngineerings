@@ -3,7 +3,9 @@ package Controller;
 import NetBeans.User;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 // test2
 
 public class IOClass {
@@ -12,8 +14,11 @@ public class IOClass {
     String userAccountFilePath = "src/Data/Account/account.txt";
     String coachAccountFilePath = "src/Data/Account/CoachAccounts.txt";
     String adminAccountFilePath = "src/Data/Account/AdminAccounts.txt";
-    String profileInfoFolderPath = "src/Data/ProfileInfo/";
 
+    String AdPath="src/Data/Advertisement/Ad.txt";
+
+    String CoachProfilePath="src/Data/ProfileInfo/CoachProfile";
+    String UserProfilePath="src/Data/ProfileInfo/UserProfile";
     /**
      * This method reads id and password files and parse them.
      *
@@ -130,7 +135,7 @@ public class IOClass {
      */
     public User setUserProfile(User user) throws IOException {
 
-        File f = new File(profileInfoFolderPath + user.getId() + ".txt");
+        File f = new File( UserProfilePath+ user.getId() + ".txt");
 
         if (!(f.isFile() && f.exists())) {
             System.out.println(user.getId() + "profile txt does not exist.");
@@ -143,9 +148,14 @@ public class IOClass {
         String line = in.readLine();
         String[] info = parseProfileString(line);
         user.setGender(info[1]);
-        user.setHeight(Double.parseDouble(info[2]));
+        /*user.setHeight(Double.parseDouble(info[2]));
         user.setWeight(Double.parseDouble(info[3]));
-        user.setLevel(Integer.parseInt(info[4]));
+        user.setLevel(Integer.parseInt(info[4]));*/
+        user.setHeight(info[2]);
+        user.setHeight(info[3]);
+        user.setHeight(info[4]);
+
+
         user.setName(info[5]);
 
 
@@ -171,7 +181,7 @@ public class IOClass {
         String info = user.getId() + "#" + user.getGender() + "#" + user.getHeight()
             + "#" + user.getWeight() + "#" + user.getLevel() +"#" + user.getName()+'\n';
 
-        File f = new File(profileInfoFolderPath+user.getId()+".txt");
+        File f = new File(UserProfilePath+user.getId()+".txt");
 
         if (!(f.isFile() && f.exists())) {
             System.out.println("Writing - user profile doesn't exist, new one created-"+user.getId());
@@ -194,6 +204,57 @@ public class IOClass {
         bw.close();
         return true;
     }
+
+    /**
+    *@Description: write an new advertisement into the file
+    *@param: path,content
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/4/26
+    */
+
+    public void writeAd(String path,String content) throws IOException {
+        File ad = new File(path);
+        if(!ad.exists()){
+            ad.createNewFile();
+        }
+        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(ad,true));
+        BufferedWriter bw = new BufferedWriter(out);
+        bw.write(content);
+        bw.flush();
+        bw.close();
+    }
+
+    /**
+    *@Description: Read all of the user profiles
+    *@param:
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/4/26
+    */
+    private static List<File> readFile(String fileDir) {
+        List<File> fileList = new ArrayList<File>();
+        File file = new File(fileDir);
+        File[] files = file.listFiles();// 获取目录下的所有文件或文件夹
+        if (files == null) {// 如果目录为空，直接退出
+            return null;
+        }
+        for (File f : files) {
+            if (f.isFile()) {
+                fileList.add(f);
+            } else if (f.isDirectory()) {
+                System.out.println(f.getAbsolutePath());
+                readFile(f.getAbsolutePath());
+            }
+        }
+
+        for (File f1 : fileList) {
+            System.out.println(f1.getName());
+        }
+        return fileList;
+
+    }
+
 
 
 

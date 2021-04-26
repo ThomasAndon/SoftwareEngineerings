@@ -43,20 +43,14 @@ public class AddCoach {
 
     }
 
-    public void SaveInfo(ActionEvent actionEvent) throws IOException {
+    public void AddCoach(ActionEvent actionEvent) throws Exception {
 
         String id=CoachId.getText();
         String pw=CoachPw.getText();
 
-        File f = new File("src//Data//Account//CoachAccounts.txt");
-        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f,true));
-        BufferedWriter bw = new BufferedWriter(out);
-        if(!f.exists()){
-            f.createNewFile();
-        }
-        bw.write(id+" " + pw + " " + "#\n");
-        bw.flush();
-        bw.close();
+
+        IOClass ioClass=new IOClass();
+        ioClass.writeAccounts(ioClass.coachAccountFilePath,id,pw);
 
 
     }

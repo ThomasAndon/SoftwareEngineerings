@@ -17,9 +17,9 @@ public class User {
 
     private String gender = "unKnown";
 
-    private double height = 0;
-    private double weight = 0;
-    private int level = 0 ;
+    private String height ;
+    private String weight ;
+    private String level  ;
     private String name = "unKnown";
 
     //The type of this account, 0 is customer, 1 is coach, 2 is gym manager.
@@ -78,27 +78,27 @@ public class User {
         this.gender = gender;
     }
 
-    public double getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(double height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
-    public double getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
-    public int getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 

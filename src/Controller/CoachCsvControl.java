@@ -37,14 +37,34 @@ public class CoachCsvControl {
     private Text addCoach;
 
     public void init(){
-        readCSV();
+
+        IOClass ioClass=new IOClass();
+        readCoachProfile(ioClass.CoachProfilePath);
+    }
+   /**
+    *@Description: Read all the coach profiles
+    *@param: fileDir
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/4/26
+    */
+
+    public void readCoachProfile(String fileDir){
+        File file = new File(fileDir);
+        File[] files = file.listFiles();// 获取目录下的所有文件或文件夹
+        for (File f : files) {
+            if (f.isFile()) {
+                readFile(f.getAbsolutePath());
+            }
+        }
     }
 
-    private void readCSV() {
+    private void readFile(String path) {
+
         ObservableList<Trainer> slist= FXCollections.observableArrayList();
         List<Trainer> list = new ArrayList<Trainer>();
 
-        File csv = new File("src//Data//ProfileInfo//1234.txt");//todo this csv file is only for test
+        File csv = new File(path);//todo this csv file is only for test
         try{
             //第二步：从字符输入流读取文本，缓冲各个字符，从而实现字符、数组和行（文本的行数通过回车符来进行判定）的高效读取。
             BufferedReader textFile = new BufferedReader(new FileReader(csv));

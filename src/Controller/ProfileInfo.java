@@ -125,8 +125,10 @@ public class ProfileInfo implements Initializable {
         }
 
         //todo 成功，存储信息
-        currentUser.setWeight(Double.parseDouble(weightInput.getText()));
-        currentUser.setHeight(Double.parseDouble(heightInput.getText()));
+        //currentUser.setWeight(Double.parseDouble(weightInput.getText()));
+        //currentUser.setHeight(Double.parseDouble(heightInput.getText()));
+        currentUser.setHeight(heightInput.getText());
+        currentUser.setWeight(weightInput.getText());
         currentUser.setGender(gender);
         currentUser.setName(inputName);
         try {

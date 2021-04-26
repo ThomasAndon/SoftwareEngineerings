@@ -1,6 +1,7 @@
 package Controller;
 
 import NetBeans.Session;
+import NetBeans.Trainer;
 import NetBeans.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,32 +37,48 @@ public class UserCsvControl {
 
     public void init(){
 
-        readCSV();
+        IOClass ioClass=new IOClass();
+        readUserProfile(ioClass.UserProfilePath);
     }
-    public void readCSV()  {
+    /**
+     *@Description: Read all the user profiles
+     *@param: fileDir
+     *@return:
+     *@Author:Jin TianYu
+     *@Date:2021/4/26
+     */
+    public void readUserProfile(String fileDir){
+        File file = new File(fileDir);
+        File[] files = file.listFiles();// 获取目录下的所有文件或文件夹
+        for (File f : files) {
+            if (f.isFile()) {
+                readFile(f.getAbsolutePath());
+            }
+        }
+    }
+    public void readFile(String path)  {
         ObservableList<User> slist= FXCollections.observableArrayList();
         List<User> list = new ArrayList<User>();
         //第一步：先获取csv文件的路径，通过BufferedReader类去读该路径中的文件
-        File csv = new File("src//Data//Account//User.csv");//only for test
+        File csv = new File(path);//only for test
         try{
             //第二步：从字符输入流读取文本，缓冲各个字符，从而实现字符、数组和行（文本的行数通过回车符来进行判定）的高效读取。
             BufferedReader textFile = new BufferedReader(new FileReader(csv));
             String lineDta = "";
-            textFile.readLine();
             int i=0;
             //第三步：将文档的下一行数据赋值给lineData，并判断是否为空，若不为空则输出
             while ((lineDta = textFile.readLine()) != null){
                 User s = new User();
-                s.setName(lineDta.split(",")[0]);
-                s.setId(lineDta.split(",")[1]);
-                s.setPassword((lineDta.split(",")[2]));
-                s.setGender(lineDta.split(",")[3]);
+                s.setTrainerID(lineDta.split("#")[0]);
+                s.setGender(lineDta.split("#")[1]);
+                s.setHeight(lineDta.split("#")[2]);
+                s.setWeight((lineDta.split("#")[3]));
+                s.setLevel((lineDta.split("#")[4]));
+                s.setName((lineDta.split("#")[5]));
                 list.add(s);
+
             }
             slist.addAll(list);
-            //    Arrays.sort(slist);
-
-
             textFile.close();
         }catch (FileNotFoundException e){
             System.out.println("没有找到指定文件");
@@ -71,19 +88,26 @@ public class UserCsvControl {
         table.setItems(slist);//将集合的值 存储到tableView里
         TableColumn<User, String> table_name= new TableColumn<User, String>("Name");//创建TableColumn  列名为序号
         TableColumn<User, String> table_id= new TableColumn<User, String>("ID");
-        TableColumn<User, String> table_pw= new TableColumn<User, String>("Password");
+        TableColumn<User, String> table_height= new TableColumn<User, String>("Height");
+        TableColumn<User, String> table_weight= new TableColumn<User, String>("Weight");
         TableColumn<User, String> table_gender= new TableColumn<User, String>("Gender");
+        TableColumn<User, String> table_level= new TableColumn<User, String>("Vip Level");
         /**
          * 反射取值
          */
         table_name.setCellValueFactory(new PropertyValueFactory<User,String>("name"));//相当于getid
         table_id.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
-        table_pw.setCellValueFactory(new PropertyValueFactory<User,String>("password"));
+        table_height.setCellValueFactory(new PropertyValueFactory<User,String>("height"));
+        table_weight.setCellValueFactory(new PropertyValueFactory<User,String>("weight"));
         table_gender.setCellValueFactory(new PropertyValueFactory<User,String>("gender"));
+        table_level.setCellValueFactory(new PropertyValueFactory<User,String>("level"));
+
         table.getColumns().add(table_name);
         table.getColumns().add(table_id);
-        table.getColumns().add(table_pw);
+        table.getColumns().add(table_height);
+        table.getColumns().add(table_weight);
         table.getColumns().add(table_gender);
+        table.getColumns().add(table_level);
 
     }
 

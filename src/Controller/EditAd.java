@@ -33,10 +33,6 @@ public class EditAd {
 
     public void init() { }
 
-
-
-
-
     public void toMainPage(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) adminMain.getScene().getWindow();
         stage.close();
@@ -46,26 +42,21 @@ public class EditAd {
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();
     }
-
+    /**
+    *@Description: Save advertisement
+    *@param: actionEvent
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/4/26
+    */
     public void saveAd(ActionEvent actionEvent) throws IOException {
-
-        writeAD("src//Data//Advertisement//Ad.txt");
-        //todo 实现一个AD写入一个文件当中
-
-    }
-
-    public void writeAD(String path) throws IOException {
         String s=Ad.getText();
         System.out.println(s);
-        File f = new File(path);
-        if(!f.exists()){
-            f.createNewFile();
-        }
-        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f,true));
-        BufferedWriter bw = new BufferedWriter(out);
-        bw.write(s);
-        bw.flush();
-        bw.close();
+        IOClass ioClass=new IOClass();
+        ioClass. writeAd(ioClass.AdPath,s);
+
 
     }
+
+
 }
