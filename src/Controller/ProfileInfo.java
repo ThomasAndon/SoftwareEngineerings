@@ -32,7 +32,7 @@ public class ProfileInfo implements Initializable {
     private TextField weightInput;
 
     @FXML
-    private ChoiceBox<String> genderSelection;//= new ChoiceBox<String>(FXCollections.observableArrayList("Male","Female"));;
+    private ChoiceBox<String> genderSelection;
 
     @FXML
     private Button saveBtn;
@@ -40,8 +40,7 @@ public class ProfileInfo implements Initializable {
     @FXML
     private Label VIPLevelHolder;
 
-    @FXML
-    private Label expDateHolder;
+
 
 
     /**
@@ -124,7 +123,7 @@ public class ProfileInfo implements Initializable {
             return;
         }
 
-        //todo 成功，存储信息
+        //todo 成功，存储信息 (内存、永存、显示）
         currentUser.setWeight(Double.parseDouble(weightInput.getText()));
         currentUser.setHeight(Double.parseDouble(heightInput.getText()));
         currentUser.setGender(gender);
@@ -140,4 +139,38 @@ public class ProfileInfo implements Initializable {
 
 
     }
+
+
+    @FXML
+    /** This method is invocated whenever the user wants to upgrade
+     * @author Thomas Andon
+     */
+    void onUpgradeClicked(ActionEvent event) {
+
+        //todo 以后如果加入了最高会员等级，在这里加一个ifelse判断，不符合就弹窗以及return来跳出此函数
+        if (currentUser.getLevel()>= currentUser.MAX_VIP_LEVEL) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("You've reached the highest level of VIP now.");
+            alert.show();
+            return;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText("Confirmation");
+        alert.setContentText("You are now level " + (currentUser.getLevel()+1) + " now");
+        alert.show();
+        //内存里的用户对象数据更改；显示的等级数字更改；永存里文件数据也要改。
+        currentUser.setLevel(currentUser.getLevel()+1);
+        VIPLevelHolder.setText(String.valueOf(currentUser.getLevel()));
+        try {
+            new IOClass().writeUserProfile(currentUser);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

@@ -79,4 +79,23 @@ public class AdminMain {
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();
     }
+
+
+    @FXML
+    /** This function is invocated when the admin tries to upload a video
+     * @author Thomas Andon
+     */
+    void onUploadVideoClicked(ActionEvent event) throws IOException {
+        Stage stage = (Stage) edit.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/VideoUploader.fxml"));
+        Parent root = loader.load();
+        VideoUploader controller = loader.getController();
+        //instantiating a user
+
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
+    }
+
 }
