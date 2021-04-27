@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -150,18 +151,40 @@ public class VideoUploader implements Initializable {
     void onOpenClicked(ActionEvent event) {
 
         Video video = videoTable.getSelectionModel().getSelectedItem();
-        Desktop desktop = Desktop.getDesktop();
+        String url = video.getPath();
+        String osName = System.getProperty("os.name", "");// 获取操作系统的名字
+
         try {
-            URI uri = null;
-            try {
-                uri = new URI(video.getPath());
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
+            if (osName.startsWith("Mac OS")) {
+                Runtime.getRuntime().exec("open \"" + url + "\"");
+            } else {
+                Runtime.getRuntime().exec("cmd /c start " + url);
             }
-            desktop.browse(uri);
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        } catch (Exception e) {
+            System.out.println("Error occurs opening.");
         }
+
+
+
+
+/*        String osName = System.getProperty("os.name", "");// 获取操作系统的名字
+        try {
+            if (osName.startsWith("Windows")) {// windows
+                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
+            } else if (osName.startsWith("Mac OS")) {// Mac
+                Class fileMgr = Class.forName("com.apple.eio.FileManager");
+                Method openURL = fileMgr.getDeclaredMethod("openURL", String.class);
+                openURL.invoke(null, url);
+            }
+            System.out.println("#########"+url);
+
+        } catch(Exception e) {
+            System.out.println(url);
+        }*/
+
+
+
     }
 
     @Override
