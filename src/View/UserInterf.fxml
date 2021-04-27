@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserInterf">
+<AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserInterf">
     <children>
-        <Button layoutX="197.0" layoutY="120.0" mnemonicParsing="false" onAction="#toWorkout" prefHeight="45.0" prefWidth="207.0" text="Workout videos" />
-        <Button fx:id="SessionBtn" layoutX="197.0" layoutY="177.0" mnemonicParsing="false" onAction="#toBookSession" prefHeight="45.0" prefWidth="207.0" text="Book a live session" />
-        <Button fx:id="ScheduleBtn" layoutX="197.0" layoutY="237.0" mnemonicParsing="false" onAction="#toSchedule" prefHeight="45.0" prefWidth="207.0" text="My schedule" />
-        <Button layoutX="197.0" layoutY="298.0" mnemonicParsing="false" onAction="#toProfile" prefHeight="45.0" prefWidth="207.0" text="My profile" />
+        <Button layoutX="101.0" layoutY="105.0" mnemonicParsing="false" onAction="#toWorkout" prefHeight="45.0" prefWidth="207.0" text="Workout videos" />
+        <Button fx:id="SessionBtn" layoutX="101.0" layoutY="178.0" mnemonicParsing="false" onAction="#toBookSession" prefHeight="45.0" prefWidth="207.0" text="Book a live session" />
+        <Button fx:id="ScheduleBtn" layoutX="101.0" layoutY="253.0" mnemonicParsing="false" onAction="#toSchedule" prefHeight="45.0" prefWidth="207.0" text="My schedule" />
+        <Button fx:id="UserProfile" layoutX="101.0" layoutY="327.0" mnemonicParsing="false" onAction="#toProfile" prefHeight="45.0" prefWidth="207.0" text="My profile" />
         <Text fill="#007bff" layoutX="468.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit" underline="true" />
-      <Label layoutX="92.0" layoutY="41.0" prefHeight="54.0" prefWidth="241.0" text="Welcome，">
+      <Label layoutX="80.0" layoutY="41.0" prefHeight="54.0" prefWidth="235.0" text="Welcome，">
          <font>
             <Font size="42.0" />
          </font>
@@ -24,5 +21,6 @@
             <Font size="42.0" />
          </font>
       </Label>
+      <TextArea fx:id="Advertisement" layoutX="378.0" layoutY="105.0" prefHeight="129.0" prefWidth="181.0" />
     </children>
 </AnchorPane>

@@ -6,14 +6,14 @@
 
 <AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CoachMain">
     <children>
-        <Button fx:id="uploadVideo" layoutX="184.0" layoutY="91.0" mnemonicParsing="false" onAction="#toUploadVideo" prefHeight="45.0" prefWidth="207.0" text="Upload video" />
-        <Button fx:id="schedule" layoutX="184.0" layoutY="155.0" mnemonicParsing="false" onAction="#toSchedule" prefHeight="45.0" prefWidth="207.0" text="My schedule" />
-        <Button fx:id="Profile" layoutX="184.0" layoutY="224.0" mnemonicParsing="false" onAction="#toCoachProfile" prefHeight="45.0" prefWidth="207.0" text="My profile" />
-        <Button fx:id="EditClass" layoutX="184.0" layoutY="290.0" mnemonicParsing="false" onAction="#editClass" prefHeight="45.0" prefWidth="207.0" text="Edit my class" />
-        <Text fill="#007bff" layoutX="468.0" layoutY="369.0"  strokeType="OUTSIDE" strokeWidth="0.0" text="Exit" underline="true" />
-        <Label layoutX="87.0" layoutY="27.0" prefHeight="54.0" prefWidth="401.0" text="Welcome, ">
+        <Button fx:id="uploadVideo" layoutX="106.0" layoutY="89.0" mnemonicParsing="false" onAction="#toUploadVideo" prefHeight="45.0" prefWidth="207.0" text="Upload video" />
+        <Button fx:id="schedule" layoutX="106.0" layoutY="155.0" mnemonicParsing="false" onAction="#toSchedule" prefHeight="45.0" prefWidth="207.0" text="My schedule" />
+        <Button fx:id="Profile" layoutX="106.0" layoutY="229.0" mnemonicParsing="false" onAction="#toCoachProfile" prefHeight="45.0" prefWidth="207.0" text="My profile" />
+        <Button fx:id="EditClass" layoutX="106.0" layoutY="299.0" mnemonicParsing="false" onAction="#editClass" prefHeight="45.0" prefWidth="207.0" text="Edit my class" />
+        <Text fill="#007bff" layoutX="468.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit" underline="true" />
+        <Label layoutX="93.0" layoutY="27.0" prefHeight="54.0" prefWidth="207.0" text="Welcome, trainer">
             <font>
-                <Font size="42.0" />
+                <Font size="23.0" />
             </font>
         </Label>
         <Label fx:id="CoachID" layoutX="288.0" layoutY="27.0" prefHeight="54.0" prefWidth="241.0">
@@ -21,5 +21,6 @@
                 <Font size="42.0" />
             </font>
         </Label>
+      <TextArea fx:id="Advertisement" layoutX="362.0" layoutY="89.0" prefHeight="162.0" prefWidth="167.0" />
     </children>
 </AnchorPane>

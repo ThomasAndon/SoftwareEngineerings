@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -27,13 +28,38 @@ public class UserInterf {
     @FXML
     private Button ScheduleBtn;
     @FXML
+    private Button UserProfile;
+    @FXML
     private Label userID;
+    @FXML
+    private TextArea Advertisement;
+
     private User user;
-    public void initData(User user) {
+
+    private IOClass ioClass=new IOClass();
+
+    public void initData(User user) throws IOException {
+
         userID.setText(user.getId());
         this.user = user;
+        initAdvertisemnet(ioClass.AdPath);
     }
+
+    /**
+    *@Description: Initialize advertisement and display
+    *@param:
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/4/27
+    */
+
+    private void initAdvertisemnet(String path) throws IOException {
+        String s=ioClass.readAd(path);
+        Advertisement.setText(s);
+    }
+
     public void getUser(User user) {
+
         this.user = user;
     }
     public void toWorkout(ActionEvent actionEvent) {
@@ -55,7 +81,21 @@ public class UserInterf {
     }
 
 
-    public void toProfile(ActionEvent actionEvent) {
+    public void toProfile(ActionEvent actionEvent) throws Exception {
+        Stage stage = (Stage) UserProfile.getScene().getWindow();
+        stage.close();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/PersonalProfile.fxml"));
+        Parent root = loader.load();
+        CheckUserProfile controller = loader.getController();
+
+        //instantiating a user
+        controller.getUser(user);
+
+
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
 
     }
 

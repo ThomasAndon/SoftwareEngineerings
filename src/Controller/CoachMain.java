@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -37,12 +38,25 @@ public class CoachMain {
     @FXML
     private Button Profile;
 
+    @FXML
+    private TextArea Advertisement;
+
     private Trainer trainer;
 
-    public void initData(Trainer coach) {
-        CoachID.setText(coach.getTrainerID());
-        this.trainer = coach;
+    private IOClass ioClass=new IOClass();
+
+    public void initData(Trainer trainer) throws IOException {
+        CoachID.setText(trainer.getTrainerID());
+        this.trainer = trainer;
+        initAdvertisement(ioClass.AdPath);
     }
+
+    private void initAdvertisement(String adPath) throws IOException {
+        String s=ioClass.readAd(adPath);
+        Advertisement.setText(s);
+    }
+
+
     public void toUploadVideo(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) uploadVideo.getScene().getWindow();
         stage.close();
