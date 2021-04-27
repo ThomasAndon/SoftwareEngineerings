@@ -20,7 +20,7 @@ public class UserInterf {
     @FXML
     private Text viewSchedule;
     @FXML
-    private Text mainPage;
+    private Text Back;
     @FXML
     private AnchorPane window;
     @FXML
@@ -116,17 +116,15 @@ public class UserInterf {
         stage.show();
     }
 
-    public void toMainPage(MouseEvent actionEvent) throws IOException {
-        Stage stage = (Stage) mainPage.getScene().getWindow();
+
+    public void toLoginPage(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) Back.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/UserInterf.fxml"));
+        loader.setLocation(getClass().getResource("../view/LoginPage.fxml"));
         Parent root = loader.load();
-        UserInterf controller = loader.getController();
-        //instantiating a user
-        controller.initData(user);
-        // stage.setTitle("Hello World");
-        stage.setScene(new Scene(root, 1000, 700));
+        stage.setTitle("Login Page");
+        stage.setScene(new Scene(root, 800, 600));
         stage.show();
     }
 }

@@ -10,7 +10,7 @@
         <Button fx:id="SessionBtn" layoutX="101.0" layoutY="178.0" mnemonicParsing="false" onAction="#toBookSession" prefHeight="45.0" prefWidth="207.0" text="Book a live session" />
         <Button fx:id="ScheduleBtn" layoutX="101.0" layoutY="253.0" mnemonicParsing="false" onAction="#toSchedule" prefHeight="45.0" prefWidth="207.0" text="My schedule" />
         <Button fx:id="UserProfile" layoutX="101.0" layoutY="327.0" mnemonicParsing="false" onAction="#toProfile" prefHeight="45.0" prefWidth="207.0" text="My profile" />
-        <Text fill="#007bff" layoutX="468.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit" underline="true" />
+        <Text fx:id="Back" fill="#007bff" layoutX="468.0" layoutY="369.0" strokeType="OUTSIDE" onMouseClicked="#toLoginPage" strokeWidth="0.0" text="Exit" underline="true" />
       <Label layoutX="80.0" layoutY="41.0" prefHeight="54.0" prefWidth="235.0" text="Welcome，">
          <font>
             <Font size="42.0" />

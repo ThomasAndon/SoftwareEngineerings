@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -40,6 +42,8 @@ public class CoachMain {
 
     @FXML
     private TextArea Advertisement;
+    @FXML
+    private Text Back;
 
     private Trainer trainer;
 
@@ -75,8 +79,8 @@ public class CoachMain {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/CoachSchedule.fxml"));
         Parent root = loader.load();
-        //CoachSchedule controller = loader.getController();
-
+        CoachSchedule controller = loader.getController();
+        controller.init(trainer);
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();
     }
@@ -85,5 +89,18 @@ public class CoachMain {
     }
 
     public void editClass(ActionEvent actionEvent) {
+    }
+
+
+
+    public void toLoginPage(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) Back.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/LoginPage.fxml"));
+        Parent root = loader.load();
+        stage.setTitle("Login page");
+        stage.setScene(new Scene(root, 800, 600));
+        stage.show();
     }
 }
