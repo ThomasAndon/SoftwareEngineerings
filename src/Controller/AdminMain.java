@@ -41,15 +41,61 @@ public class AdminMain {
         stage.show();
     }
 
-    public void toCoachInfo(ActionEvent actionEvent) {
+    public void toCoachInfo(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) coachInfo.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/CoachCsv.fxml"));
+        Parent root = loader.load();
+        CoachCsvControl controller = loader.getController();
+        //instantiating a user
+        controller.init();
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
     }
 
-    public void toSessionInfo(ActionEvent actionEvent) {
+    public void toSessionInfo(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) sessionInfo.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/SessionCsv.fxml"));
+        Parent root = loader.load();
+        SessionCsvControl controller = loader.getController();
+        //instantiating a user
+        controller.init();
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
     }
 
-    public void addCoach(ActionEvent actionEvent) {
+    public void editAd(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) edit.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/EditAd.fxml"));
+        Parent root = loader.load();
+        EditAd controller = loader.getController();
+        //instantiating a user
+        controller.init();
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
     }
 
-    public void editAd(ActionEvent actionEvent) {
+
+    @FXML
+    /** This function is invocated when the admin tries to upload a video
+     * @author Thomas Andon
+     */
+    void onUploadVideoClicked(ActionEvent event) throws IOException {
+        Stage stage = (Stage) edit.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/VideoUploader.fxml"));
+        Parent root = loader.load();
+        VideoUploader controller = loader.getController();
+        //instantiating a user
+
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
     }
+
 }

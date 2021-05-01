@@ -1,6 +1,11 @@
 package Controller;
 
 import NetBeans.User;
+import NetBeans.Video;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
+import javafx.scene.control.Alert;
 
 import java.io.*;
 import java.util.HashMap;
@@ -13,6 +18,7 @@ public class IOClass {
     String coachAccountFilePath = "src/Data/Account/CoachAccounts.txt";
     String adminAccountFilePath = "src/Data/Account/AdminAccounts.txt";
     String profileInfoFolderPath = "src/Data/ProfileInfo/";
+    String videoMapperFilePath = "src/Data/VideoMapper.txt";
 
     /**
      * This method reads id and password files and parse them.
@@ -147,6 +153,7 @@ public class IOClass {
         user.setWeight(Double.parseDouble(info[3]));
         user.setLevel(Integer.parseInt(info[4]));
         user.setName(info[5]);
+        //todo 此处新加入项目
 
 
         return user;
@@ -161,10 +168,6 @@ public class IOClass {
     public String[] parseProfileString(String info) {
 
         String[] res = info.split("#");
-
-        for(int i = 0;i<res.length;i++){
-            System.out.println(res[i]);
-        }
         return res;
     }
 
@@ -173,7 +176,8 @@ public class IOClass {
 
     public boolean writeUserProfile(User user) throws IOException {
         String info = user.getId() + "#" + user.getGender() + "#" + user.getHeight()
-            + "#" + user.getWeight() + "#" + user.getLevel() +"#" + user.getName();
+            + "#" + user.getWeight() + "#" + user.getLevel() +"#" + user.getName() ;
+        // todo 此处新加项目
 
         File f = new File(profileInfoFolderPath+user.getId()+".txt");
 
@@ -198,6 +202,67 @@ public class IOClass {
         bw.close();
         return true;
     }
+
+
+    /**
+     * This class writes the video mapping info to the local file.
+     * @param data
+     */
+    public void writeVideoMapping(ObservableList<Video> data) throws Exception {
+
+        File f = new File(videoMapperFilePath);
+        if (!(f.isFile() && f.exists())) {
+            System.out.println("Writing - video mapper file doesn't exist, new one created");
+        }
+
+
+
+        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f,false));
+        BufferedWriter bw = new BufferedWriter(out);
+
+
+        for (int i = 0;i < data.size();i++) {
+            String title = data.get(i).getTitle();
+            String type = data.get(i).getType();
+            String path = data.get(i).getPath();
+
+            bw.write(title + "###" + path + "###" + type + "\n");
+        }
+        bw.close();
+    }
+
+    public ObservableList<Video> parseVideoMapper() throws Exception {
+
+        File f = new File(videoMapperFilePath);
+        if (!(f.isFile() && f.exists())) {
+            System.out.println("Reading - cannot find video mapping file.");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Can't find the mapping file");
+            alert.show();
+//            return null;
+        }
+
+        ObservableList<Video> data =  FXCollections.observableArrayList();
+
+
+        InputStreamReader isr = new InputStreamReader(new FileInputStream(f));
+        BufferedReader br = new BufferedReader(isr);
+        String line = null;
+        while((line = br.readLine()) != null) {
+            String[] info = line.split("###");
+            Video video = new Video(info[0],info[1],info[2]);
+            data.add(video);
+        }
+
+        br.close();
+
+        return data;
+    }
+
+
+
 
 
 

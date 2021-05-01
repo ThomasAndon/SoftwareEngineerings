@@ -115,8 +115,11 @@
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="166.0" prefWidth="300.0" spacing="30.0">
                                        <children>
-                                          <Label text="Date of Expiration" />
-                                          <Label fx:id="expDateHolder" text="(Date)" />
+                                          <Button mnemonicParsing="false" onAction="#onUpgradeClicked" styleClass="saveButton" stylesheets="@Profile.css" text="Upgrade" textFill="WHITE">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
+                                          </Button>
                                        </children>
                                     </VBox>
                                  </children>
@@ -128,16 +131,6 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab style="-fx-background-color: #87c9ff; -fx-font-family: &quot;Futura&quot;;" text="Watch Videos">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="bg-color" stylesheets="@style.css" />
-            </content>
-          </Tab>
-            <Tab style="-fx-background-color: #87c9ff; -fx-font-family: &quot;Futura&quot;;" text="Book Live Session">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="bg-color" stylesheets="@style.css" />
-              </content>
-            </Tab>
         </tabs>
       </TabPane>
    </children>

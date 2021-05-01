@@ -55,8 +55,17 @@ public class UserInterf {
     }
 
 
-    public void toProfile(ActionEvent actionEvent) {
-
+    public void toProfile(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) SessionBtn.getScene().getWindow();
+//        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/ProfileInfo.fxml"));
+        Parent root = loader.load();
+        ProfileInfo controller = loader.getController();
+        //instantiating a user
+        controller.initData(user);
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
     }
 
     public void toSchedule(ActionEvent actionEvent) throws Exception {

@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class Trainer {
     String trainerID;
+    String trainerPw;
     String name;
     Date DoB;
     String gender;
@@ -27,6 +28,14 @@ public class Trainer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTrainerPw() {
+        return trainerPw;
+    }
+
+    public void setTrainerPw(String pw) {
+        this.trainerPw = pw;
     }
 
     public Date getDoB() {

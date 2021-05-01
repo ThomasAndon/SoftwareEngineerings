@@ -2,6 +2,8 @@ package NetBeans;
 
 
 
+
+
 /**
  * @Description: This is the bean class of users
  * @Author: Thomas Andon
@@ -9,6 +11,7 @@ package NetBeans;
  */
 public class User {
 
+    public final int MAX_VIP_LEVEL = 6;
 
     private String id;
 
@@ -20,6 +23,7 @@ public class User {
     private double height = 0;
     private double weight = 0;
     private int level = 0 ;
+    private String expDate;
     private String name = "unKnown";
 
     //The type of this account, 0 is customer, 1 is coach, 2 is gym manager.
@@ -108,6 +112,14 @@ public class User {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public String getExpDate() {
+        return expDate;
+    }
+
+    public void setExpDate(String expDate) {
+        this.expDate = expDate;
     }
 
 
