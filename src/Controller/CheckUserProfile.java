@@ -28,7 +28,13 @@ public class CheckUserProfile {
     @FXML
     private Text userMain;
     private User user;
-
+    /**
+    *@Description: User can check their information in this window
+    *@param:
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/5/9
+    */
     public void getUser(User user) throws Exception {
         this.user = user;
         IOClass ioClass=new IOClass();

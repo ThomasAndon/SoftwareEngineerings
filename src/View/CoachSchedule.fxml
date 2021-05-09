@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CoachSchedule">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CoachSchedule">
     <children>
-        <Text layoutX="110.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your weekly schedule" wrappingWidth="380.583984375">
+        <Text layoutX="110.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your schedule" wrappingWidth="380.583984375">
             <font>
                 <Font name="System Bold" size="33.0" />
             </font>
         </Text>
-        <TableView fx:id="table" layoutX="56.0" layoutY="93.0" prefHeight="238.0" prefWidth="489.0">
-            <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-            </columnResizePolicy>
-        </TableView>
         <Text fx:id="Back" fill="#0018f5" layoutX="491.0" layoutY="374.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back" underline="true" />
+      <TextArea fx:id="Lessons" layoutX="76.0" layoutY="100.0" prefHeight="213.0" prefWidth="428.0" />
     </children>
 </AnchorPane>

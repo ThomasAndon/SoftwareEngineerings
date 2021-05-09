@@ -85,7 +85,17 @@ public class CoachMain {
         stage.show();
     }
 
-    public void toCoachProfile(ActionEvent actionEvent) {
+    public void toCoachProfile(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) Profile.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/CoachProfile.fxml"));
+        Parent root = loader.load();
+        CheckCoachProfile controller = loader.getController();
+        controller.init(trainer);
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
+
     }
 
     public void editClass(ActionEvent actionEvent) {

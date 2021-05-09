@@ -19,6 +19,7 @@ public class IOClass {
 
     String CoachProfilePath="src/Data/ProfileInfo/CoachProfile";
     String UserProfilePath="src/Data/ProfileInfo/UserProfile";
+    String SchedulePath="src/Data/Schedule.csv";
     /**
      * This method reads id and password files and parse them.
      *
@@ -273,8 +274,35 @@ public class IOClass {
         return fileList;
 
     }
+    /**
+    *@Description: Get lessons information from the Schedule file
+    *@param:
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/5/9
+    */
+    public String readLesson(String id,String path) throws IOException {
+        File lesson = new File(path);
+        StringBuilder l= new StringBuilder();
+        String lineDta="";
+        try {
+            BufferedReader textFile = new BufferedReader(new FileReader(lesson));
 
+            while ((lineDta = textFile.readLine()) != null){
+                String s= lineDta.split(",")[1];
+                if(s.equals(id)){
+                    String date=lineDta.split(",")[2];
 
+                    l.append(date).append("\n");
+
+                }
+
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return l.toString();
+    }
 
 
     public static void main(String[] args) throws Exception {
@@ -285,4 +313,6 @@ public class IOClass {
         System.out.println("-------------");
         new IOClass().parseProfileString("#123454321#male#0.0#0.0#0");
     }
+
+
 }
