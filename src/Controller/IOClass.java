@@ -46,7 +46,6 @@ public class IOClass {
     public HashMap getHashMap(String path) throws IOException {
         HashMap<String, String> account = new HashMap<>();
 
-
         File f = new File(path);
         if (!(f.isFile() && f.exists())) {
             System.out.println("Reading - Account file doesn't exist");
@@ -56,12 +55,10 @@ public class IOClass {
         BufferedReader br = new BufferedReader(isr);
         String line = null;
         while ((line = br.readLine()) != null) {
-
             // This is where we process each String line
             String[] res = line.split("\\s+");
+            System.out.println(res[0]+" "+res[1]);
             account.put(res[0], res[1]);
-
-
         }
         br.close();
 

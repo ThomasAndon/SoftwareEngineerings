@@ -4,9 +4,15 @@ import NetBeans.User;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,7 +24,8 @@ public class ProfileInfo implements Initializable {
 
     User currentUser;
 
-
+    @FXML
+    public Text mainPage;
     @FXML
     private Label IDHolder;
 
@@ -40,8 +47,7 @@ public class ProfileInfo implements Initializable {
     @FXML
     private Label VIPLevelHolder;
 
-
-
+    private User user;
 
     /**
      * This is the method called after login, and the page needs to be filled with the user's data. Set
@@ -50,7 +56,6 @@ public class ProfileInfo implements Initializable {
      */
     public void initData(User user) {
         currentUser = user;
-
         IDHolder.setText(user.getId());
         nameInput.setText(user.getName());
         heightInput.setText(String.valueOf(user.getHeight()));
@@ -66,7 +71,7 @@ public class ProfileInfo implements Initializable {
         }
 
         VIPLevelHolder.setText(String.valueOf(user.getLevel()));
-
+        this.user = user;
 
     }
 
@@ -173,4 +178,17 @@ public class ProfileInfo implements Initializable {
     }
 
 
+    public void toMainPage(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) mainPage.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/UserInterf.fxml"));
+        Parent root = loader.load();
+        UserInterf controller = loader.getController();
+        //instantiating a user
+        controller.initData(user);
+        // stage.setTitle("Hello World");
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
+    }
 }

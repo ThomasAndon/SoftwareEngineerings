@@ -13,7 +13,14 @@ public class Trainer {
     String experience;
     String Intro;
     ArrayList<String>students;
+    public Trainer() {
 
+    }
+
+    public Trainer(String id, String pw) {
+        this.setTrainerID(id);
+        this.setTrainerPw(pw);
+    }
     public String getTrainerID() {
         return trainerID;
     }

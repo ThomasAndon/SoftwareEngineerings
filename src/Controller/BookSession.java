@@ -32,6 +32,10 @@ import java.util.ResourceBundle;
 
 public class BookSession implements Initializable{
     @FXML
+    public Text mainPage;
+    @FXML
+    public Text viewSchedule;
+    @FXML
     private Button bookBtn;
     @FXML
     private ToggleGroup target;
@@ -161,9 +165,6 @@ public class BookSession implements Initializable{
                     + session.getTime()+","+ session.getTarget() +","+session.getPhysicalAbility()+ ","
                     + session.getNote()+ ","+ session.getDetail()+ "\n");
             bw.flush();
-//        bw.write(session.getStudentID()+"\t"+session.getTrainerID()+"\t"+session.getDate()+ "\t"
-//                + session.getTime()+"\t"+ session.getTarget() +"\t"+session.getpAbility()+ "\t"
-//                + session.getNote()+ "\t"+ session.getDetail()+ "#\n");
             bw.close();
         }
 
@@ -184,6 +185,31 @@ public class BookSession implements Initializable{
     }
 
 
-    public void toSchedule(MouseEvent mouseEvent) {
+    public void toSchedule(MouseEvent actionEvent) throws Exception {
+        Stage stage = (Stage) viewSchedule.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/ScheduleUI.fxml"));
+        Parent root = loader.load();
+        ScheduleController controller = loader.getController();
+        //instantiating a user
+        controller.getUser(user);
+
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
+    }
+
+    public void toMainPage(MouseEvent actionEvent) throws IOException {
+        Stage stage = (Stage) mainPage.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/UserInterf.fxml"));
+        Parent root = loader.load();
+        UserInterf controller = loader.getController();
+        //instantiating a user
+        controller.initData(user);
+        // stage.setTitle("Hello World");
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
     }
 }

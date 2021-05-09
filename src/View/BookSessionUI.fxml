@@ -11,32 +11,32 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BookSession">
    <children>
-      <Text layoutX="150.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book a LIVE session" textAlignment="CENTER">
+      <Text layoutX="150.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book a LIVE session" textAlignment="CENTER">
          <font>
             <Font size="32.0" />
          </font>
       </Text>
-      <Label layoutX="81.0" layoutY="99.0" text="Target" />
-      <Label layoutX="82.0" layoutY="145.0" text="Physical ability" />
-      <Label layoutX="81.0" layoutY="189.0" text="Note" />
-      <Label layoutX="82.0" layoutY="237.0" text="Date" />
-      <RadioButton layoutX="160.0" layoutY="99.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="103.0" text="Cutting">
+      <Label layoutX="81.0" layoutY="85.0" text="Target" />
+      <Label layoutX="82.0" layoutY="125.0" text="Physical ability" />
+      <Label layoutX="81.0" layoutY="167.0" text="Note" />
+      <Label layoutX="82.0" layoutY="214.0" text="Date" />
+      <RadioButton layoutX="160.0" layoutY="85.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="103.0" text="Cutting">
          <toggleGroup>
             <ToggleGroup fx:id="target" />
          </toggleGroup>      </RadioButton>
-      <RadioButton layoutX="276.0" layoutY="99.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="81.0" text="Bulk" toggleGroup="$target" />
-      <RadioButton layoutX="366.0" layoutY="99.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="153.0" text="Bodybuilding" toggleGroup="$target" />
-      <RadioButton layoutX="224.0" layoutY="145.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="81.0" text="High">
+      <RadioButton layoutX="276.0" layoutY="85.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="81.0" text="Bulk" toggleGroup="$target" />
+      <RadioButton layoutX="366.0" layoutY="85.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="153.0" text="Bodybuilding" toggleGroup="$target" />
+      <RadioButton layoutX="224.0" layoutY="125.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="81.0" text="High">
          <toggleGroup>
             <ToggleGroup fx:id="pability" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="312.0" layoutY="145.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="110.0" text="Medium" toggleGroup="$pability" />
-      <RadioButton layoutX="429.0" layoutY="145.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="81.0" text="Low" toggleGroup="$pability" />
-      <TextField id="Note" fx:id="snote" layoutX="157.0" layoutY="183.0" prefHeight="36.0" prefWidth="301.0" />
-      <DatePicker id="SDate" fx:id="sdate" editable="false" layoutX="157.0" layoutY="231.0" pickOnBounds="false" prefHeight="36.0" prefWidth="301.0" promptText="select date" />
-      <Label layoutX="81.0" layoutY="281.0" text="Time" />
-      <ComboBox id="STime" fx:id="stime" layoutX="157.0" layoutY="281.0" prefHeight="36.0" prefWidth="301.0">
+      <RadioButton layoutX="312.0" layoutY="125.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="110.0" text="Medium" toggleGroup="$pability" />
+      <RadioButton layoutX="429.0" layoutY="125.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="81.0" text="Low" toggleGroup="$pability" />
+      <TextField id="Note" fx:id="snote" layoutX="157.0" layoutY="161.0" prefHeight="36.0" prefWidth="301.0" />
+      <DatePicker id="SDate" fx:id="sdate" editable="false" layoutX="157.0" layoutY="208.0" pickOnBounds="false" prefHeight="36.0" prefWidth="301.0" promptText="select date" />
+      <Label layoutX="81.0" layoutY="258.0" text="Time" />
+      <ComboBox id="STime" fx:id="stime" layoutX="157.0" layoutY="254.0" prefHeight="36.0" prefWidth="301.0">
        <items>
            <FXCollections fx:factory="observableArrayList">
                <String fx:value="9:00-10:00" />
@@ -51,6 +51,8 @@
            </FXCollections>
        </items>
       </ComboBox>
-      <Button fx:id="bookBtn" layoutX="252.0" layoutY="333.0" mnemonicParsing="false" onAction="#addSession" text="Book NOW" />
+      <Button fx:id="bookBtn" layoutX="240.0" layoutY="307.0" mnemonicParsing="false" onAction="#addSession" text="Book NOW" />
+      <Text fx:id="mainPage" fill="#0018f5" layoutX="350.0" layoutY="376.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page" underline="true" />
+      <Text fx:id="viewSchedule" fill="#0018f5" layoutX="109.0" layoutY="376.0" onMouseClicked="#toSchedule" strokeType="OUTSIDE" strokeWidth="0.0" text="View my schedule" underline="true" />
    </children>
 </AnchorPane>

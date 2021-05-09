@@ -29,14 +29,6 @@ public class User {
     //The type of this account, 0 is customer, 1 is coach, 2 is gym manager.
     private int type = 0;
 
-    public String getTrainerID() {
-        return trainerID;
-    }
-
-    public void setTrainerID(String trainerID) {
-        this.trainerID = trainerID;
-    }
-
     private String trainerID;
 
 
@@ -123,6 +115,13 @@ public class User {
     }
 
 
+    public String getTrainerID() {
+        return trainerID;
+    }
+
+    public void setTrainerID(String trainerID) {
+        this.trainerID = trainerID;
+    }
 
 
 

@@ -1,86 +1,227 @@
 package Controller;
 
 import NetBeans.Session;
+import NetBeans.Trainer;
 import NetBeans.User;
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.*;
 import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class ScheduleController implements Comparator< Session > {
     @FXML
+    private TableColumn<Session,LocalDate> timeCol;
+    @FXML
+    private TableColumn<Session,String> idCol,targetCol,aimCol,noteCol,cancelCol;
+    @FXML
     private TableView<Session> table;
     @FXML
-    private TextArea schedule;
+    private Text mainPage;
     private User user;
+    private Trainer trainer;
 
     public void getUser(User user) throws Exception {
         this.user = user;
-        readCSV(user.getId());
+      //  printSchedule(readCSV(user.getId()));
+    }
+    public void getTrainer(Trainer trainer) throws Exception {
+        this.trainer = trainer;
+    }
+    public void userSchedule() throws Exception {
+        ObservableList<Session> ulist = FXCollections.observableArrayList();
+        ScheduleController comparator = new ScheduleController();
+        List<Session> list = readCSV(user.getId());
+        list.sort(comparator);
+        ulist.addAll(list);
+        printSchedule(ulist,true);
+    }
+    public void trainerSchedule() throws Exception {
+        //todo 读取教练的学生 这里我自己设置的
+        trainer.setStudents(new ArrayList<String>(Arrays.asList("1234", "12345")));
+        ObservableList<Session> tlist = FXCollections.observableArrayList();
+        List<Session> list = readCSV(trainer.getStudents().get(0));
+        for(int i =1; i<trainer.getStudents().size();i++){
+            list.addAll(readCSV(trainer.getStudents().get(i)));
+        }
+        ScheduleController comparator = new ScheduleController();
+        list.sort(comparator);
+        tlist.addAll(list);
+        printSchedule(tlist,false);
+
     }
 
-
-    public void readCSV(String userID) throws Exception {
-        ObservableList<Session> slist=FXCollections.observableArrayList();
+    public List<Session> readCSV (String userID) throws Exception {
+        ObservableList<Session> slist = FXCollections.observableArrayList();
         List<Session> list = new ArrayList<Session>();
-        //第一步：先获取csv文件的路径，通过BufferedReader类去读该路径中的文件
-        File csv = new File("src//Data//Session//"+userID+".csv");
-        try{
-            //第二步：从字符输入流读取文本，缓冲各个字符，从而实现字符、数组和行（文本的行数通过回车符来进行判定）的高效读取。
+        File csv = new File("src//Data//Session//" + userID + ".csv");
+        try {
             BufferedReader textFile = new BufferedReader(new FileReader(csv));
             String lineDta = "";
             textFile.readLine();
-            int i=0;
-            //第三步：将文档的下一行数据赋值给lineData，并判断是否为空，若不为空则输出
-            while ((lineDta = textFile.readLine()) != null){
-                schedule.appendText(lineDta);
-                schedule.appendText("\n");
+            while ((lineDta = textFile.readLine()) != null) {
                 Session s = new Session();
+                s.setUserID(lineDta.split(",")[0]);
+                s.setTrainerID(lineDta.split(",")[1]);
                 s.setTime(lineDta.split(",")[2]);
                 s.setTarget(lineDta.split(",")[3]);
                 s.setPhysicalAbility((lineDta.split(",")[4]));
                 s.setNote(lineDta.split(",")[5]);
                 list.add(s);
             }
-            ScheduleController comparator = new ScheduleController();
-            list.sort( comparator );
-            slist.addAll(list);
-        //    Arrays.sort(slist);
-
-
+  //          ScheduleController comparator = new ScheduleController();
+//            list.sort(comparator);
+//            slist.addAll(list);
             textFile.close();
-        }catch (FileNotFoundException e){
-            System.out.println("没有找到指定文件");
-        }catch (IOException e){
-            System.out.println("文件读写出错");
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println("IO Exception");
         }
-        table.setItems(slist);//将集合的值 存储到tableView里
-        TableColumn<Session, LocalDate> table_date= new TableColumn<Session, LocalDate>("Time");//创建TableColumn  列名为序号
-        TableColumn<Session, String> table_target=new TableColumn<Session, String>("Target");
-        TableColumn<Session, String> table_pAbility=new TableColumn<Session, String>("Aim");
-        TableColumn<Session, String> table_note=new TableColumn<Session, String>("Note");
-        /**
-         * 反射取值
-         */
-        table_date.setCellValueFactory(new PropertyValueFactory<Session, LocalDate>("time"));//相当于getid
-        table_target.setCellValueFactory(new PropertyValueFactory<Session, String>("target"));//getName
-        table_pAbility.setCellValueFactory(new PropertyValueFactory<Session, String>("PhysicalAbility"));//getAge
-        table_note.setCellValueFactory(new PropertyValueFactory<Session, String>("note"));
-        table.getColumns().add(table_date);
-        table.getColumns().add(table_target);
-        table.getColumns().add(table_pAbility);
+        return list;
+    }
+    /**
+    * @Description:
+    * @Param:  boolean who:user是true,教练是false，操作稍有不同
+    * @return:
+    * @Author: Cui Kening
+    * @Date:
+    */
+    public void printSchedule(ObservableList<Session> slist, boolean who){
+        timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
+        targetCol.setCellValueFactory(new PropertyValueFactory<>("target"));
+        aimCol.setCellValueFactory(new PropertyValueFactory<>("PhysicalAbility"));
+        noteCol.setCellValueFactory(new PropertyValueFactory<>("note"));
+        if(who){
+            idCol.setText("Trainer ID");
+            idCol.setCellValueFactory(new PropertyValueFactory<>("trainerID"));
+            File csv = new File("src//Data//Session//" + user.getId() + ".csv");
+            Callback<TableColumn<Session, String>, TableCell<Session, String>> DcellFactory
+                    = new Callback<>() {
+                @Override
+                public TableCell call(final TableColumn<Session, String> param) {
+                    final TableCell<Session, String> cell = new TableCell<Session, String>() {
+                        final Button btn = new Button("Cancel");
+                        @Override
+                        public void updateItem(String item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (empty) {
+                                //System.out.println(item.split(",")[1]);
+                                setGraphic(null);
+                                setText(null);
+                            } else {
+                                String[] l = getTableView().getItems().get(getIndex()).getTime().split(" ");
+                                for(int j=0;j<l.length; ){
+                                    LocalDate date = LocalDate.parse(l[j], DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                                    if (date.isBefore(LocalDate.now())){
+                                        break;
+                                    }
+                                    btn.setOnAction(event -> {
+                                        Session s =getTableView().getItems().get(getIndex());
+                                        String i = s.getTime();
+                                        slist.remove(s);
+                                        try {
+                                            if(cancelSession(csv, i, user.getId())){
+                                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                                alert.setTitle("Cancel successful!");
+                                                alert.setHeaderText("You have already canceled your session on "+i);
+                                                alert.show();
+                                            }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    });
+                                    setGraphic(btn);
+                                    setText(null);
+                                    j = j + 2;
+                                }
 
+                            }
+                        }
+                    };
+                    return cell;
+                }
+            };
+            cancelCol.setCellFactory(DcellFactory);
+        }
+        else{
+            idCol.setText("Student ID");
+            idCol.setCellValueFactory(new PropertyValueFactory<>("userID"));
+            //todo 教练可以添加训练的备注
+            cancelCol.setText("Note");
+        }
+
+        table.setItems(slist);
+    }
+
+    public boolean cancelSession(File file, String i, String userID)throws Exception {
+        File temp = null;
+        BufferedReader br = null;
+        PrintWriter pw = null;
+        File temp2 = null;
+        BufferedReader br2 = null;
+        PrintWriter pw2 = null;
+        File file2 = new File("src//Data//Schedule.csv");
+        try {
+            temp = File.createTempFile("temp", "temp");
+            pw = new PrintWriter(temp);
+            br = new BufferedReader(new FileReader(file));
+            while (br.ready()) {
+                String line = br.readLine();
+                if (line.contains(i)) {
+                    continue;
+                }
+                pw.write(line + "\n");
+            }
+                pw.flush();
+            temp2 = File.createTempFile("temp2", "temp2");
+            pw2 = new PrintWriter(temp2);
+            br2 = new BufferedReader(new FileReader(file2));
+            while (br2.ready()) {
+                String line2 = br2.readLine();
+                if (line2.contains(i) && line2.contains(userID)) {
+                    continue;
+                }
+                pw2.write(line2 + "\n");
+            }
+            pw2.flush();
+        }catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (IOException e) {
+            System.out.println("IO Exception");
+        } finally {
+            pw.close();
+            br.close();
+            pw2.close();
+            br2.close();
+            if (temp != null) {
+                file.delete();
+                temp.renameTo(file);
+            }
+            if (temp2 != null) {
+                file2.delete();
+                temp2.renameTo(file2);
+            }
+        }
+        return true;
     }
 
     @Override
@@ -94,5 +235,29 @@ public class ScheduleController implements Comparator< Session > {
         else {
             return -1;
         }
+    }
+
+    public void toMainPage(MouseEvent actionEvent) throws IOException {
+        Stage stage = (Stage) mainPage.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        Parent root;
+        if(user!=null){
+            loader.setLocation(getClass().getResource("../view/UserInterf.fxml"));
+            root = loader.load();
+            UserInterf controller = loader.getController();
+            //instantiating a user
+            controller.initData(user);
+        }else{
+            loader.setLocation(getClass().getResource("../view/CoachInterf.fxml"));
+            root = loader.load();
+            CoachInterf controller = loader.getController();
+            //instantiating a user
+            controller.initData(trainer);
+        }
+
+        // stage.setTitle("Hello World");
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
     }
 }
