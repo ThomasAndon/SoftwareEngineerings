@@ -2,8 +2,6 @@ package NetBeans;
 
 
 
-
-
 /**
  * @Description: This is the bean class of users
  * @Author: Thomas Andon

@@ -56,6 +56,7 @@ public class ProfileInfo implements Initializable {
      */
     public void initData(User user) {
         currentUser = user;
+
         IDHolder.setText(user.getId());
         nameInput.setText(user.getName());
         heightInput.setText(String.valueOf(user.getHeight()));

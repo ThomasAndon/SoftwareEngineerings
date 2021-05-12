@@ -94,6 +94,9 @@ public class LoginPage {
         stage.close();
 //        ProfileInfo pi = new ProfileInfo();
 
+
+
+
         //Below is instantiating the user and passing it to the next window.
         FXMLLoader loader = new FXMLLoader();
         //   loader.setLocation(getClass().getResource("../view/ProfileInfo.fxml"));
@@ -116,6 +119,10 @@ public class LoginPage {
         stage.setTitle("Hello World");
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();
+
+
+
+
         //todo 此处将此user对象传递给检查存在函数（外部class），看是否存在该用户。不存在则窗口提示，存在则继续
 
         //todo 存在该用户，跳转到登陆后页面，并且将User对象传递给下一个页面的Controller（外部class，进入下一环节）
@@ -187,8 +194,10 @@ public class LoginPage {
     void onCALoginClicked(MouseEvent event) throws Exception {
         String id = idInput.getText();
         String pw = pwInput.getText();
+
         ValidChecker vc = new ValidChecker();
         IOClass io = new IOClass();
+
 
         if ((vc.isInvalidID(id)) || vc.isInvalidPw(pw) || !vc.isValidAccount(io.coachAccountFilePath,id,pw)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -202,23 +211,22 @@ public class LoginPage {
 
         // todo 此处是登录成功
         System.out.println("Coach login OK");
-        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        Stage stage = (Stage) CALogin.getScene().getWindow();
         stage.close();
 
         //Below is instantiating the user and passing it to the next window.
-        FXMLLoader loader = new FXMLLoader();
-        //   loader.setLocation(getClass().getResource("../view/ProfileInfo.fxml"));
-        loader.setLocation(getClass().getResource("../view/CoachInterf.fxml"));
+        FXMLLoader loader = new FXMLLoader();;
+        loader.setLocation(getClass().getResource("../view/CoachMain.fxml"));
         Parent root = loader.load();
-        //  ProfileInfo controller = loader.getController();
-        CoachInterf controller = loader.getController();
-        //instantiating a user
-        Trainer trainer = new Trainer(id,pw);
+
+        CoachMain controller = loader.getController();
+        Trainer trainer= new Trainer(id,pw);
         controller.initData(trainer);
 
-        stage.setTitle("Hello World");
+        stage.setTitle("Hello Coach" + id);
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();
+
     }
 
 
@@ -245,7 +253,7 @@ public class LoginPage {
         // todo 此处是登录成功
         System.out.println("Admin Login OK");
 
-        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        Stage stage = (Stage) adminLogin.getScene().getWindow();
         stage.close();
 
         //Below is instantiating the user and passing it to the next window.

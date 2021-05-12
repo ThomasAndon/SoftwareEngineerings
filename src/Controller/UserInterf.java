@@ -4,13 +4,11 @@ import NetBeans.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -25,26 +23,58 @@ import java.util.ResourceBundle;
 public class UserInterf {
     @FXML
     private Text viewSchedule;
+
+    @FXML
+    private Text Back;
     @FXML
     private Text mainPage;
-
+    @FXML
+    private AnchorPane window;
     @FXML
     private Button SessionBtn;
     @FXML
     private Button ScheduleBtn;
     @FXML
+    private Button UserProfile;
+    @FXML
     private Label userID;
+
+    private IOClass ioClass=new IOClass();
+
+    @FXML
+    private TextArea Advertisement;
+
     private User user;
 
     public void initData(User user) {
         userID.setText(user.getId());
         this.user = user;
+        try {
+            initAdvertisemnet(ioClass.AdPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         if(user.getLevel()==0){
             SessionBtn.setDisable(true);
             ScheduleBtn.setDisable(true);
         }
     }
+
+    /**
+    *@Description: Initialize advertisement and display
+    *@param:
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/4/27
+    */
+
+    private void initAdvertisemnet(String path) throws IOException {
+        String s=ioClass.readAd(path);
+        Advertisement.setText(s);
+    }
+
     public void getUser(User user) {
+
         this.user = user;
     }
     public void toWorkout(ActionEvent actionEvent) {
@@ -101,6 +131,7 @@ public class UserInterf {
         loader.setLocation(getClass().getResource("../view/ScheduleUI.fxml"));
         Parent root = loader.load();
         ScheduleController controller = loader.getController();
+        System.out.println(user);
         //instantiating a user
         controller.getUser(user);
         controller.userSchedule();
@@ -120,6 +151,17 @@ public class UserInterf {
         controller.initData(user);
         // stage.setTitle("Hello World");
         stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
+    }
+
+    public void toLoginPage(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) Back.getScene().getWindow();
+        stage.close();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/LoginPage.fxml"));
+        Parent root = loader.load();
+        stage.setTitle("Login Page");
+        stage.setScene(new Scene(root, 800, 600));
         stage.show();
     }
 

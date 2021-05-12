@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SessionCsvControl">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CoachSchedule">
     <children>
-        <Text layoutX="110.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Session Information" wrappingWidth="380.583984375">
+        <Text layoutX="110.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your weekly schedule" wrappingWidth="380.583984375">
             <font>
                 <Font name="System Bold" size="33.0" />
             </font>
@@ -16,6 +16,6 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-        <Text fx:id="adminMain" fill="#0018f5" layoutX="401.0" layoutY="371.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page" underline="true" />
+        <Text fx:id="Back" fill="#0018f5" layoutX="491.0" layoutY="374.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back" underline="true" />
     </children>
 </AnchorPane>

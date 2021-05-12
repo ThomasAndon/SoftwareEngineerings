@@ -20,6 +20,10 @@ public class IOClass {
     String profileInfoFolderPath = "src/Data/ProfileInfo/";
     String videoMapperFilePath = "src/Data/VideoMapper.txt";
 
+    String AdPath="src/Data/Advertisement/Ad.txt";
+
+    String CoachProfilePath="src/Data/ProfileInfo/CoachProfile";
+    String UserProfilePath="src/Data/ProfileInfo/UserProfile";
     /**
      * This method reads id and password files and parse them.
      *
@@ -46,6 +50,7 @@ public class IOClass {
     public HashMap getHashMap(String path) throws IOException {
         HashMap<String, String> account = new HashMap<>();
 
+
         File f = new File(path);
         if (!(f.isFile() && f.exists())) {
             System.out.println("Reading - Account file doesn't exist");
@@ -55,10 +60,12 @@ public class IOClass {
         BufferedReader br = new BufferedReader(isr);
         String line = null;
         while ((line = br.readLine()) != null) {
+
             // This is where we process each String line
             String[] res = line.split("\\s+");
-            System.out.println(res[0]+" "+res[1]);
             account.put(res[0], res[1]);
+
+
         }
         br.close();
 
@@ -199,6 +206,76 @@ public class IOClass {
         bw.close();
         return true;
     }
+
+    /**
+    *@Description: write an new advertisement into the file
+    *@param: path,content
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/4/26
+    */
+
+    public void writeAd(String path,String content) throws IOException {
+        File ad = new File(path);
+        if(!ad.exists()){
+            ad.createNewFile();
+        }
+        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(ad,true));
+        BufferedWriter bw = new BufferedWriter(out);
+        bw.write(content);
+        bw.flush();
+        bw.close();
+    }
+    /**
+    *@Description:Read an advertisement from the file12
+    *@param: Ad path
+    *@return: String
+    *@Author:Jin TianYu
+    *@Date:2021/4/27
+    */
+    public String readAd(String path) throws IOException{
+        File ad=new File(path);
+        BufferedReader textFile = new BufferedReader(new FileReader(ad));
+        String lineDta = "";
+        StringBuffer stringBuffer=new StringBuffer();
+        lineDta=textFile.readLine();
+        while (lineDta != null){
+                stringBuffer.append(lineDta+"\n");
+                lineDta=textFile.readLine();
+        }
+        return  stringBuffer.toString();
+    }
+
+    /**
+    *@Description: Read all of the user profiles
+    *@param:
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/4/26
+    */
+    private static List<File> readFile(String fileDir) {
+        List<File> fileList = new ArrayList<File>();
+        File file = new File(fileDir);
+        File[] files = file.listFiles();// 获取目录下的所有文件或文件夹
+        if (files == null) {// 如果目录为空，直接退出
+            return null;
+        }
+        for (File f : files) {
+            if (f.isFile()) {
+                fileList.add(f);
+            } else if (f.isDirectory()) {
+                System.out.println(f.getAbsolutePath());
+                readFile(f.getAbsolutePath());
+            }
+        }
+
+        for (File f1 : fileList) {
+            System.out.println(f1.getName());
+        }
+        return fileList;
+
+    }
+
 
 
     /**
