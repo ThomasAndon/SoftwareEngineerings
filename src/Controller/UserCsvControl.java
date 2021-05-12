@@ -71,9 +71,9 @@ public class UserCsvControl {
                 User s = new User();
                 s.setTrainerID(lineDta.split("#")[0]);
                 s.setGender(lineDta.split("#")[1]);
-                s.setHeight(lineDta.split("#")[2]);
-                s.setWeight((lineDta.split("#")[3]));
-                s.setLevel((lineDta.split("#")[4]));
+                s.setHeight(Double.parseDouble(lineDta.split("#")[2]));
+                s.setWeight(Double.parseDouble((lineDta.split("#")[3])));
+                s.setLevel(Integer.parseInt((lineDta.split("#")[4])));
                 s.setName((lineDta.split("#")[5]));
                 list.add(s);
 
