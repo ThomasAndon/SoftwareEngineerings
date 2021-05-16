@@ -19,6 +19,7 @@ public class IOClass {
     String adminAccountFilePath = "src/Data/Account/AdminAccounts.txt";
     String profileInfoFolderPath = "src/Data/ProfileInfo/";
     String videoMapperFilePath = "src/Data/VideoMapper.txt";
+    String AdFilePath ="src//Data//Advertisement//Ad.txt";
 
     /**
      * This method reads id and password files and parse them.
@@ -261,9 +262,18 @@ public class IOClass {
         return data;
     }
 
-
-
-
+    public String ReadAd(String path) throws IOException {
+        File ad = new File(path);
+        BufferedReader textFile = new BufferedReader(new FileReader(ad));
+        String lineDta = "";
+        StringBuffer stringBuffer = new StringBuffer();
+        lineDta = textFile.readLine();
+        while (lineDta != null) {
+            stringBuffer.append(lineDta + "\n");
+            lineDta = textFile.readLine();
+        }
+        return stringBuffer.toString();
+}
 
 
     public static void main(String[] args) throws Exception {

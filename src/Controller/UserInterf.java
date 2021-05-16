@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -29,9 +30,21 @@ public class UserInterf {
     @FXML
     private Label userID;
     private User user;
-    public void initData(User user) {
+    @FXML
+    private TextArea Ad;
+    public IOClass io=new IOClass();
+
+
+    public void initAd(String path) throws IOException {
+        Ad.setText(io.ReadAd(path));
+
+    }
+
+
+    public void initData(User user) throws IOException {
         userID.setText(user.getId());
         this.user = user;
+        initAd(io.AdFilePath);
     }
     public void getUser(User user) {
         this.user = user;

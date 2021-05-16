@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserInterf">
+<AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserInterf">
     <children>
         <Button layoutX="197.0" layoutY="120.0" mnemonicParsing="false" onAction="#toWorkout" prefHeight="45.0" prefWidth="207.0" text="Workout videos" />
         <Button fx:id="SessionBtn" layoutX="197.0" layoutY="177.0" mnemonicParsing="false" onAction="#toBookSession" prefHeight="45.0" prefWidth="207.0" text="Book a live session" />
@@ -24,5 +21,6 @@
             <Font size="42.0" />
          </font>
       </Label>
+      <TextArea fx:id="Ad" layoutY="122.0" prefHeight="191.0" prefWidth="176.0" />
     </children>
 </AnchorPane>
