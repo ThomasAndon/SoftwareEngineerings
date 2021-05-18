@@ -11,7 +11,7 @@ import java.io.*;
 import java.util.HashMap;
 // test2
 
-public class IOClass {
+public class IOClass implements ValidChecker{
 
     // This is the path where the test files are.
     String userAccountFilePath = "src/Data/Account/account.txt";
@@ -113,7 +113,7 @@ public class IOClass {
             System.out.println("Writing - Account file doesn't exist, new one created");
         }
 
-        if (new ValidChecker().checkIDExists(id)) {
+        if (checkIDExists(id)) {
             return false;
         }
 

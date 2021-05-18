@@ -21,6 +21,7 @@ public class Trainer {
         this.setTrainerID(id);
         this.setTrainerPw(pw);
     }
+
     public String getTrainerID() {
         return trainerID;
     }

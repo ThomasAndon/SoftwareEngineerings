@@ -3,10 +3,7 @@ package Controller;
 import NetBeans.Session;
 import NetBeans.Trainer;
 import NetBeans.User;
-import javafx.beans.InvalidationListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,20 +11,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class ScheduleController implements Comparator< Session > {
+public class ScheduleControl implements Comparator< Session > {
     @FXML
     private TableColumn<Session,LocalDate> timeCol;
     @FXML
@@ -41,63 +35,19 @@ public class ScheduleController implements Comparator< Session > {
 
     public void getUser(User user) throws Exception {
         this.user = user;
-      //  printSchedule(readCSV(user.getId()));
     }
     public void getTrainer(Trainer trainer) throws Exception {
         this.trainer = trainer;
     }
     public void userSchedule() throws Exception {
-        ObservableList<Session> ulist = FXCollections.observableArrayList();
-        ScheduleController comparator = new ScheduleController();
-        List<Session> list = readCSV(user.getId());
-        list.sort(comparator);
-        ulist.addAll(list);
-        printSchedule(ulist,true);
+        UserSchedule us = new UserSchedule();
+        printSchedule(us.mySchedule(user),true);
     }
     public void trainerSchedule() throws Exception {
-        //todo 读取教练的学生 这里我自己设置的
-        trainer.setStudents(new ArrayList<String>(Arrays.asList("1234", "12345")));
-        ObservableList<Session> tlist = FXCollections.observableArrayList();
-        List<Session> list = readCSV(trainer.getStudents().get(0));
-        for(int i =1; i<trainer.getStudents().size();i++){
-            list.addAll(readCSV(trainer.getStudents().get(i)));
-        }
-        ScheduleController comparator = new ScheduleController();
-        list.sort(comparator);
-        tlist.addAll(list);
-        printSchedule(tlist,false);
-
+        TrainerSchedule ts = new TrainerSchedule();
+        printSchedule(ts.mySchedule(trainer),false);
     }
 
-    public List<Session> readCSV (String userID) throws Exception {
-        ObservableList<Session> slist = FXCollections.observableArrayList();
-        List<Session> list = new ArrayList<Session>();
-        File csv = new File("src//Data//Session//" + userID + ".csv");
-        try {
-            BufferedReader textFile = new BufferedReader(new FileReader(csv));
-            String lineDta = "";
-            textFile.readLine();
-            while ((lineDta = textFile.readLine()) != null) {
-                Session s = new Session();
-                s.setUserID(lineDta.split(",")[0]);
-                s.setTrainerID(lineDta.split(",")[1]);
-                s.setTime(lineDta.split(",")[2]);
-                s.setTarget(lineDta.split(",")[3]);
-                s.setPhysicalAbility((lineDta.split(",")[4]));
-                s.setNote(lineDta.split(",")[5]);
-                list.add(s);
-            }
-  //          ScheduleController comparator = new ScheduleController();
-//            list.sort(comparator);
-//            slist.addAll(list);
-            textFile.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        } catch (IOException e) {
-            System.out.println("IO Exception");
-        }
-        return list;
-    }
     /**
     * @Description:
     * @Param:  boolean who:user是true,教练是false，操作稍有不同
@@ -243,15 +193,15 @@ public class ScheduleController implements Comparator< Session > {
         FXMLLoader loader = new FXMLLoader();
         Parent root;
         if(user!=null){
-            loader.setLocation(getClass().getResource("../view/UserInterf.fxml"));
+            loader.setLocation(getClass().getResource("../view/UserMainUI.fxml"));
             root = loader.load();
-            UserInterf controller = loader.getController();
+            UserMain controller = loader.getController();
             //instantiating a user
             controller.initData(user);
         }else{
-            loader.setLocation(getClass().getResource("../view/CoachInterf.fxml"));
+            loader.setLocation(getClass().getResource("../view/TrainerMainUI.fxml"));
             root = loader.load();
-            CoachInterf controller = loader.getController();
+            TrainerMain controller = loader.getController();
             //instantiating a user
             controller.initData(trainer);
         }

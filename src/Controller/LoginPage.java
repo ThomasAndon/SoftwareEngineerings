@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class LoginPage {
+public class LoginPage implements ValidChecker {
     @FXML
     private TextField idInput;
 
@@ -61,17 +61,17 @@ public class LoginPage {
         alert.setHeaderText("Login failed");
 
 
-        ValidChecker Checker = new ValidChecker();
+        //ValidChecker Checker = new ValidChecker();
         String id = idInput.getText();
         String pw = pwInput.getText();
-        if (Checker.isInvalidID(id)) {
+        if (isInvalidID(id)) {
             System.out.println("error");
             alert.setContentText("Failed reason : ID is invalid");
             alert.show();
             return;
         } else {
 
-            if (Checker.isInvalidPw(pw)) {
+            if (isInvalidPw(pw)) {
                 alert.setContentText("Failed reason : Password is invalid");
                 alert.show();
                 return;
@@ -82,7 +82,7 @@ public class LoginPage {
         System.out.println("OK");
 
         // If ID not exists or not matching pw, error occurs.
-        if(!Checker.isValidAccount(id,pw)){
+        if(!isValidAccount(id,pw)){
             alert.setContentText("Failed reason : Unidentified user");
             alert.show();
             return;
@@ -97,10 +97,10 @@ public class LoginPage {
         //Below is instantiating the user and passing it to the next window.
         FXMLLoader loader = new FXMLLoader();
         //   loader.setLocation(getClass().getResource("../view/ProfileInfo.fxml"));
-        loader.setLocation(getClass().getResource("../view/UserInterf.fxml"));
+        loader.setLocation(getClass().getResource("../view/UserMainUI.fxml"));
         Parent root = loader.load();
         //  ProfileInfo controller = loader.getController();
-        UserInterf controller = loader.getController();
+        UserMain controller = loader.getController();
         //instantiating a user
         User user = new User(id,pw);
 
@@ -130,29 +130,29 @@ public class LoginPage {
         alert.setHeaderText("Register failed");
 
 
-        ValidChecker Checker = new ValidChecker();
+        //ValidChecker Checker = new ValidChecker();
         String id = regUserName.getText();
         String pw1 = regPw.getText();
         String pw2 = regPwConfirm.getText();
-        if (Checker.isInvalidID(id)) {
+        if (isInvalidID(id)) {
             System.out.println("error");
             alert.setContentText("Failed reason : ID is invalid");
             alert.show();
             return;
         } else {
-            if (Checker.isInvalidPw(pw1)) {
+            if (isInvalidPw(pw1)) {
 
                 alert.setContentText("Failed reason : Password1 is invalid");
                 alert.show();
                 return;
             } else {
-                if (Checker.isInvalidPw(pw2)) {
+                if (isInvalidPw(pw2)) {
 
                     alert.setContentText("Failed reason : Password2 is invalid");
                     alert.show();
                     return;
                 } else {
-                    if (!Checker.isSameString(pw1, pw2)) {
+                    if (!isSameString(pw1, pw2)) {
                         alert.setContentText("Failed reason : Password1 and Password2 is different");
                         alert.show();
                         return;
@@ -187,10 +187,10 @@ public class LoginPage {
     void onCALoginClicked(MouseEvent event) throws Exception {
         String id = idInput.getText();
         String pw = pwInput.getText();
-        ValidChecker vc = new ValidChecker();
+       // ValidChecker vc = new ValidChecker();
         IOClass io = new IOClass();
 
-        if ((vc.isInvalidID(id)) || vc.isInvalidPw(pw) || !vc.isValidAccount(io.coachAccountFilePath,id,pw)) {
+        if ((isInvalidID(id)) || isInvalidPw(pw) || !isValidAccount(io.coachAccountFilePath,id,pw)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Login error");
             alert.setHeaderText("Coach Login Error");
@@ -208,10 +208,10 @@ public class LoginPage {
         //Below is instantiating the user and passing it to the next window.
         FXMLLoader loader = new FXMLLoader();
         //   loader.setLocation(getClass().getResource("../view/ProfileInfo.fxml"));
-        loader.setLocation(getClass().getResource("../view/CoachInterf.fxml"));
+        loader.setLocation(getClass().getResource("../view/TrainerMainUI.fxml"));
         Parent root = loader.load();
         //  ProfileInfo controller = loader.getController();
-        CoachInterf controller = loader.getController();
+        TrainerMain controller = loader.getController();
         //instantiating a user
         Trainer trainer = new Trainer(id,pw);
         controller.initData(trainer);
@@ -228,11 +228,11 @@ public class LoginPage {
         String id = idInput.getText();
         String pw = pwInput.getText();
 
-        ValidChecker vc = new ValidChecker();
+      //  ValidChecker vc = new ValidChecker();
         IOClass io = new IOClass();
 
 
-        if ((vc.isInvalidID(id)) || vc.isInvalidPw(pw) || !vc.isValidAccount(io.adminAccountFilePath,id,pw)) {
+        if ((isInvalidID(id)) || isInvalidPw(pw) || !isValidAccount(io.adminAccountFilePath,id,pw)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Login error");
             alert.setHeaderText("Admin Login Error");

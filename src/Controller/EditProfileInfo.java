@@ -1,7 +1,6 @@
 package Controller;
 
 import NetBeans.User;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,9 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ProfileInfo implements Initializable {
-
-
+public class EditProfileInfo implements Initializable, ValidChecker {
 
     User currentUser;
 
@@ -107,7 +104,7 @@ public class ProfileInfo implements Initializable {
         }
 
         //Following part prompts the username.
-        if (!new ValidChecker().isNameValid(inputName)) {
+        if (!isNameValid(inputName)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Error");
             alert.setContentText("Username must be 4-15 chars");
@@ -182,9 +179,9 @@ public class ProfileInfo implements Initializable {
         Stage stage = (Stage) mainPage.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/UserInterf.fxml"));
+        loader.setLocation(getClass().getResource("../view/UserMainUI.fxml"));
         Parent root = loader.load();
-        UserInterf controller = loader.getController();
+        UserMain controller = loader.getController();
         //instantiating a user
         controller.initData(user);
         // stage.setTitle("Hello World");

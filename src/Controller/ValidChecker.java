@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  * @Description: This class contains all methods that checks the validation.
  * @Date: 2021/3/29
  */
-public class ValidChecker {
+public interface ValidChecker {
     //todo 所有需要检查的方法都写在这里，比如检查用户名、密码是否符合规范，等等。
 
 
@@ -19,7 +19,7 @@ public class ValidChecker {
      * @Author: CloudKing
      * @Date: 2021/3/30
      */
-    public boolean isInvalidID(String id) {
+    public default boolean isInvalidID(String id) {
         if (id.length() >= 4 && id.length() <= 15) {
             String regex = "[ _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！ @#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
             Pattern pattern = Pattern.compile(regex);
@@ -34,12 +34,12 @@ public class ValidChecker {
         }
     }
 
-    public boolean isInvalidPw(String pw) {
+    public default boolean isInvalidPw(String pw) {
         return isInvalidID(pw);
     }
 
 
-    public boolean isSameString(String s1, String s2) {
+    public default boolean isSameString(String s1, String s2) {
         return s1.equals(s2);
     }
 
@@ -52,7 +52,7 @@ public class ValidChecker {
      * @return Whether this account is valid
      * @throws Exception
      */
-    public boolean isValidAccount(String id, String pw) throws Exception {
+    public default boolean isValidAccount(String id, String pw) throws Exception {
 
 /*        // Instantiate an all-accounts hashmap, it contains all accounts.
         HashMap accounts = new IOClass().readAllAccount();
@@ -73,13 +73,13 @@ public class ValidChecker {
     }
 
 
-    public boolean isValidAccount(String path, String id, String pw) throws Exception {
+    public default boolean isValidAccount(String path, String id, String pw) throws Exception {
         return isAccountExists(path, id, pw);
     }
 
 
 
-    public boolean isAccountExists(String path, String id, String pw) throws Exception {
+    public default boolean isAccountExists(String path, String id, String pw) throws Exception {
 
         // Instantiate an all-accounts hashmap, it contains all accounts.
         HashMap accounts = new IOClass().readAllAccount(path);
@@ -106,7 +106,7 @@ public class ValidChecker {
      * @throws Exception
      * @author Thomas Andon
      */
-    public boolean checkIDExists(String id) throws Exception {
+    public default boolean checkIDExists(String id) throws Exception {
         HashMap accounts = new IOClass().readAllAccount();
         if (accounts.containsKey(id)) {
             return true;
@@ -114,7 +114,7 @@ public class ValidChecker {
         return false;
     }
 
-    public boolean checkIDExists(String path, String id) throws Exception {
+    public default boolean checkIDExists(String path, String id) throws Exception {
         HashMap accounts = new IOClass().readAllAccount(path);
         if (accounts.containsKey(id)) {
             return true;
@@ -122,7 +122,7 @@ public class ValidChecker {
         return false;
     }
 
-    public boolean isNameValid(String name) {
+    public default boolean isNameValid(String name) {
 
         int length = name.length();
         if (length < 4 || length > 15) {

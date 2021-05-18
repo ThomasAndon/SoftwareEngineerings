@@ -42,7 +42,7 @@ public class AddCoach {
         String pw=CoachPw.getText();
         String gender=CoachGender.getText();
         String phone=CoachPhone.getText();
-        File f = new File("src//Data//Account//CoachAccounts..txt");
+        File f = new File("src//Data//Account//CoachAccounts.txt");
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f,true));
         BufferedWriter bw = new BufferedWriter(out);
         if(!f.exists()){

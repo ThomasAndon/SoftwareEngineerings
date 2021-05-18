@@ -14,20 +14,13 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
-import javafx.fxml.FXML;
+
 import javafx.fxml.Initializable;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
-import javafx.util.Callback;
-import javafx.util.StringConverter;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.chrono.HijrahChronology;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class BookSession implements Initializable{
@@ -48,7 +41,6 @@ public class BookSession implements Initializable{
     @FXML
     private TextField snote;
 
-    private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     private User user;
 
     public void getUser(User user) {
@@ -68,37 +60,20 @@ public class BookSession implements Initializable{
             }
         };
 
-        StringConverter converter = new StringConverter<LocalDate>(){
-            @Override
-            public String toString(LocalDate date){
-                if(date != null) return dateFormatter.format(date);
-                else return "";
-            }
-
-            @Override
-            public LocalDate fromString(String string) {
-                if(string != null && !string.isEmpty()) {
-                    LocalDate date = LocalDate.parse(string, dateFormatter);
-                    if(date.isBefore(LocalDate.now()) || date.isAfter(LocalDate.now().plusYears(1))) {
-                        return sdate.getValue();
-                    }
-                    else return date;
-                }
-                return null;
-            }
-        };
         sdate.setDayCellFactory(dayCellFactory);
-//        sdate.setConverter(converter);
-//        sdate.setPromptText("dd/MM/yyyy");
         sdate.setValue(LocalDate.now());
     }
 
     @FXML
+    /**
+    * @Description: interact with the UI, run after the user click book session button
+    * @Author: Cui Kening
+    */
     void addSession (ActionEvent event) throws Exception{
         Session session = new Session();
         session.setUserID(user.getId());
 
-        user.setTrainerID("8159"); //just for test!
+        user.setTrainerID("8159"); //TODO 教练
 
         session.setTrainerID(user.getTrainerID());
   //     System.out.println(user.getId());
@@ -119,7 +94,7 @@ public class BookSession implements Initializable{
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("../view/BookSuccessful.fxml"));
                 Parent root = loader.load();
-                UserInterf controller = loader.getController();
+                UserMain controller = loader.getController();
                 controller.getUser(user);
                 Stage stage = (Stage) bookBtn.getScene().getWindow();
                 stage.close();
@@ -131,17 +106,20 @@ public class BookSession implements Initializable{
 
 
     }
-
+    /**
+    * @Description: Check if the time chosen by the user is available for trainer
+    * @Param:  time is the time chosen by the user while booking a session
+    * @return:  whether the time is available for the trainer
+    * @Author: Cui Kening
+    */
     public Boolean checkSchedule(String time) throws IOException {
-        String line = null;
-        int index=0;
+        String line;
         BufferedReader reader = new BufferedReader(new FileReader("src//Data//Schedule.csv"));
         while((line=reader.readLine())!=null){
             String[] item = line.split(",");//CSV格式文件为逗号分隔符文件，这里根据逗号切分
                 if(item[1].equals(user.getTrainerID())&&item[2].equals(time)){
                     return false;
                 }
-            index++;
         }
         return true;
     }
@@ -154,62 +132,63 @@ public class BookSession implements Initializable{
     */
     public boolean writeSession(String path1, String path2, Session session) throws Exception {
         File f1 = new File(path1);
+        int flag1 = 1, flag2 = 1;
+        if(!f1.exists()){ flag1 = 0; }
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f1,true));
         BufferedWriter bw = new BufferedWriter(out);
-        if(!f1.exists()){
-            f1.createNewFile();
-            System.out.println("creat success");
+        if(flag1==0){
             bw.write("userID,trainerID,time,target,physical ability,note,detail\n");
-        }else {
-            bw.write(session.getUserID()+","+session.getTrainerID()+","
-                    + session.getTime()+","+ session.getTarget() +","+session.getPhysicalAbility()+ ","
-                    + session.getNote()+ ","+ session.getDetail()+ "\n");
-            bw.flush();
-            bw.close();
         }
-
+        bw.write(session.getUserID()+","+session.getTrainerID()+","
+                + session.getTime()+","+ session.getTarget() +","+session.getPhysicalAbility()+ ","
+                + session.getNote()+ ","+ session.getDetail()+ "\n");
+        bw.flush();
+        bw.close();
 
         File f2 = new File(path2);
+        if(!f2.exists()){ flag2 = 0; }
         OutputStreamWriter out2 = new OutputStreamWriter(new FileOutputStream(f2,true));
         BufferedWriter bw2 = new BufferedWriter(out2);
-        if(!f2.exists()){
-            f2.createNewFile();
+        if(flag2==0){
             bw2.write("userID,trainerID,time\n");
-        }else {
-            bw2.write(session.getUserID() + "," + session.getTrainerID() + "," + session.getTime() + "\n");
-            bw2.flush();
-            bw2.close();
-
         }
+        bw2.write(session.getUserID() + "," + session.getTrainerID() + "," + session.getTime() + "\n");
+        bw2.flush();
+        bw2.close();
+
         return true;
     }
 
 
     public void toSchedule(MouseEvent actionEvent) throws Exception {
-        Stage stage = (Stage) viewSchedule.getScene().getWindow();
-        stage.close();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/ScheduleUI.fxml"));
-        Parent root = loader.load();
-        ScheduleController controller = loader.getController();
-        //instantiating a user
-        controller.getUser(user);
-
-        stage.setScene(new Scene(root, 1000, 700));
-        stage.show();
+        ToPage tp = new ToPage();
+        tp.toSchedule(viewSchedule, user);
+//        Stage stage = (Stage) viewSchedule.getScene().getWindow();
+//        stage.close();
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(getClass().getResource("../view/ScheduleUI.fxml"));
+//        Parent root = loader.load();
+//        ScheduleControl controller = loader.getController();
+//        //instantiating a user
+//        controller.getUser(user);
+//
+//        stage.setScene(new Scene(root, 1000, 700));
+//        stage.show();
     }
 
     public void toMainPage(MouseEvent actionEvent) throws IOException {
-        Stage stage = (Stage) mainPage.getScene().getWindow();
-        stage.close();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/UserInterf.fxml"));
-        Parent root = loader.load();
-        UserInterf controller = loader.getController();
-        //instantiating a user
-        controller.initData(user);
-        // stage.setTitle("Hello World");
-        stage.setScene(new Scene(root, 1000, 700));
-        stage.show();
+        ToPage tp = new ToPage();
+        tp.toUserMainPage(mainPage, user);
+//        Stage stage = (Stage) mainPage.getScene().getWindow();
+//        stage.close();
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(getClass().getResource("../view/UserMainUI.fxml"));
+//        Parent root = loader.load();
+//        UserMain controller = loader.getController();
+//        //instantiating a user
+//        controller.initData(user);
+//        // stage.setTitle("Hello World");
+//        stage.setScene(new Scene(root, 1000, 700));
+//        stage.show();
     }
 }

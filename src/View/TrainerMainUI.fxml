@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CoachInterf">
+<AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TrainerMain">
     <children>
         <Button fx:id="SessionBtn" layoutX="197.0" layoutY="123.0" mnemonicParsing="false" onAction="#toMyStudents" prefHeight="45.0" prefWidth="207.0" text="My students" />
         <Button fx:id="ScheduleBtn" layoutX="197.0" layoutY="200.0" mnemonicParsing="false" onAction="#toSchedule" prefHeight="45.0" prefWidth="207.0" text="My schedule" />

@@ -96,7 +96,7 @@ public class CoachCsvControl {
         Stage stage = (Stage) addCoach.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/AddCoach.fxml"));
+        loader.setLocation(getClass().getResource("../view/AddCoachUI.fxml"));
         Parent root = loader.load();
         AddCoach controller = loader.getController();
         //instantiating a user

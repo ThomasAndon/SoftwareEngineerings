@@ -1,7 +1,6 @@
 package Controller;
 
 import NetBeans.Trainer;
-import NetBeans.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class CoachInterf {
+public class TrainerMain {
     @FXML
     private Button SessionBtn;
     @FXML
@@ -31,17 +30,19 @@ public class CoachInterf {
     }
 
     public void toSchedule(ActionEvent actionEvent) throws Exception {
-        Stage stage = (Stage) ScheduleBtn.getScene().getWindow();
-        stage.close();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/ScheduleUI.fxml"));
-        Parent root = loader.load();
-        ScheduleController controller = loader.getController();
-        //instantiating a user
-        controller.getTrainer(trainer);
-        controller.trainerSchedule();
-        stage.setScene(new Scene(root, 1000, 700));
-        stage.show();
+        ToPage tp = new ToPage();
+        tp.toSchedule2(ScheduleBtn, trainer);
+//        Stage stage = (Stage) ScheduleBtn.getScene().getWindow();
+//        stage.close();
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(getClass().getResource("../view/ScheduleUI.fxml"));
+//        Parent root = loader.load();
+//        ScheduleControl controller = loader.getController();
+//        //instantiating a user
+//        controller.getTrainer(trainer);
+//        controller.trainerSchedule();
+//        stage.setScene(new Scene(root, 1000, 700));
+//        stage.show();
     }
 
     public void toProfile(ActionEvent actionEvent) {

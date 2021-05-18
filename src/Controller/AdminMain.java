@@ -71,7 +71,7 @@ public class AdminMain {
         Stage stage = (Stage) edit.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/EditAd.fxml"));
+        loader.setLocation(getClass().getResource("../view/EditAdUI.fxml"));
         Parent root = loader.load();
         EditAd controller = loader.getController();
         //instantiating a user
@@ -89,7 +89,7 @@ public class AdminMain {
         Stage stage = (Stage) edit.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/VideoUploader.fxml"));
+        loader.setLocation(getClass().getResource("../view/VideoUploaderUI.fxml"));
         Parent root = loader.load();
         VideoUploader controller = loader.getController();
         //instantiating a user

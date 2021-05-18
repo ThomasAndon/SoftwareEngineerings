@@ -53,7 +53,7 @@ public class SessionCsvControl implements Comparator< Session > {
                 list.add(s);
 
             }
-            ScheduleController comparator = new ScheduleController();
+            ScheduleControl comparator = new ScheduleControl();
             list.sort( comparator );
             slist.addAll(list);
             textFile.close();
