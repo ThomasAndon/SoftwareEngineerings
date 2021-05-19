@@ -1,6 +1,6 @@
 package Boundary;
 
-import Controller.ReadAd;
+import Controller.OpenAd;
 import Controller.ToPage;
 import Entity.User;
 import javafx.event.ActionEvent;
@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class UserMain {
+public class UserMain implements OpenAd {
     @FXML
     public Button WorkoutBtn;
     @FXML
@@ -33,8 +33,6 @@ public class UserMain {
 
     private User user;
 
-    public ReadAd ra = new ReadAd();
-
     public void initData(User user) throws IOException {
         userID.setText(user.getId());
         this.user = user;
@@ -46,7 +44,7 @@ public class UserMain {
     }
 
     private void initAd() throws IOException {
-        Ad.setText(ra.readAd(ra.AdPath));
+        Ad.setText(readAd());
 
     }
 
@@ -62,16 +60,6 @@ public class UserMain {
     public void toBookSession(ActionEvent actionEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.toBookSession(SessionBtn, user);
-//        Stage stage = (Stage) SessionBtn.getScene().getWindow();
-//        stage.close();
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("../view/BookSessionUI.fxml"));
-//        Parent root = loader.load();
-//        BookSession controller = loader.getController();
-//        //instantiating a user
-//        controller.getUser(user);
-//        stage.setScene(new Scene(root, 1000, 700));
-//        stage.show();
     }
 
 

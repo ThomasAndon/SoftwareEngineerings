@@ -57,7 +57,7 @@ public class ToPage {
         stage.show();
     }
 
-    public<T> void toSchedule2(Button ScheduleBtn,T o) throws Exception {
+    public<T>void toSchedule2(Button ScheduleBtn,T o) throws Exception {
         Stage stage = (Stage) ScheduleBtn.getScene().getWindow();
         stage.close();
         Parent root;

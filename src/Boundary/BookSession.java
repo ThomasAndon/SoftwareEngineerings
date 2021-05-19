@@ -164,17 +164,7 @@ public class BookSession implements Initializable{
     public void toSchedule(MouseEvent actionEvent) throws Exception {
         ToPage tp = new ToPage();
         tp.toSchedule(viewSchedule, user);
-//        Stage stage = (Stage) viewSchedule.getScene().getWindow();
-//        stage.close();
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("../view/ScheduleUI.fxml"));
-//        Parent root = loader.load();
-//        ScheduleControl controller = loader.getController();
-//        //instantiating a user
-//        controller.getUser(user);
-//
-//        stage.setScene(new Scene(root, 1000, 700));
-//        stage.show();
+
     }
 
     public void toMainPage(MouseEvent actionEvent) throws IOException {

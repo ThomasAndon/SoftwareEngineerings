@@ -1,6 +1,6 @@
 package Boundary;
 
-import Controller.ReadAd;
+import Controller.OpenAd;
 import Controller.ToPage;
 import Entity.Trainer;
 import javafx.event.ActionEvent;
@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class TrainerMain {
+public class TrainerMain implements OpenAd {
     @FXML
     private Button SessionBtn;
     @FXML
@@ -28,7 +28,6 @@ public class TrainerMain {
     private Text Exit;
 
     private Trainer trainer;
-    private ReadAd ra = new ReadAd();
 
 
     public void initData(Trainer trainer) throws IOException {
@@ -38,7 +37,7 @@ public class TrainerMain {
     }
 
     private void initAd() throws IOException {
-        Ad.setText(ra.readAd(ra.AdPath));
+        Ad.setText(readAd());
 
     }
 

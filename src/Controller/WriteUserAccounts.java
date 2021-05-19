@@ -33,10 +33,6 @@ public class WriteUserAccounts {
             System.out.println("Writing - Account file doesn't exist, new one created");
         }
 
-        /*if (new ValidChecker().checkIDExists(id)) {
-            return false;
-        }*/
-
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f,true));
         BufferedWriter bw = new BufferedWriter(out);
         bw.write(id+" " + pw + " " + "#\n");
