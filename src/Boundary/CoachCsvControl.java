@@ -98,7 +98,6 @@ public class CoachCsvControl {
         loader.setLocation(getClass().getResource("../view/AddCoachUI.fxml"));
         Parent root = loader.load();
         AddCoach controller = loader.getController();
-        //instantiating a user
         controller.init();
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();

@@ -1,9 +1,6 @@
 package Boundary;
 
-import Controller.MatchAccount;
-import Controller.SetProfile;
-import Controller.ValidChecker;
-import Controller.WriteUserAccounts;
+import Controller.*;
 import Entity.Trainer;
 import Entity.User;
 import javafx.event.ActionEvent;
@@ -107,7 +104,7 @@ public class LoginPage implements ValidChecker {
         User user = new User(id,pw);
 
         try {
-            User user1 = new SetProfile().setUserProfile(user);
+            User user1 = new SetUserProfile().setUserProfile(user);
             controller.initData(user1);
         } catch (Exception e) {
             System.out.println("Login Exception Caught");
@@ -216,7 +213,7 @@ public class LoginPage implements ValidChecker {
         Trainer trainer = new Trainer(id,pw);
 
         try {
-            Trainer trainer1 = new SetProfile().setCoachProfile(trainer);
+            Trainer trainer1 = new SetCoachProfile().setCoachProfile(trainer);
             controller.initData(trainer1);
         } catch (Exception e) {
             System.out.println("Login Exception Caught");

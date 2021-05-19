@@ -1,7 +1,7 @@
 package Boundary;
 
 import Controller.ValidChecker;
-import Controller.WriteProfile;
+import Controller.WriteUserProfile;
 import Entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -133,7 +133,7 @@ public class EditProfileInfo implements Initializable, ValidChecker {
         currentUser.setGender(gender);
         currentUser.setName(inputName);
         try {
-            new WriteProfile().writeUserProfile(currentUser);
+            new WriteUserProfile().writeUserProfile(currentUser);
         } catch (IOException e) {
             System.out.println("Error occurs when writing user profile");
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -170,7 +170,7 @@ public class EditProfileInfo implements Initializable, ValidChecker {
         currentUser.setLevel(currentUser.getLevel()+1);
         VIPLevelHolder.setText(String.valueOf(currentUser.getLevel()));
         try {
-            new WriteProfile().writeUserProfile(currentUser);
+            new WriteUserProfile().writeUserProfile(currentUser);
         } catch (IOException e) {
             e.printStackTrace();
         }

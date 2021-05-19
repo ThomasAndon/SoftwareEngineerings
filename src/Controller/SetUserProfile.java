@@ -5,7 +5,7 @@ import Entity.User;
 
 import java.io.*;
 
-public class SetProfile implements profilePath{
+public class SetUserProfile implements profilePath{
 
 
     /**
@@ -26,16 +26,6 @@ public class SetProfile implements profilePath{
         return user;
     }
 
-    public Trainer setCoachProfile(Trainer trainer)throws IOException{
-        String[] info=readFile("coachProfile/", trainer.getTrainerID());
 
-        trainer.setGender(info[1]);
-        trainer.setHeight(Double.parseDouble(info[2]));
-        trainer.setWeight(Double.parseDouble(info[3]));
-        trainer.setTel(Integer.parseInt(info[4]));
-        trainer.setName(info[5]);
-
-        return trainer;
-    }
 
 }
