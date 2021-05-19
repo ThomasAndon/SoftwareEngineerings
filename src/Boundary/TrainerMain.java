@@ -1,6 +1,6 @@
 package Boundary;
 
-import Controller.IOClass;
+import Controller.ReadAd;
 import Controller.ToPage;
 import Entity.Trainer;
 import javafx.event.ActionEvent;
@@ -28,7 +28,7 @@ public class TrainerMain {
     private Text Exit;
 
     private Trainer trainer;
-    private IOClass ioClass = new IOClass();
+    private ReadAd ra = new ReadAd();
 
 
     public void initData(Trainer trainer) throws IOException {
@@ -38,7 +38,7 @@ public class TrainerMain {
     }
 
     private void initAd() throws IOException {
-        Ad.setText(ioClass.readAd(ioClass.AdPath));
+        Ad.setText(ra.readAd(ra.AdPath));
 
     }
 

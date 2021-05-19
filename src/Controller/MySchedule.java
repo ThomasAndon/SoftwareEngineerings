@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class MySchedule<T> {
+
     public abstract ObservableList<Session> mySchedule(T o) throws Exception;
+
     protected List<Session> readCSV(String userID) throws Exception {
         ObservableList<Session> slist = FXCollections.observableArrayList();
         List<Session> list = new ArrayList<Session>();

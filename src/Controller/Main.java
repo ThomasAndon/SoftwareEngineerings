@@ -35,7 +35,7 @@ public class Main extends Application {
         primaryStage.show();
 
         // todo delete-test
-        new IOClass().readAllAccount();
+        new MatchAccount().readAllAccount();
     }
 
 

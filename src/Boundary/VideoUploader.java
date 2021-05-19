@@ -1,6 +1,7 @@
 package Boundary;
 
-import Controller.IOClass;
+import Controller.ParseVideoMapper;
+import Controller.WriteVideoMapping;
 import Entity.Video;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -122,7 +123,7 @@ public class VideoUploader implements Initializable {
         Video temp = new Video(titleInput.getText(),temporaryFilePath,typeChoice.getValue());
         data.add(temp);
         try {
-            new IOClass().writeVideoMapping(data);
+            new WriteVideoMapping().writeVideoMapping(data);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -186,7 +187,7 @@ public class VideoUploader implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         typeChoice.getItems().addAll("type1", "type2", "type3");
         try {
-            data = new IOClass().parseVideoMapper();
+            data = new ParseVideoMapper().parseVideoMapper();
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);

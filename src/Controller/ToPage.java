@@ -60,20 +60,17 @@ public class ToPage {
     public<T> void toSchedule2(Button ScheduleBtn,T o) throws Exception {
         Stage stage = (Stage) ScheduleBtn.getScene().getWindow();
         stage.close();
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("../view/UserScheduleUI.fxml"));
         Parent root;
-        // ScheduleControl controller = loader.getController();
-        if(User.class.isInstance(o)){
-            FXMLLoader loader = new FXMLLoader();
+
+        FXMLLoader loader = new FXMLLoader();
+        if (User.class.isInstance(o)) {
             loader.setLocation(getClass().getResource("../view/UserScheduleUI.fxml"));
             root = loader.load();
             UserControlSchedule controller = loader.getController();
             User user = (User) o;
             controller.getUser(user);
             controller.showSchedule();
-        }else{
-            FXMLLoader loader = new FXMLLoader();
+        } else {
             loader.setLocation(getClass().getResource("../view/TrainerScheduleUI.fxml"));
             root = loader.load();
             TrainerControlSchedule controller = loader.getController();

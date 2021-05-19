@@ -1,8 +1,8 @@
 package Boundary;
 
-import Controller.IOClass;
 import Controller.ToPage;
 import Controller.ValidChecker;
+import Controller.WriteProfile;
 import Entity.Trainer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -116,7 +116,7 @@ public class CoachProfile implements ValidChecker {
         currentTrainer.setName(inputName);
         currentTrainer.setTel(inputPhone);
         try {
-            new IOClass().writeCoachProfile(currentTrainer);
+            new WriteProfile().writeCoachProfile(currentTrainer);
         } catch (IOException e) {
             System.out.println("Error occurs when writing coach profile");
             Alert alert = new Alert(Alert.AlertType.ERROR);

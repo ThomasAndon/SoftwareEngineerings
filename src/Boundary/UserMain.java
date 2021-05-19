@@ -1,20 +1,15 @@
 package Boundary;
 
-import Boundary.UserControlSchedule;
-import Controller.IOClass;
+import Controller.ReadAd;
 import Controller.ToPage;
 import Entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -38,7 +33,7 @@ public class UserMain {
 
     private User user;
 
-    public IOClass ioClass=new IOClass();
+    public ReadAd ra = new ReadAd();
 
     public void initData(User user) throws IOException {
         userID.setText(user.getId());
@@ -51,7 +46,7 @@ public class UserMain {
     }
 
     private void initAd() throws IOException {
-        Ad.setText(ioClass.readAd(ioClass.AdPath));
+        Ad.setText(ra.readAd(ra.AdPath));
 
     }
 
@@ -86,22 +81,6 @@ public class UserMain {
 
     }
 
-    public void toSchedule1(ActionEvent actionEvent) throws Exception {
-        ToPage tp = new ToPage();
-       // tp.toSchedule(viewSchedule, user);
-        Stage stage = (Stage) ScheduleBtn.getScene().getWindow();
-        stage.close();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/UserScheduleUI.fxml"));
-        Parent root = loader.load();
-        UserControlSchedule controller = loader.getController();
-        //instantiating a user
-        controller.getUser(user);
-        controller.showSchedule();
-     //   controller.printSchedule(controller.readCSV(user.getId()),true);
-        stage.setScene(new Scene(root, 1000, 700));
-        stage.show();
-    }
 
     public void toSchedule(MouseEvent actionEvent) throws Exception {
         ToPage tp = new ToPage();

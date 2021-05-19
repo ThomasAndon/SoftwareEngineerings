@@ -1,5 +1,6 @@
 package Boundary;
 
+import Controller.WriteAd;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -40,24 +41,12 @@ public class EditAd {
     }
 
     public void saveAd(ActionEvent actionEvent) throws IOException {
-
-        writeAD("src//Data//Advertisement//Ad.txt");
+        String s = Ad.getText();
+        WriteAd wa = new WriteAd();
+        wa.writeAd("src//Data//Advertisement//Ad.txt",s);
         //todo 实现一个AD写入一个文件当中
 
     }
 
-    public void writeAD(String path) throws IOException {
-        String s=Ad.getText();
-        System.out.println(s);
-        File f = new File(path);
-        if(!f.exists()){
-            f.createNewFile();
-        }
-        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f,true));
-        BufferedWriter bw = new BufferedWriter(out);
-        bw.write(s);
-        bw.flush();
-        bw.close();
 
-    }
 }

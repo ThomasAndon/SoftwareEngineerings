@@ -69,7 +69,7 @@ public interface ValidChecker {
         }
 
         return true;*/
-        return isAccountExists(new IOClass().userAccountFilePath, id, pw);
+        return isAccountExists(new MatchAccount().userAccountFilePath, id, pw);
     }
 
 
@@ -82,7 +82,7 @@ public interface ValidChecker {
     public default boolean isAccountExists(String path, String id, String pw) throws Exception {
 
         // Instantiate an all-accounts hashmap, it contains all accounts.
-        HashMap accounts = new IOClass().readAllAccount(path);
+        HashMap accounts = new MatchAccount().readAllAccount(path);
 
 
         // if there is no such ID, then false is returned.
@@ -107,7 +107,7 @@ public interface ValidChecker {
      * @author Thomas Andon
      */
     public default boolean checkIDExists(String id) throws Exception {
-        HashMap accounts = new IOClass().readAllAccount();
+        HashMap accounts = new MatchAccount().readAllAccount();
         if (accounts.containsKey(id)) {
             return true;
         }
@@ -115,7 +115,7 @@ public interface ValidChecker {
     }
 
     public default boolean checkIDExists(String path, String id) throws Exception {
-        HashMap accounts = new IOClass().readAllAccount(path);
+        HashMap accounts = new MatchAccount().readAllAccount(path);
         if (accounts.containsKey(id)) {
             return true;
         }
@@ -139,15 +139,6 @@ public interface ValidChecker {
 
     }
 
-
-
-
-    public static String[] concat(String[] a, String[] b) {
-        String[] c = new String[a.length + b.length];
-        System.arraycopy(a, 0, c, 0, a.length);
-        System.arraycopy(b, 0, c, a.length, b.length);
-        return c;
-    }
 
 
 }

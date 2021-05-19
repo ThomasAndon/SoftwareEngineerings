@@ -1,7 +1,9 @@
 package Boundary;
 
-import Controller.IOClass;
+import Controller.MatchAccount;
+import Controller.SetProfile;
 import Controller.ValidChecker;
+import Controller.WriteUserAccounts;
 import Entity.Trainer;
 import Entity.User;
 import javafx.event.ActionEvent;
@@ -105,7 +107,7 @@ public class LoginPage implements ValidChecker {
         User user = new User(id,pw);
 
         try {
-            User user1 = new IOClass().setUserProfile(user);
+            User user1 = new SetProfile().setUserProfile(user);
             controller.initData(user1);
         } catch (Exception e) {
             System.out.println("Login Exception Caught");
@@ -161,7 +163,7 @@ public class LoginPage implements ValidChecker {
         // end if-else
         //todo 字符串格式通过
         System.out.println("OK");
-        if(!new IOClass().writeNewUser(id, pw1)) {
+        if(!new WriteUserAccounts().writeNewUser(id, pw1)) {
             alert.setContentText("Failed reason : ID already exists.");
             alert.show();
             return;
@@ -186,7 +188,7 @@ public class LoginPage implements ValidChecker {
         String id = idInput.getText();
         String pw = pwInput.getText();
        // ValidChecker vc = new ValidChecker();
-        IOClass io = new IOClass();
+        MatchAccount io = new MatchAccount();
 
         if ((isInvalidID(id)) || isInvalidPw(pw) || !isValidAccount(io.coachAccountFilePath,id,pw)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -214,7 +216,7 @@ public class LoginPage implements ValidChecker {
         Trainer trainer = new Trainer(id,pw);
 
         try {
-            Trainer trainer1 = new IOClass().setCoachProfile(trainer);
+            Trainer trainer1 = new SetProfile().setCoachProfile(trainer);
             controller.initData(trainer1);
         } catch (Exception e) {
             System.out.println("Login Exception Caught");
@@ -234,7 +236,7 @@ public class LoginPage implements ValidChecker {
         String pw = pwInput.getText();
 
       //  ValidChecker vc = new ValidChecker();
-        IOClass io = new IOClass();
+        MatchAccount io = new MatchAccount();
 
 
         if ((isInvalidID(id)) || isInvalidPw(pw) || !isValidAccount(io.adminAccountFilePath,id,pw)) {
