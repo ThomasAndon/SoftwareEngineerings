@@ -1,25 +1,32 @@
 package Controller;
 
-import NetBeans.User;
-import NetBeans.Video;
+import Entity.Trainer;
+import Entity.User;
+import Entity.Video;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.scene.control.Alert;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 // test2
 
-public class IOClass implements ValidChecker{
+public class IOClass {
 
     // This is the path where the test files are.
-    String userAccountFilePath = "src/Data/Account/account.txt";
-    String coachAccountFilePath = "src/Data/Account/CoachAccounts.txt";
-    String adminAccountFilePath = "src/Data/Account/AdminAccounts.txt";
-    String profileInfoFolderPath = "src/Data/ProfileInfo/";
-    String videoMapperFilePath = "src/Data/VideoMapper.txt";
+    public String userAccountFilePath = "src/Data/Account/account.txt";
+    public String coachAccountFilePath = "src/Data/Account/CoachAccounts.txt";
+    public String adminAccountFilePath = "src/Data/Account/AdminAccounts.txt";
+    public String profileInfoFolderPath = "src/Data/ProfileInfo/";
+    public String videoMapperFilePath = "src/Data/VideoMapper.txt";
 
+    public String AdPath="src/Data/Advertisement/Ad.txt";
+
+    public String CoachProfilePath="src/Data/ProfileInfo/CoachProfile";
+    public String UserProfilePath="src/Data/ProfileInfo/UserProfile";
+    public String SchedulePath="src/Data/Schedule.csv";
     /**
      * This method reads id and password files and parse them.
      *
@@ -46,6 +53,7 @@ public class IOClass implements ValidChecker{
     public HashMap getHashMap(String path) throws IOException {
         HashMap<String, String> account = new HashMap<>();
 
+
         File f = new File(path);
         if (!(f.isFile() && f.exists())) {
             System.out.println("Reading - Account file doesn't exist");
@@ -55,10 +63,12 @@ public class IOClass implements ValidChecker{
         BufferedReader br = new BufferedReader(isr);
         String line = null;
         while ((line = br.readLine()) != null) {
+
             // This is where we process each String line
             String[] res = line.split("\\s+");
-            System.out.println(res[0]+" "+res[1]);
             account.put(res[0], res[1]);
+
+
         }
         br.close();
 
@@ -113,9 +123,9 @@ public class IOClass implements ValidChecker{
             System.out.println("Writing - Account file doesn't exist, new one created");
         }
 
-        if (checkIDExists(id)) {
+        /*if (new ValidChecker().checkIDExists(id)) {
             return false;
-        }
+        }*/
 
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f,true));
         BufferedWriter bw = new BufferedWriter(out);
@@ -133,7 +143,7 @@ public class IOClass implements ValidChecker{
      */
     public User setUserProfile(User user) throws IOException {
 
-        File f = new File(profileInfoFolderPath + user.getId() + ".txt");
+        File f = new File(profileInfoFolderPath + "userProfile/" +user.getId() + ".txt");
 
         if (!(f.isFile() && f.exists())) {
             System.out.println(user.getId() + "profile txt does not exist.");
@@ -154,6 +164,28 @@ public class IOClass implements ValidChecker{
 
 
         return user;
+    }
+
+    public Trainer setCoachProfile(Trainer trainer)throws IOException{
+        File f = new File(profileInfoFolderPath + "coachProfile/" + trainer.getTrainerID() + ".txt");
+
+        if (!(f.isFile() && f.exists())) {
+            System.out.println(trainer.getTrainerID() + "profile txt does not exist.");
+            return null;
+        }
+
+        InputStreamReader ISR = new InputStreamReader(new FileInputStream(f));
+        BufferedReader in = new BufferedReader(ISR);
+
+        String line = in.readLine();
+        String[] info = parseProfileString(line);
+        trainer.setGender(info[1]);
+        trainer.setHeight(Double.parseDouble(info[2]));
+        trainer.setWeight(Double.parseDouble(info[3]));
+        trainer.setTel(Integer.parseInt(info[4]));
+        trainer.setName(info[5]);
+
+        return trainer;
     }
 
 
@@ -200,6 +232,103 @@ public class IOClass implements ValidChecker{
         return true;
     }
 
+    /**
+    *@Description: write an new advertisement into the file
+    *@param: path,content
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/4/26
+    */
+
+    public void writeAd(String path,String content) throws IOException {
+        File ad = new File(path);
+        if(!ad.exists()){
+            ad.createNewFile();
+        }
+        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(ad,true));
+        BufferedWriter bw = new BufferedWriter(out);
+        bw.write(content);
+        bw.flush();
+        bw.close();
+    }
+    /**
+    *@Description:Read an advertisement from the file12
+    *@param: Ad path
+    *@return: String
+    *@Author:Jin TianYu
+    *@Date:2021/4/27
+    */
+    public String readAd(String path) throws IOException{
+        File ad=new File(path);
+        BufferedReader textFile = new BufferedReader(new FileReader(ad));
+        String lineDta = "";
+        StringBuffer stringBuffer=new StringBuffer();
+        lineDta=textFile.readLine();
+        while (lineDta != null){
+                stringBuffer.append(lineDta+"\n");
+                lineDta=textFile.readLine();
+        }
+        return  stringBuffer.toString();
+    }
+
+    /**
+    *@Description: Read all of the user profiles
+    *@param:
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/4/26
+    */
+    private static List<File> readFile(String fileDir) {
+        List<File> fileList = new ArrayList<File>();
+        File file = new File(fileDir);
+        File[] files = file.listFiles();// 获取目录下的所有文件或文件夹
+        if (files == null) {// 如果目录为空，直接退出
+            return null;
+        }
+        for (File f : files) {
+            if (f.isFile()) {
+                fileList.add(f);
+            } else if (f.isDirectory()) {
+                System.out.println(f.getAbsolutePath());
+                readFile(f.getAbsolutePath());
+            }
+        }
+
+        for (File f1 : fileList) {
+            System.out.println(f1.getName());
+        }
+        return fileList;
+
+    }
+    /**
+    *@Description: Get lessons information from the Schedule file
+    *@param:
+    *@return:
+    *@Author:Jin TianYu
+    *@Date:2021/5/9
+    */
+    public String readLesson(String id,String path) throws IOException {
+        File lesson = new File(path);
+        StringBuilder l= new StringBuilder();
+        String lineDta="";
+        try {
+            BufferedReader textFile = new BufferedReader(new FileReader(lesson));
+
+            while ((lineDta = textFile.readLine()) != null){
+                String s= lineDta.split(",")[1];
+                if(s.equals(id)){
+                    String date=lineDta.split(",")[2];
+
+                    l.append(date).append("\n");
+
+                }
+
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return l.toString();
+    }
 
     /**
      * This class writes the video mapping info to the local file.
@@ -258,17 +387,31 @@ public class IOClass implements ValidChecker{
         return data;
     }
 
+    public boolean writeCoachProfile(Trainer trainer) throws IOException {
+        String info = trainer.getTrainerID() + "#" + trainer.getGender() + "#" + trainer.getHeight()
+                + "#" + trainer.getWeight() + "#" + trainer.getTel() +"#" + trainer.getName() ;
+        // todo 此处新加项目
+
+        File f = new File(profileInfoFolderPath+trainer.getTrainerID()+".txt");
+
+        if (!(f.isFile() && f.exists())) {
+            try {
+                f.createNewFile();
+
+            } catch(Exception e) {
+                System.out.println("Error occurs when creating files. (path not exists)");
+                return false;
+            }
 
 
+            //todo 不存在的文件会抛异常
+        }
 
+        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f));
+        BufferedWriter bw = new BufferedWriter(out);
 
-
-    public static void main(String[] args) throws Exception {
-        User a = new User();
-        a.setId("123454321");
-        a.setGender("male");
-        System.out.println(new IOClass().writeUserProfile(a));;
-        System.out.println("-------------");
-        new IOClass().parseProfileString("#123454321#male#0.0#0.0#0");
+        bw.write(info);
+        bw.close();
+        return true;
     }
 }

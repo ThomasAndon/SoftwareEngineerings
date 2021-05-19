@@ -1,6 +1,7 @@
-package Controller;
+package Boundary;
 
-import NetBeans.Session;
+import Boundary.ScheduleControl;
+import Entity.Session;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

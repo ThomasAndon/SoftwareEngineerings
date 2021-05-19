@@ -1,7 +1,11 @@
-package Controller;
+package Boundary;
 
-import NetBeans.Session;
-import NetBeans.Trainer;
+import Controller.ControlSchedule;
+import Controller.MySchedule;
+import Controller.ToPage;
+import Controller.TrainerSchedule;
+import Entity.Session;
+import Entity.Trainer;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -13,7 +17,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class TrainerControlSchedule implements ControlSchedule<Trainer>{
+public class TrainerControlSchedule implements ControlSchedule<Trainer> {
     @FXML
     private TableColumn<Session, LocalDate> timeCol;
     @FXML

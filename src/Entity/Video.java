@@ -1,6 +1,4 @@
-package NetBeans;
-
-import java.net.URI;
+package Entity;
 
 public class Video {
 

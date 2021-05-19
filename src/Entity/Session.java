@@ -1,7 +1,4 @@
-package NetBeans;
-
-import java.time.LocalDate;
-import java.util.Date;
+package Entity;
 
 public class Session {
     String trainerID;

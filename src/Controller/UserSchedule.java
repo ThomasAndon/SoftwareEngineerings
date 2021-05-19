@@ -1,7 +1,8 @@
 package Controller;
 
-import NetBeans.Session;
-import NetBeans.User;
+import Boundary.ScheduleControl;
+import Entity.Session;
+import Entity.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

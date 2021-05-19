@@ -1,7 +1,11 @@
-package Controller;
+package Boundary;
 
-import NetBeans.Session;
-import NetBeans.User;
+import Controller.ControlSchedule;
+import Controller.MySchedule;
+import Controller.ToPage;
+import Controller.UserSchedule;
+import Entity.Session;
+import Entity.User;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,7 +18,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class UserControlSchedule implements ControlSchedule<User>{
+public class UserControlSchedule implements ControlSchedule<User> {
     @FXML
     private TableColumn<Session, LocalDate> timeCol;
     @FXML

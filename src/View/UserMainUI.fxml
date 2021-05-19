@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserMain">
+<AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.UserMain">
     <children>
         <Button fx:id="WorkoutBtn" layoutX="197.0" layoutY="120.0" mnemonicParsing="false" onAction="#toWorkout" prefHeight="45.0" prefWidth="207.0" text="Workout videos" />
         <Button fx:id="SessionBtn" layoutX="197.0" layoutY="177.0" mnemonicParsing="false" onAction="#toBookSession" prefHeight="45.0" prefWidth="207.0" text="Book a live session" />
@@ -24,5 +24,6 @@
             <Font size="42.0" />
          </font>
       </Label>
+      <TextArea fx:id="Ad" layoutX="441.0" layoutY="120.0" prefHeight="148.0" prefWidth="126.0" />
     </children>
 </AnchorPane>

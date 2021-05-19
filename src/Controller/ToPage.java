@@ -1,13 +1,12 @@
 package Controller;
 
-import NetBeans.Trainer;
-import NetBeans.User;
-import javafx.event.ActionEvent;
+import Boundary.*;
+import Entity.Trainer;
+import Entity.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -109,4 +108,27 @@ public class ToPage {
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();
     }
+
+    public void toCoachProfile(Button Btn, Trainer trainer) throws IOException {
+        Stage stage = (Stage) Btn.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/CoachProfileUI.fxml"));
+        Parent root = loader.load();
+        CoachProfile controller = loader.getController();
+        //instantiating a user
+        controller.initData(trainer);
+        stage.setScene(new Scene(root, 1000, 700));
+        stage.show();
+    }
+    public void toMainPage(Text text, String  s,Trainer trainer) throws IOException {
+        Stage stage = (Stage) text.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/" + s +".fxml"));
+        Parent root = loader.load();
+        TrainerMain controller = loader.getController();
+        controller.initData(trainer);
+        stage.setScene(new Scene(root, 800, 600));
+        stage.show();
+    }
+
 }

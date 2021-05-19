@@ -1,9 +1,10 @@
-package Controller;
+package Boundary;
 
-import NetBeans.Session;
-import NetBeans.Trainer;
-import NetBeans.User;
-import javafx.collections.FXCollections;
+import Controller.TrainerSchedule;
+import Controller.UserSchedule;
+import Entity.Session;
+import Entity.Trainer;
+import Entity.User;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,7 +1,8 @@
-package Controller;
+package Boundary;
 
-import NetBeans.Session;
-import NetBeans.User;
+import Controller.ToPage;
+import Entity.Session;
+import Entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

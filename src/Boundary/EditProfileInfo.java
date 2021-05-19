@@ -1,6 +1,8 @@
-package Controller;
+package Boundary;
 
-import NetBeans.User;
+import Controller.IOClass;
+import Controller.ValidChecker;
+import Entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -187,5 +189,6 @@ public class EditProfileInfo implements Initializable, ValidChecker {
         // stage.setTitle("Hello World");
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();
+        //todo 这个函数要和接口集成一下
     }
 }

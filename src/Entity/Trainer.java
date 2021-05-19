@@ -1,4 +1,4 @@
-package NetBeans;
+package Entity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,10 +9,12 @@ public class Trainer {
     String name;
     Date DoB;
     String gender;
-    String Tel;
+    int Tel;
     String experience;
     String Intro;
     ArrayList<String>students;
+    Double height;
+    Double weight;
     public Trainer() {
 
     }
@@ -21,6 +23,12 @@ public class Trainer {
         this.setTrainerID(id);
         this.setTrainerPw(pw);
     }
+
+    public void setHeight(Double height){this.height = height;}
+    public Double getHeight(){return height;}
+    public void setWeight(Double weight){this.weight = weight;}
+    public Double getWeight(){return weight;}
+
 
     public String getTrainerID() {
         return trainerID;
@@ -62,11 +70,11 @@ public class Trainer {
         this.gender = gender;
     }
 
-    public String getTel() {
+    public int getTel() {
         return Tel;
     }
 
-    public void setTel(String tel) {
+    public void setTel(int tel) {
         Tel = tel;
     }
 

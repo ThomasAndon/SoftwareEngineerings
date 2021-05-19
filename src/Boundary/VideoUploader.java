@@ -1,7 +1,7 @@
-package Controller;
+package Boundary;
 
-import NetBeans.Video;
-import javafx.collections.FXCollections;
+import Controller.IOClass;
+import Entity.Video;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,12 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 

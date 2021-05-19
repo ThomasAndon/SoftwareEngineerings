@@ -1,7 +1,9 @@
-package Controller;
+package Boundary;
 
-import NetBeans.Trainer;
-import NetBeans.User;
+import Controller.IOClass;
+import Controller.ValidChecker;
+import Entity.Trainer;
+import Entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -92,11 +94,9 @@ public class LoginPage implements ValidChecker {
 
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         stage.close();
-//        ProfileInfo pi = new ProfileInfo();
 
-        //Below is instantiating the user and passing it to the next window.
         FXMLLoader loader = new FXMLLoader();
-        //   loader.setLocation(getClass().getResource("../view/ProfileInfo.fxml"));
+
         loader.setLocation(getClass().getResource("../view/UserMainUI.fxml"));
         Parent root = loader.load();
         //  ProfileInfo controller = loader.getController();
@@ -111,8 +111,6 @@ public class LoginPage implements ValidChecker {
             System.out.println("Login Exception Caught");
             controller.initData(user);
         }
-//        user = new IOClass().setUserProfile(user);
-//        controller.initData(user);
         stage.setTitle("Hello World");
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();
@@ -214,7 +212,14 @@ public class LoginPage implements ValidChecker {
         TrainerMain controller = loader.getController();
         //instantiating a user
         Trainer trainer = new Trainer(id,pw);
-        controller.initData(trainer);
+
+        try {
+            Trainer trainer1 = new IOClass().setCoachProfile(trainer);
+            controller.initData(trainer1);
+        } catch (Exception e) {
+            System.out.println("Login Exception Caught");
+            controller.initData(trainer);
+        }
 
         stage.setTitle("Hello World");
         stage.setScene(new Scene(root, 1000, 700));

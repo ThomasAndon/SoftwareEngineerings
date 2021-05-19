@@ -1,6 +1,6 @@
 package Controller;
 
-import NetBeans.Session;
+import Entity.Session;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class MySchedule<T> {
-    protected abstract ObservableList<Session> mySchedule(T o) throws Exception;
+    public abstract ObservableList<Session> mySchedule(T o) throws Exception;
     protected List<Session> readCSV(String userID) throws Exception {
         ObservableList<Session> slist = FXCollections.observableArrayList();
         List<Session> list = new ArrayList<Session>();

@@ -1,6 +1,6 @@
 package Controller;
 
-import NetBeans.Session;
+import Entity.Session;
 import javafx.collections.ObservableList;
 
 public interface ControlSchedule<T> {

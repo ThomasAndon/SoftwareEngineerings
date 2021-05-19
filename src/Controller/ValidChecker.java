@@ -150,9 +150,6 @@ public interface ValidChecker {
     }
 
 
-//    public static void main(String[] args) {
-//        System.out.println(new ValidChecker().isNameValid(""));
-//    }
 }
 
 
