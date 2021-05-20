@@ -3,6 +3,7 @@ package Boundary;
 import Controller.ParseVideoMapper;
 import Controller.WriteVideoMapping;
 import Entity.Video;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +15,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -140,11 +146,25 @@ public class VideoUploader implements Initializable {
 
     @FXML
     void onDeletedSelected(ActionEvent event) {
+        Video video = videoTable.getSelectionModel().getSelectedItem();
+        for(int i = 0; i<data.size();i++) {
+            if (data.get(i).getTitle().equals(video.getTitle())) {
+                data.remove(i);
+            }
+        }
+
+        try {
+            new WriteVideoMapping().writeVideoMapping(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
     @FXML
     void onOpenClicked(ActionEvent event) {
+
+
 
         Video video = videoTable.getSelectionModel().getSelectedItem();
         String url = video.getPath();
@@ -186,14 +206,20 @@ public class VideoUploader implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         typeChoice.getItems().addAll("type1", "type2", "type3");
+
         try {
             data = new ParseVideoMapper().parseVideoMapper();
         } catch (Exception e) {
-            e.printStackTrace();
+/*            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setContentText("Error occurs when parsing the video mapper file.");
-            alert.show();
+            alert.show();*/
+            try {
+                new WriteVideoMapping().writeVideoMapping(data);
+            } catch (Exception ee) {
+                System.out.println("error when writing video mapper");
+            }
         }
         videoTable.setItems(data);
         titleCol.setCellValueFactory(new PropertyValueFactory<Video,String>("title"));
