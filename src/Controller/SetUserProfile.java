@@ -21,6 +21,7 @@ public class SetUserProfile implements profilePath{
         user.setWeight(Double.parseDouble(info[3]));
         user.setLevel(Integer.parseInt(info[4]));
         user.setName(info[5]);
+        user.setTrainerID(info[6]);
 
 
         return user;

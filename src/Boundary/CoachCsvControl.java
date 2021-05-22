@@ -31,6 +31,39 @@ public class CoachCsvControl {
         readCSV();
     }
 
+    public ObservableList<Trainer> returnCoachList() {
+
+        ObservableList<Trainer> slist= FXCollections.observableArrayList();
+        List<Trainer> list = new ArrayList<Trainer>();
+        //第一步：先获取csv文件的路径，通过BufferedReader类去读该路径中的文件
+        File csv = new File("src//Data//Account//Trainer.csv");//todo this csv file is only for test
+        try{
+            //第二步：从字符输入流读取文本，缓冲各个字符，从而实现字符、数组和行（文本的行数通过回车符来进行判定）的高效读取。
+            BufferedReader textFile = new BufferedReader(new FileReader(csv));
+            String lineDta = "";
+            textFile.readLine();
+            int i=0;
+            //第三步：将文档的下一行数据赋值给lineData，并判断是否为空，若不为空则输出
+            while ((lineDta = textFile.readLine()) != null){
+                Trainer s = new Trainer();
+                s.setName(lineDta.split(",")[0]);
+                s.setTrainerID(lineDta.split(",")[1]);
+                s.setTrainerPw((lineDta.split(",")[2]));
+                s.setGender(lineDta.split(",")[3]);
+                list.add(s);
+            }
+            slist.addAll(list);
+            textFile.close();
+        }catch (FileNotFoundException e){
+            System.out.println("没有找到指定文件");
+        }catch (IOException e){
+            System.out.println("文件读写出错");
+        }
+
+        return slist;
+
+    }
+
     private void readCSV() {
         ObservableList<Trainer> slist= FXCollections.observableArrayList();
         List<Trainer> list = new ArrayList<Trainer>();
@@ -74,6 +107,8 @@ public class CoachCsvControl {
         table.getColumns().add(table_id);
         table.getColumns().add(table_pw);
         table.getColumns().add(table_gender);
+
+
 
     }
 

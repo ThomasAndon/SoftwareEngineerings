@@ -29,7 +29,7 @@ public class User {
     //The type of this account, 0 is customer, 1 is coach, 2 is gym manager.
     private int type = 0;
 
-    private String trainerID;
+    private String trainerID="none";
 
 
     public User() {

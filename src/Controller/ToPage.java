@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ToPage implements GoPage {
+public class ToPage /*implements GoPage*/ {
 
 
     public void toUserMainPage(Text mainPage, User user) throws IOException {

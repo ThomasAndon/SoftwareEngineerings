@@ -2,7 +2,9 @@ package Boundary;
 
 import Controller.ValidChecker;
 import Controller.WriteUserProfile;
+import Entity.Trainer;
 import Entity.User;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,11 +19,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.ResourceBundle;
 
 public class EditProfileInfo implements Initializable, ValidChecker {
 
     User currentUser;
+
+    String selectedTrainerID;
 
     @FXML
     public Text mainPage;
@@ -46,7 +51,13 @@ public class EditProfileInfo implements Initializable, ValidChecker {
     @FXML
     private Label VIPLevelHolder;
 
-    private User user;
+
+    @FXML
+    private ChoiceBox<String> CoachChoiceBox;
+
+    @FXML
+    private Button selectCoachBtn;
+
 
     /**
      * This is the method called after login, and the page needs to be filled with the user's data. Set
@@ -70,7 +81,22 @@ public class EditProfileInfo implements Initializable, ValidChecker {
         }
 
         VIPLevelHolder.setText(String.valueOf(user.getLevel()));
-        this.user = user;
+
+
+        // 下面部分是初始化教练选择
+
+        CoachCsvControl ccc = new CoachCsvControl();
+        ObservableList<Trainer> coachList = ccc.returnCoachList();
+        for (int i = 0;i < coachList.size();i++) {
+            CoachChoiceBox.getItems().add(coachList.get(i).getName()+'-'+coachList.get(i).getTrainerID());
+            if(user.getTrainerID().equals(coachList.get(i).getTrainerID())) {
+                CoachChoiceBox.getSelectionModel().select(i);
+            }
+        }
+
+        if (currentUser.getLevel()==0) {
+            CoachChoiceBox.setDisable(true);
+        }
 
     }
 
@@ -132,6 +158,22 @@ public class EditProfileInfo implements Initializable, ValidChecker {
         currentUser.setHeight(Double.parseDouble(heightInput.getText()));
         currentUser.setGender(gender);
         currentUser.setName(inputName);
+
+
+        if (currentUser.getLevel()!=0) {
+            try {
+                String selectedTrainerID = (String) CoachChoiceBox.getSelectionModel().getSelectedItem().split("-")[1];
+                currentUser.setTrainerID(selectedTrainerID);
+            } catch (Exception e) {
+                System.out.println("Trainer not selected");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Error");
+                alert.setContentText("Coach not selected.");
+                alert.show();
+                return;
+            }
+        }
+
         try {
             new WriteUserProfile().writeUserProfile(currentUser);
         } catch (IOException e) {
@@ -174,7 +216,30 @@ public class EditProfileInfo implements Initializable, ValidChecker {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        CoachChoiceBox.setDisable(false);
     }
+
+
+    @FXML
+    void onSelectCoachBtnClicked(ActionEvent event) {
+        try {
+            String selectedTrainerID = (String) CoachChoiceBox.getSelectionModel().getSelectedItem().split("-")[1];
+            this.selectedTrainerID = selectedTrainerID;
+            onSaveBtnClicked(event);
+        } catch (Exception e) {
+            System.out.println("Trainer not selected");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Error");
+            alert.setContentText("Coach not selected.");
+            alert.show();
+            return;
+
+        }
+
+    }
+
+
 
 
     public void toMainPage(MouseEvent mouseEvent) throws IOException {
@@ -185,7 +250,7 @@ public class EditProfileInfo implements Initializable, ValidChecker {
         Parent root = loader.load();
         UserMain controller = loader.getController();
         //instantiating a user
-        controller.initData(user);
+        controller.initData(currentUser);
         // stage.setTitle("Hello World");
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();
