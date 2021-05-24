@@ -6,8 +6,8 @@ import java.io.*;
 public interface ProfileWriter {
      String profileInfoFolderPath = "src/Data/ProfileInfo/";
 
-    default boolean FileWriter(String s,String id) throws IOException {
-        File f = new File(profileInfoFolderPath+ id +".txt");
+    default boolean FileWriter(String s,String type, String id) throws IOException {
+        File f = new File(profileInfoFolderPath+ type + "/"+ id +".txt");
 
         if (!(f.isFile() && f.exists())) {
             System.out.println("Writing - user profile doesn't exist, new one created-"+id);

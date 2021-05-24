@@ -1,7 +1,7 @@
 package Boundary;
 
+import Controller.CsvReader;
 import Entity.Trainer;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,10 +15,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
-public class CoachCsvControl {
+public class CoachCsvControl implements CsvReader {
     @FXML
     private TableView<Trainer> table;
     @FXML
@@ -27,70 +25,22 @@ public class CoachCsvControl {
     @FXML
     private Text addCoach;
 
+
+
     public void init(){
-        readCSV();
+        addToTable();
     }
 
     public ObservableList<Trainer> returnCoachList() {
+        String str = "src//Data//Account//Trainer.csv";
 
-        ObservableList<Trainer> slist= FXCollections.observableArrayList();
-        List<Trainer> list = new ArrayList<Trainer>();
-        //第一步：先获取csv文件的路径，通过BufferedReader类去读该路径中的文件
-        File csv = new File("src//Data//Account//Trainer.csv");//todo this csv file is only for test
-        try{
-            //第二步：从字符输入流读取文本，缓冲各个字符，从而实现字符、数组和行（文本的行数通过回车符来进行判定）的高效读取。
-            BufferedReader textFile = new BufferedReader(new FileReader(csv));
-            String lineDta = "";
-            textFile.readLine();
-            int i=0;
-            //第三步：将文档的下一行数据赋值给lineData，并判断是否为空，若不为空则输出
-            while ((lineDta = textFile.readLine()) != null){
-                Trainer s = new Trainer();
-                s.setName(lineDta.split(",")[0]);
-                s.setTrainerID(lineDta.split(",")[1]);
-                s.setTrainerPw((lineDta.split(",")[2]));
-                s.setGender(lineDta.split(",")[3]);
-                list.add(s);
-            }
-            slist.addAll(list);
-            textFile.close();
-        }catch (FileNotFoundException e){
-            System.out.println("没有找到指定文件");
-        }catch (IOException e){
-            System.out.println("文件读写出错");
-        }
-
-        return slist;
+        return getCoachList(str);
 
     }
 
-    private void readCSV() {
-        ObservableList<Trainer> slist= FXCollections.observableArrayList();
-        List<Trainer> list = new ArrayList<Trainer>();
-        //第一步：先获取csv文件的路径，通过BufferedReader类去读该路径中的文件
-        File csv = new File("src//Data//Account//Trainer.csv");//todo this csv file is only for test
-        try{
-            //第二步：从字符输入流读取文本，缓冲各个字符，从而实现字符、数组和行（文本的行数通过回车符来进行判定）的高效读取。
-            BufferedReader textFile = new BufferedReader(new FileReader(csv));
-            String lineDta = "";
-            textFile.readLine();
-            int i=0;
-            //第三步：将文档的下一行数据赋值给lineData，并判断是否为空，若不为空则输出
-            while ((lineDta = textFile.readLine()) != null){
-                Trainer s = new Trainer();
-                s.setName(lineDta.split(",")[0]);
-                s.setTrainerID(lineDta.split(",")[1]);
-                s.setTrainerPw((lineDta.split(",")[2]));
-                s.setGender(lineDta.split(",")[3]);
-                list.add(s);
-            }
-            slist.addAll(list);
-            textFile.close();
-        }catch (FileNotFoundException e){
-            System.out.println("没有找到指定文件");
-        }catch (IOException e){
-            System.out.println("文件读写出错");
-        }
+    private void addToTable() {
+        ObservableList<Trainer> slist= returnCoachList();
+
         table.setItems(slist);//将集合的值 存储到tableView里
         TableColumn<Trainer, String> table_name= new TableColumn<Trainer, String>("Name");//创建TableColumn  列名为序号
         TableColumn<Trainer, String> table_id= new TableColumn<Trainer, String>("ID");

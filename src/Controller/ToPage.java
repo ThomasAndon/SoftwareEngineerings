@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ToPage /*implements GoPage*/ {
+public class ToPage  {
 
 
     public void toUserMainPage(Text mainPage, User user) throws IOException {
@@ -121,7 +121,7 @@ public class ToPage /*implements GoPage*/ {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/CoachProfileUI.fxml"));
         Parent root = loader.load();
-        CoachProfile controller = loader.load();
+        CoachProfile controller = loader.getController();
         controller.initData(trainer);
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();

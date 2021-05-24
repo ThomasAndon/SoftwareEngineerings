@@ -100,12 +100,6 @@ public class EditProfileInfo implements Initializable, ValidChecker {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-    }
-
     @FXML
     /** This method is called whenever the save button of the profile Info panel is clicked.
      * @author Thomas Andon
@@ -255,5 +249,10 @@ public class EditProfileInfo implements Initializable, ValidChecker {
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();
         //todo 这个函数要和接口集成一下
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }
