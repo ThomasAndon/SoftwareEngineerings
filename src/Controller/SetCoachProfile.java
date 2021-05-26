@@ -4,10 +4,10 @@ import Entity.Trainer;
 
 import java.io.IOException;
 
-public class SetCoachProfile implements profilePath{
+public class SetCoachProfile{
 
     public Trainer setCoachProfile(Trainer trainer)throws IOException {
-        String[] info=readFile("coachProfile/", trainer.getTrainerID());
+        String[] info=new profilePath().readFile("coachProfile/", trainer.getTrainerID());
 
         trainer.setGender(info[1]);
         trainer.setHeight(Double.parseDouble(info[2]));

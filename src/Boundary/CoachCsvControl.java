@@ -1,7 +1,9 @@
 package Boundary;
 
 import Controller.CsvReader;
+import Controller.ToPage;
 import Entity.Trainer;
+import com.sun.javafx.scene.traversal.TopMostTraversalEngine;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,25 +18,23 @@ import javafx.stage.Stage;
 
 import java.io.*;
 
-public class CoachCsvControl implements CsvReader {
+public class CoachCsvControl {
     @FXML
     private TableView<Trainer> table;
     @FXML
     private Text adminMain;
-
     @FXML
     private Text addCoach;
 
 
-
+    CsvReader cr = new CsvReader();
     public void init(){
         addToTable();
     }
 
     public ObservableList<Trainer> returnCoachList() {
         String str = "src//Data//Account//Trainer.csv";
-
-        return getCoachList(str);
+        return cr.getCoachList(str);
 
     }
 
@@ -65,26 +65,10 @@ public class CoachCsvControl implements CsvReader {
 
 
     public void toMainPage(MouseEvent mouseEvent) throws IOException {
-        Stage stage = (Stage) adminMain.getScene().getWindow();
-        stage.close();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/AdminMain.fxml"));
-        Parent root = loader.load();
-        stage.setScene(new Scene(root, 1000, 700));
-        stage.show();
+        new ToPage().toMainPage(adminMain,0);
     }
 
-
     public void toAddCoach(MouseEvent mouseEvent) throws IOException {
-
-        Stage stage = (Stage) addCoach.getScene().getWindow();
-        stage.close();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/AddCoachUI.fxml"));
-        Parent root = loader.load();
-        AddCoach controller = loader.getController();
-        controller.init();
-        stage.setScene(new Scene(root, 1000, 700));
-        stage.show();
+        new ToPage().toAddCoach(addCoach);
     }
 }

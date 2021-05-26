@@ -6,12 +6,19 @@ import javafx.collections.ObservableList;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public abstract class MySchedule<T> {
+public abstract class MySchedule<T>{
 
     public abstract ObservableList<Session> mySchedule(T o) throws Exception;
 
+    /**
+     * @description read the schedule information of a particular user.
+     * @param userID
+     * @return
+     * @throws Exception
+     */
     protected List<Session> readCSV(String userID) throws Exception {
         ObservableList<Session> slist = FXCollections.observableArrayList();
         List<Session> list = new ArrayList<Session>();
@@ -30,7 +37,6 @@ public abstract class MySchedule<T> {
                 s.setNote(lineDta.split(",")[5]);
                 list.add(s);
             }
-
             textFile.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
@@ -39,4 +45,5 @@ public abstract class MySchedule<T> {
         }
         return list;
     }
+
 }

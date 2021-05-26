@@ -124,8 +124,6 @@ public class UserWatchVideo implements Initializable {
         }
 
 
-
-
         Video temp = new Video(titleInput.getText(),temporaryFilePath,typeChoice.getValue());
         data.add(temp);
         try {
@@ -134,9 +132,7 @@ public class UserWatchVideo implements Initializable {
             e.printStackTrace();
         }
 
-
         //写入文件
-
         //收尾工作，临时变量置空，清空输入框内容
         temporaryFilePath = null;
         titleInput.clear();
@@ -158,18 +154,14 @@ public class UserWatchVideo implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML
     void onOpenClicked(ActionEvent event) {
 
-
-
         Video video = videoTable.getSelectionModel().getSelectedItem();
         String url = video.getPath();
         String osName = System.getProperty("os.name", "");// 获取操作系统的名字
-
         try {
             if (osName.startsWith("Mac OS")) {
                 Runtime.getRuntime().exec("open \"" + url + "\"");

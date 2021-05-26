@@ -1,6 +1,7 @@
 package Boundary;
 
 import Controller.ParseVideoMapper;
+import Controller.VideoUploaderControl;
 import Controller.WriteVideoMapping;
 import Entity.Video;
 import javafx.collections.FXCollections;
@@ -25,33 +26,22 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class VideoUploader implements Initializable {
-
-
     @FXML
     private TableView<Video> videoTable;
-
     @FXML
     private TextField titleInput;
-
     @FXML
     private ChoiceBox<String> typeChoice;
-
-
     @FXML
     private TableColumn<Video, String> titleCol;
-
     @FXML
     private TableColumn<Video, String> typeCol;
-
     @FXML
     private Button pathBtn;
 
-
     private String temporaryFilePath;
-    private ObservableList<Video> data; /*= FXCollections.observableArrayList(
-        new Video("title1", "path1","type1"),
-        new Video("title2", "path2","type2")
-    );*/
+    private ObservableList<Video> data;
+    Video video = videoTable.getSelectionModel().getSelectedItem();
 
     @FXML
     void onChoosePathClicked(ActionEvent event) {
@@ -86,34 +76,20 @@ public class VideoUploader implements Initializable {
                 return;
             }
         }
-
-
         // if the title is empty, adding terminated.
         if (title.equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setContentText("Please specify the Title");
             alert.show();
-
         }
-
         // if no file path is indicated, terminated.
         if (temporaryFilePath == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setContentText("Please specify the file path");
             alert.show();
-
         }
-
-/*        if (title.contains("#")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setContentText("Title should not contain char '#'");
-            alert.show();
-            return;
-        }*/
-
         // if no type specified, terminated.
         if (typeChoice.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -122,10 +98,6 @@ public class VideoUploader implements Initializable {
             alert.show();
             return;
         }
-
-
-
-
         Video temp = new Video(titleInput.getText(),temporaryFilePath,typeChoice.getValue());
         data.add(temp);
         try {
@@ -134,10 +106,6 @@ public class VideoUploader implements Initializable {
             e.printStackTrace();
         }
 
-
-        //写入文件
-
-        //收尾工作，临时变量置空，清空输入框内容
         temporaryFilePath = null;
         titleInput.clear();
         pathBtn.setText("Path...");
@@ -146,61 +114,12 @@ public class VideoUploader implements Initializable {
 
     @FXML
     void onDeletedSelected(ActionEvent event) {
-        Video video = videoTable.getSelectionModel().getSelectedItem();
-        for(int i = 0; i<data.size();i++) {
-            if (data.get(i).getTitle().equals(video.getTitle())) {
-                data.remove(i);
-            }
-        }
-
-        try {
-            new WriteVideoMapping().writeVideoMapping(data);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        new VideoUploaderControl().delete(video,data);
     }
 
     @FXML
     void onOpenClicked(ActionEvent event) {
-
-
-
-        Video video = videoTable.getSelectionModel().getSelectedItem();
-        String url = video.getPath();
-        String osName = System.getProperty("os.name", "");// 获取操作系统的名字
-
-        try {
-            if (osName.startsWith("Mac OS")) {
-                Runtime.getRuntime().exec("open \"" + url + "\"");
-            } else {
-                Runtime.getRuntime().exec("cmd /c start " + url);
-            }
-
-        } catch (Exception e) {
-            System.out.println("Error occurs opening.");
-        }
-
-
-
-
-/*        String osName = System.getProperty("os.name", "");// 获取操作系统的名字
-        try {
-            if (osName.startsWith("Windows")) {// windows
-                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
-            } else if (osName.startsWith("Mac OS")) {// Mac
-                Class fileMgr = Class.forName("com.apple.eio.FileManager");
-                Method openURL = fileMgr.getDeclaredMethod("openURL", String.class);
-                openURL.invoke(null, url);
-            }
-            System.out.println("#########"+url);
-
-        } catch(Exception e) {
-            System.out.println(url);
-        }*/
-
-
-
+        new VideoUploaderControl().open(video);
     }
 
     @Override

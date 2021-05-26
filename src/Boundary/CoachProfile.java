@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class CoachProfile implements ValidChecker {
+public class CoachProfile {
     Trainer currentTrainer;
     @FXML
     public Text mainPage;
@@ -21,18 +21,14 @@ public class CoachProfile implements ValidChecker {
 
     @FXML
     private TextField nameInput;
-
     @FXML
     private TextField heightInput;
-
     @FXML
     private TextField weightInput;
     @FXML
     private TextField Phone;
-
     @FXML
     private ChoiceBox<String> genderSelection;
-
     @FXML
     private Button saveBtn;
 
@@ -46,7 +42,6 @@ public class CoachProfile implements ValidChecker {
         weightInput.setText(String.valueOf(trainer.getWeight()));
         Phone.setText(String.valueOf(trainer.getTel()));
 
-
         genderSelection.getItems().addAll("Male", "Female");
         if (trainer.getGender().equals("Male")) {
             genderSelection.getSelectionModel().select(0);
@@ -59,14 +54,11 @@ public class CoachProfile implements ValidChecker {
         this.trainer = trainer;
 
     }
-    public void toMainPage(MouseEvent mouseEvent) throws IOException {
-        ToPage toPage = new ToPage();
-        String s= "TrainerMainUI";
-        toPage.toMainPage(mainPage,s, trainer);
+    public void toMainPage(MouseEvent mouseEvent) throws Exception {
+        new ToPage().toMainPage(mainPage, trainer);
     }
 
     public void onSaveBtnClicked(ActionEvent actionEvent) {
-
 
         //Following part checks the height and weight.
         try {
@@ -88,7 +80,7 @@ public class CoachProfile implements ValidChecker {
 
         String inputName = nameInput.getText();
 
-        if (!isNameValid(inputName)) {
+        if (!new ValidChecker().isNameValid(inputName)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Error");
             alert.setContentText("Username must be 4-15 chars");

@@ -1,5 +1,6 @@
 package Boundary;
 
+import Controller.ToPage;
 import Controller.ValidChecker;
 import Controller.WriteUserProfile;
 import Entity.Trainer;
@@ -22,7 +23,7 @@ import java.net.URL;
 import java.nio.file.FileAlreadyExistsException;
 import java.util.ResourceBundle;
 
-public class EditProfileInfo implements Initializable, ValidChecker {
+public class EditProfileInfo implements Initializable {
 
     User currentUser;
 
@@ -82,7 +83,6 @@ public class EditProfileInfo implements Initializable, ValidChecker {
 
         VIPLevelHolder.setText(String.valueOf(user.getLevel()));
 
-
         // 下面部分是初始化教练选择
 
         CoachCsvControl ccc = new CoachCsvControl();
@@ -126,7 +126,7 @@ public class EditProfileInfo implements Initializable, ValidChecker {
         }
 
         //Following part prompts the username.
-        if (!isNameValid(inputName)) {
+        if (!new ValidChecker().isNameValid(inputName)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Error");
             alert.setContentText("Username must be 4-15 chars");
@@ -237,18 +237,7 @@ public class EditProfileInfo implements Initializable, ValidChecker {
 
 
     public void toMainPage(MouseEvent mouseEvent) throws IOException {
-        Stage stage = (Stage) mainPage.getScene().getWindow();
-        stage.close();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/UserMainUI.fxml"));
-        Parent root = loader.load();
-        UserMain controller = loader.getController();
-        //instantiating a user
-        controller.initData(currentUser);
-        // stage.setTitle("Hello World");
-        stage.setScene(new Scene(root, 1000, 700));
-        stage.show();
-        //todo 这个函数要和接口集成一下
+        new ToPage().toMainPage(mainPage,currentUser);
     }
 
     @Override

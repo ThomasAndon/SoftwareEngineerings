@@ -13,11 +13,12 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class UserMain implements OpenAd {
+public class UserMain {
     @FXML
     public Button WorkoutBtn;
     @FXML
     public Button ProfileBtn;
+    public Text viewSchedule;
 
     @FXML
     private Text mainPage;
@@ -44,7 +45,7 @@ public class UserMain implements OpenAd {
     }
 
     private void initAd() throws IOException {
-        Ad.setText(readAd());
+        Ad.setText(new OpenAd().readAd());
 
     }
 
@@ -76,9 +77,14 @@ public class UserMain implements OpenAd {
 
     }
 
+    public void toSchedule2(MouseEvent actionEvent) throws Exception {
+        ToPage tp = new ToPage();
+        tp.toSchedule(viewSchedule, user);
+    }
+
     public void toMainPage(MouseEvent actionEvent) throws IOException {
         ToPage tp = new ToPage();
-        tp.toUserMainPage(mainPage, user);
+        tp.toMainPage(mainPage, user);
 
     }
 

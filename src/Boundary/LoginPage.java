@@ -15,38 +15,26 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class LoginPage implements ValidChecker {
+public class LoginPage {
     @FXML
     private TextField idInput;
-
     @FXML
     private PasswordField pwInput;
-
-
     @FXML
     private TextField regUserName;
-
     @FXML
     private PasswordField regPw;
-
     @FXML
     private PasswordField regPwConfirm;
-
     @FXML
     private Button loginBtn;
-
     @FXML
     private Button regBtn;
-
-
     @FXML
     private Label CALogin;
-
-
     @FXML
     private Label adminLogin;
-
-
+    ValidChecker check = new ValidChecker();
     /**
      * @Description: Login and register check, check if the input string is correct.
      * @Param:
@@ -57,7 +45,6 @@ public class LoginPage implements ValidChecker {
     @FXML
     void onLoginBtnClicked(ActionEvent event) throws Exception {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-
         alert.setTitle("Error");
         alert.setHeaderText("Login failed");
 
@@ -65,25 +52,23 @@ public class LoginPage implements ValidChecker {
         //ValidChecker Checker = new ValidChecker();
         String id = idInput.getText();
         String pw = pwInput.getText();
-        if (isInvalidID(id)) {
+        if (check.isInvalidID(id)) {
             System.out.println("error");
             alert.setContentText("Failed reason : ID is invalid");
             alert.show();
             return;
         } else {
-
-            if (isInvalidPw(pw)) {
+            if (check.isInvalidPw(pw)) {
                 alert.setContentText("Failed reason : Password is invalid");
                 alert.show();
                 return;
             }
-
         }
         //todo 此处是格式通过验证
         System.out.println("OK");
 
         // If ID not exists or not matching pw, error occurs.
-        if(!isValidAccount(id,pw)){
+        if(!check.isValidAccount(id,pw)){
             alert.setContentText("Failed reason : Unidentified user");
             alert.show();
             return;
@@ -131,25 +116,25 @@ public class LoginPage implements ValidChecker {
         String id = regUserName.getText();
         String pw1 = regPw.getText();
         String pw2 = regPwConfirm.getText();
-        if (isInvalidID(id)) {
+        if (check.isInvalidID(id)) {
             System.out.println("error");
             alert.setContentText("Failed reason : ID is invalid");
             alert.show();
             return;
         } else {
-            if (isInvalidPw(pw1)) {
+            if (check.isInvalidPw(pw1)) {
 
                 alert.setContentText("Failed reason : Password1 is invalid");
                 alert.show();
                 return;
             } else {
-                if (isInvalidPw(pw2)) {
+                if (check.isInvalidPw(pw2)) {
 
                     alert.setContentText("Failed reason : Password2 is invalid");
                     alert.show();
                     return;
                 } else {
-                    if (!isSameString(pw1, pw2)) {
+                    if (!check.isSameString(pw1, pw2)) {
                         alert.setContentText("Failed reason : Password1 and Password2 is different");
                         alert.show();
                         return;
@@ -171,11 +156,7 @@ public class LoginPage implements ValidChecker {
         affir.setTitle("Register Succeeded");
         affir.setContentText("Done! Your ID is \"" + id+"\"");
         affir.show();
-
     }
-
-
-
 
     @FXML
     /**
@@ -186,22 +167,18 @@ public class LoginPage implements ValidChecker {
         String pw = pwInput.getText();
        // ValidChecker vc = new ValidChecker();
         MatchAccount io = new MatchAccount();
-
-        if ((isInvalidID(id)) || isInvalidPw(pw) || !isValidAccount(io.coachAccountFilePath,id,pw)) {
+        if ((check.isInvalidID(id)) || check.isInvalidPw(pw) || !check.isValidAccount(io.coachAccountFilePath,id,pw)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Login error");
             alert.setHeaderText("Coach Login Error");
             alert.setContentText("Wrong input. Try again.");
             alert.show();
             return;
-
         }
-
         // todo 此处是登录成功
         System.out.println("Coach login OK");
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         stage.close();
-
         //Below is instantiating the user and passing it to the next window.
         FXMLLoader loader = new FXMLLoader();
         //   loader.setLocation(getClass().getResource("../view/ProfileInfo.fxml"));
@@ -226,24 +203,20 @@ public class LoginPage implements ValidChecker {
     }
 
 
-
     @FXML
     void onAdminLoginClicked(MouseEvent event) throws Exception {
         String id = idInput.getText();
         String pw = pwInput.getText();
-
       //  ValidChecker vc = new ValidChecker();
         MatchAccount io = new MatchAccount();
 
-
-        if ((isInvalidID(id)) || isInvalidPw(pw) || !isValidAccount(io.adminAccountFilePath,id,pw)) {
+        if ((check.isInvalidID(id)) || check.isInvalidPw(pw) || !check.isValidAccount(io.adminAccountFilePath,id,pw)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Login error");
             alert.setHeaderText("Admin Login Error");
             alert.setContentText("Wrong input. Try again.");
             alert.show();
             return;
-
         }
 
         // todo 此处是登录成功
@@ -254,7 +227,7 @@ public class LoginPage implements ValidChecker {
 
         //Below is instantiating the user and passing it to the next window.
         FXMLLoader loader = new FXMLLoader();;
-        loader.setLocation(getClass().getResource("../view/AdminMain.fxml"));
+        loader.setLocation(getClass().getResource("../view/AdminMainUI.fxml"));
         Parent root = loader.load();
         //  ProfileInfo controller = loader.getController();
         AdminMain controller = loader.getController();

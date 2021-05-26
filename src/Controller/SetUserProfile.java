@@ -5,7 +5,7 @@ import Entity.User;
 
 import java.io.*;
 
-public class SetUserProfile implements profilePath{
+public class SetUserProfile{
 
 
     /**
@@ -15,7 +15,7 @@ public class SetUserProfile implements profilePath{
      * @author Thomas Andon
      */
     public User setUserProfile(User user) throws IOException {
-        String[] info=readFile("userProfile/", user.getId());
+        String[] info=new profilePath().readFile("userProfile/", user.getId());
         user.setGender(info[1]);
         user.setHeight(Double.parseDouble(info[2]));
         user.setWeight(Double.parseDouble(info[3]));

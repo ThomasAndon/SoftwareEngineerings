@@ -5,10 +5,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public interface OpenAd {
+public class OpenAd {
      String AdPath="src/Data/Advertisement/Ad.txt";
 
-    default String readAd() throws IOException {
+    public String readAd() throws IOException {
 
         File ad=new File(AdPath);
         BufferedReader textFile = new BufferedReader(new FileReader(ad));

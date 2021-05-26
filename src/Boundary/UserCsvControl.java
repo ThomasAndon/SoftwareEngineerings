@@ -20,18 +20,17 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserCsvControl implements CsvReader {
+public class UserCsvControl{
     @FXML
     private TableView<User> table;
     @FXML
     private Text adminMain;
 
     public void init(){
-
         readCSV();
     }
     public void readCSV()  {
-        ObservableList<User> slist= getUserList();
+        ObservableList<User> slist= new CsvReader().getUserList();
 
         table.setItems(slist);//将集合的值 存储到tableView里
         TableColumn<User, String> table_name= new TableColumn<User, String>("Name");//创建TableColumn  列名为序号
@@ -56,7 +55,7 @@ public class UserCsvControl implements CsvReader {
         Stage stage = (Stage) adminMain.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/AdminMain.fxml"));
+        loader.setLocation(getClass().getResource("../view/AdminMainUI.fxml"));
         Parent root = loader.load();
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();

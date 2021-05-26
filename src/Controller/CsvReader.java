@@ -1,21 +1,19 @@
 package Controller;
 
-import Boundary.ScheduleControl;
+import Boundary.TrainerControlSchedule;
 import Entity.Session;
 import Entity.Trainer;
 import Entity.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface CsvReader {
+public class CsvReader {
 
-    default ObservableList<Trainer> getCoachList(String path) {
+    public ObservableList<Trainer> getCoachList(String path) {
         ObservableList<Trainer> slist= FXCollections.observableArrayList();
         List<Trainer> list = new ArrayList<Trainer>();
         //第一步：先获取csv文件的路径，通过BufferedReader类去读该路径中的文件
@@ -38,16 +36,16 @@ public interface CsvReader {
             slist.addAll(list);
             textFile.close();
         }catch (FileNotFoundException e){
-            System.out.println("没有找到指定文件");
+            System.out.println("Fail to find the file.");
         }catch (IOException e){
-            System.out.println("文件读写出错");
+            System.out.println("IO Exception.");
         }
 
         return slist;
 
     }
 
-    default ObservableList<User> getUserList() {
+    public ObservableList<User> getUserList() {
         ObservableList<User> slist= FXCollections.observableArrayList();
         List<User> list = new ArrayList<User>();
         File csv = new File("src//Data//Account//User.csv");//only for test
@@ -80,7 +78,7 @@ public interface CsvReader {
 
     }
 
-    default ObservableList<Session> getSessionList(){
+    public ObservableList<Session> getSessionList(){
         ObservableList<Session> slist = FXCollections.observableArrayList();
         List<Session> list = new ArrayList<Session>();
         //第一步：先获取csv文件的路径，通过BufferedReader类去读该路径中的文件
@@ -100,8 +98,8 @@ public interface CsvReader {
                 list.add(s);
 
             }
-            ScheduleControl comparator = new ScheduleControl();
-            list.sort( comparator );
+            Sort comparator = new Sort();
+            list.sort(comparator);
             slist.addAll(list);
             textFile.close();
         }catch (FileNotFoundException e){

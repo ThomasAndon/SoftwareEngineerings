@@ -1,9 +1,6 @@
 package Boundary;
 
-import Controller.ControlSchedule;
-import Controller.MySchedule;
-import Controller.ToPage;
-import Controller.UserSchedule;
+import Controller.*;
 import Entity.Session;
 import Entity.User;
 import javafx.collections.ObservableList;
@@ -29,10 +26,15 @@ public class UserControlSchedule implements ControlSchedule<User> {
     private Text mainPage;
     private User user;
     ObservableList<Session> list;
-
+    CancelScheduleControl usc = new CancelScheduleControl();
     public void getUser(User user) throws Exception {
         this.user = user;
     }
+
+    /**
+     * @description show the user's schedule on the interface, add the "cancel" function.
+     * @param slist
+     */
     @Override
     public void printSchedule(ObservableList<Session> slist) {
         timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -51,12 +53,12 @@ public class UserControlSchedule implements ControlSchedule<User> {
                     public void updateItem(String item, boolean empty) {
                         super.updateItem(item, empty);
                         if (empty) {
-                            //System.out.println(item.split(",")[1]);
                             setGraphic(null);
                             setText(null);
                         } else {
                             String[] l = getTableView().getItems().get(getIndex()).getTime().split(" ");
                             for(int j=0;j<l.length; ){
+                                //check: only the session that have not yet been carried out can be cancelled
                                 LocalDate date = LocalDate.parse(l[j], DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                                 if (date.isBefore(LocalDate.now())){
                                     break;
@@ -66,7 +68,7 @@ public class UserControlSchedule implements ControlSchedule<User> {
                                     String i = s.getTime();
                                     slist.remove(s);
                                     try {
-                                        if(cancelSession(csv, i, user.getId())){
+                                        if(usc.cancelSession(csv, i, user.getId())){
                                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                             alert.setTitle("Cancel successful!");
                                             alert.setHeaderText("Session on "+i+" was canceled Successful!");
@@ -80,7 +82,6 @@ public class UserControlSchedule implements ControlSchedule<User> {
                                 setText(null);
                                 j = j + 2;
                             }
-
                         }
                     }
                 };
@@ -101,59 +102,8 @@ public class UserControlSchedule implements ControlSchedule<User> {
         setSchedule(us);
     }
 
-    public boolean cancelSession(File file, String i, String userID)throws Exception {
-        File temp = null;
-        BufferedReader br = null;
-        PrintWriter pw = null;
-        File temp2 = null;
-        BufferedReader br2 = null;
-        PrintWriter pw2 = null;
-        File file2 = new File("src//Data//Schedule.csv");
-        try {
-            temp = File.createTempFile("temp", "temp");
-            pw = new PrintWriter(temp);
-            br = new BufferedReader(new FileReader(file));
-            while (br.ready()) {
-                String line = br.readLine();
-                if (line.contains(i)) {
-                    continue;
-                }
-                pw.write(line + "\n");
-            }
-            pw.flush();
-            temp2 = File.createTempFile("temp2", "temp2");
-            pw2 = new PrintWriter(temp2);
-            br2 = new BufferedReader(new FileReader(file2));
-            while (br2.ready()) {
-                String line2 = br2.readLine();
-                if (line2.contains(i) && line2.contains(userID)) {
-                    continue;
-                }
-                pw2.write(line2 + "\n");
-            }
-            pw2.flush();
-        }catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        } catch (IOException e) {
-            System.out.println("IO Exception");
-        } finally {
-            pw.close();
-            br.close();
-            pw2.close();
-            br2.close();
-            if (temp != null) {
-                file.delete();
-                temp.renameTo(file);
-            }
-            if (temp2 != null) {
-                file2.delete();
-                temp2.renameTo(file2);
-            }
-        }
-        return true;
-    }
     public void toMainPage(MouseEvent mouseEvent) throws IOException {
         ToPage tp = new ToPage();
-        tp.toUserMainPage(mainPage, user);
+        tp.toMainPage(mainPage, user);
     }
 }

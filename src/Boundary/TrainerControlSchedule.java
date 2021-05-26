@@ -16,8 +16,9 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Comparator;
 
-public class TrainerControlSchedule implements ControlSchedule<Trainer> {
+public class TrainerControlSchedule implements ControlSchedule<Trainer>{
     @FXML
     private TableColumn<Session, LocalDate> timeCol;
     @FXML
@@ -32,7 +33,10 @@ public class TrainerControlSchedule implements ControlSchedule<Trainer> {
     public void getTrainer(Trainer trainer) throws Exception {
         this.trainer = trainer;
     }
-
+    /**
+     * @description show the trainer's schedule on the interface
+     * @param slist
+     */
     @Override
     public void printSchedule(ObservableList<Session> slist) {
         timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
@@ -58,6 +62,7 @@ public class TrainerControlSchedule implements ControlSchedule<Trainer> {
 
     public void toMainPage(MouseEvent mouseEvent) throws IOException {
         ToPage tp = new ToPage();
-        tp.toTrainerMainPage(mainPage, trainer);
+        tp.toMainPage(mainPage, trainer);
     }
+
 }

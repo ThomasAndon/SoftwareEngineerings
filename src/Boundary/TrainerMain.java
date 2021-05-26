@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class TrainerMain implements OpenAd {
+public class TrainerMain {
     @FXML
     private Button SessionBtn;
     @FXML
@@ -37,10 +37,8 @@ public class TrainerMain implements OpenAd {
     }
 
     private void initAd() throws IOException {
-        Ad.setText(readAd());
-
+        Ad.setText(new OpenAd().readAd());
     }
-
 
     public void toSchedule(ActionEvent actionEvent) throws Exception {
         ToPage tp = new ToPage();

@@ -2,10 +2,10 @@ package Controller;
 
 import java.io.*;
 
-public interface profilePath {
+public class profilePath {
      String profileInfoFolderPath = "src/Data/ProfileInfo/";
 
-    default String[] readFile(String kind, String id) throws IOException {
+    public String[] readFile(String kind, String id) throws IOException {
         File f = new File(profileInfoFolderPath + kind + id + ".txt");
 
         if (!(f.isFile() && f.exists())) {
@@ -21,7 +21,7 @@ public interface profilePath {
     }
 
 
-    default String[] parseProfileString(String info) {
+    public String[] parseProfileString(String info) {
 
         String[] res = info.split("#");
         return res;

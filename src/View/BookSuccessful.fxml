@@ -14,7 +14,7 @@
             <Font name="System Bold" size="42.0" />
          </font>
       </Text>
-      <Text fx:id="viewSchedule" fill="#0018f5" layoutX="99.0" layoutY="271.0" onMouseClicked="#toSchedule" strokeType="OUTSIDE" strokeWidth="0.0" text="View my schedule" underline="true" />
+      <Text fx:id="viewSchedule" fill="#0018f5" layoutX="99.0" layoutY="271.0" onMouseClicked="#toSchedule2" strokeType="OUTSIDE" strokeWidth="0.0" text="View my schedule" underline="true" />
       <Text fx:id="mainPage" fill="#0018f5" layoutX="351.0" layoutY="271.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page" underline="true" />
    </children>
 </AnchorPane>
