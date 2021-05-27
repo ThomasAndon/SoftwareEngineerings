@@ -1,9 +1,8 @@
 package Boundary;
 
-import Controller.CsvReader;
-import Entity.Trainer;
+import Controller.InformationReader;
+import Controller.GetAllInformation;
 import Entity.User;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,37 +16,50 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
-public class UserCsvControl{
+public class UserInfoControl {
     @FXML
     private TableView<User> table;
     @FXML
     private Text adminMain;
 
-    public void init(){
+
+    private InformationReader cr = new InformationReader();
+    private GetAllInformation get = new GetAllInformation();
+
+    public void init() throws IOException {
+        get.GetInfo("userProfile","AllUserInfo.txt");
         readCSV();
     }
     public void readCSV()  {
-        ObservableList<User> slist= new CsvReader().getUserList();
+        ObservableList<User> slist= cr.getUserList();
 
         table.setItems(slist);//将集合的值 存储到tableView里
-        TableColumn<User, String> table_name= new TableColumn<User, String>("Name");//创建TableColumn  列名为序号
         TableColumn<User, String> table_id= new TableColumn<User, String>("ID");
-        TableColumn<User, String> table_pw= new TableColumn<User, String>("Password");
+        TableColumn<User, String> table_name= new TableColumn<User, String>("Name");//创建TableColumn  列名为序号
+        TableColumn<User, Double> table_height= new TableColumn<User, Double>("Height");
+        TableColumn<User, Double> table_weight= new TableColumn<User, Double>("Weight");
         TableColumn<User, String> table_gender= new TableColumn<User, String>("Gender");
+        TableColumn<User, String> table_trainer= new TableColumn<User, String>("Trainer");
+        TableColumn<User, Integer> table_level= new TableColumn<User, Integer>("Level");
         /**
          * 反射取值
          */
         table_name.setCellValueFactory(new PropertyValueFactory<User,String>("name"));//相当于getid
         table_id.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
-        table_pw.setCellValueFactory(new PropertyValueFactory<User,String>("password"));
+        table_height.setCellValueFactory(new PropertyValueFactory<User,Double>("height"));
+        table_weight.setCellValueFactory(new PropertyValueFactory<User,Double>("weight"));
         table_gender.setCellValueFactory(new PropertyValueFactory<User,String>("gender"));
+        table_level.setCellValueFactory(new PropertyValueFactory<User,Integer>("level"));
+        table_trainer.setCellValueFactory(new PropertyValueFactory<User,String>("trainerID"));
+
         table.getColumns().add(table_name);
         table.getColumns().add(table_id);
-        table.getColumns().add(table_pw);
+        table.getColumns().add(table_height);
+        table.getColumns().add(table_weight);
         table.getColumns().add(table_gender);
+        table.getColumns().add(table_level);
+        table.getColumns().add(table_trainer);
 
     }
 

@@ -30,9 +30,12 @@ public class CoachProfile {
     @FXML
     private ChoiceBox<String> genderSelection;
     @FXML
+    private TextArea CoachIntro;
+    @FXML
     private Button saveBtn;
 
     private Trainer trainer;
+
 
     public void initData(Trainer trainer) {
         currentTrainer = trainer;
@@ -41,6 +44,7 @@ public class CoachProfile {
         heightInput.setText(String.valueOf(trainer.getHeight()));
         weightInput.setText(String.valueOf(trainer.getWeight()));
         Phone.setText(String.valueOf(trainer.getTel()));
+        CoachIntro.setText(trainer.getIntro());
 
         genderSelection.getItems().addAll("Male", "Female");
         if (trainer.getGender().equals("Male")) {
@@ -101,12 +105,14 @@ public class CoachProfile {
 
         int inputPhone = Integer.parseInt(Phone.getText());
 
+        String intro = CoachIntro.getText();
 
         currentTrainer.setWeight(Double.parseDouble(weightInput.getText()));
         currentTrainer.setHeight(Double.parseDouble(heightInput.getText()));
         currentTrainer.setGender(gender);
         currentTrainer.setName(inputName);
         currentTrainer.setTel(inputPhone);
+        currentTrainer.setIntro(intro);
         try {
             new WriteCoachProfile().writeCoachProfile(currentTrainer);
         } catch (IOException e) {

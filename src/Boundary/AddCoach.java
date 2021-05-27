@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -27,6 +28,13 @@ public class AddCoach {
     @FXML
     private TextField CoachPhone;
     @FXML
+    private TextField CoachHeight;
+    @FXML
+    private TextField CoachWeight;
+    @FXML
+    private TextArea CoachIntro;
+
+    @FXML
     private Text backBt;
 
     public void SaveInfo(ActionEvent actionEvent) throws IOException {
@@ -35,8 +43,13 @@ public class AddCoach {
         String pw=CoachPw.getText();
         String gender=CoachGender.getText();
         String phone=CoachPhone.getText();
+        Double height=Double.parseDouble(CoachHeight.getText());
+        Double weight=Double.parseDouble(CoachWeight.getText());
+        String intro=CoachIntro.getText();
+
+
         AddCoachControl c = new AddCoachControl();
-        c.SaveInfo(name,id,pw,gender,phone);
+        c.SaveInfo(name,id,pw,gender,phone,height,weight,intro);
     }
 
     public void toLastPage(MouseEvent mouseEvent) throws IOException {

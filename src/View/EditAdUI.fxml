@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.EditAd">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.EditAd">
    <children>
-      <TextArea fx:id="Ad" layoutX="82.0" layoutY="84.0" prefHeight="228.0" prefWidth="394.0" />
+      <TextArea fx:id="Ad" layoutX="82.0" layoutY="143.0" prefHeight="169.0" prefWidth="394.0" />
        <Button fx:id="add" layoutX="247.0" layoutY="342.0" mnemonicParsing="false" onAction="#saveAd" prefHeight="34.0" prefWidth="65.0" text="Save" />
        <Text fx:id="adminMain" fill="#0018f5" layoutX="407.0" layoutY="363.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page" underline="true" />
        <Label layoutX="87.0" layoutY="27.0" prefHeight="54.0" prefWidth="401.0" text="Add Advertisement">
@@ -14,5 +15,7 @@
                <Font size="42.0" />
            </font>
        </Label>
+      <Label layoutX="82.0" layoutY="100.0" prefHeight="34.0" prefWidth="137.0" text="Advertisement name" />
+      <TextField fx:id="AdName" layoutX="220.0" layoutY="95.0" prefHeight="34.0" prefWidth="171.0" />
    </children>
 </AnchorPane>

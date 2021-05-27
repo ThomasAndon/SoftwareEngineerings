@@ -1,39 +1,16 @@
 package Controller;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
+import Entity.Trainer;
 
 import java.io.*;
 
 public class AddCoachControl {
 
-    @FXML
-    private TextField CoachPw;
-
-    @FXML
-    private TextField CoachName;
-
-    @FXML
-    private TextField CoachGender;
-
-    @FXML
-    private TextField CoachId;
-
-    @FXML
-    private TextField CoachPhone;
-
-    @FXML
-    private Text backBt;
-
-    public void SaveInfo(String name,String id,String pw,String gender,String phone) throws IOException {
-
+    public void SaveInfo(String name,String id,String pw,String gender,String phone,Double height, Double weight,String intro) throws IOException {
+        /**
+         * save the id and password in the coach account file
+         */
+        Trainer trainer = new Trainer();
         File f = new File("src//Data//Account//CoachAccounts.txt");
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f,true));
         BufferedWriter bw = new BufferedWriter(out);
@@ -45,15 +22,21 @@ public class AddCoachControl {
         bw.close();
         System.out.println(name);
 
-    }
 
-    public void toLastPage(MouseEvent mouseEvent) throws IOException {
-        Stage stage = (Stage) backBt.getScene().getWindow();
-        stage.close();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/CoachCsv.fxml"));
-        Parent root = loader.load();
-        stage.setScene(new Scene(root, 1000, 700));
-        stage.show();
+        /**
+         * Add the information into the coach file
+         */
+        WriteCoachProfile writeCoachProfile= new WriteCoachProfile();
+        trainer.setName(name);
+        trainer.setTrainerID(id);
+        trainer.setGender(gender);
+        trainer.setTel(Integer.parseInt(phone));
+        trainer.setHeight(height);
+        trainer.setWeight(weight);
+        trainer.setIntro(intro);
+
+        writeCoachProfile.writeCoachProfile(trainer);
+
+
     }
 }

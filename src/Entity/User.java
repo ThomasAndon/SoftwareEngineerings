@@ -1,9 +1,4 @@
 package Entity;
-
-
-
-
-
 /**
  * @Description: This is the bean class of users
  * @Author: Thomas Andon

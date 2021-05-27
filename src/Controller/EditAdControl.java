@@ -10,9 +10,10 @@ public class EditAdControl {
      *@Author:Jin TianYu
      *@Date:2021/4/26
      */
+    private String path ="src/Data/Advertisement/";
 
-    public void writeAd(String path,String content) throws IOException {
-        File ad = new File(path);
+    public void writeAd(String name,String content) throws IOException {
+        File ad = new File(path + name +".txt");
         if(!ad.exists()){
             ad.createNewFile();
         }
@@ -23,9 +24,9 @@ public class EditAdControl {
         bw.close();
     }
 
-    public void saveAd(String Add)throws IOException{
+    public void saveAd(String name, String txt)throws IOException{
         EditAdControl wa = new EditAdControl();
-        wa.writeAd("src//Data//Advertisement//Ad.txt",Add);
+        wa.writeAd(name,txt);
         //todo 实现一个AD写入一个文件当中
     }
 }

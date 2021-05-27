@@ -1,23 +1,18 @@
 package Boundary;
 
-import Controller.CsvReader;
+import Controller.InformationReader;
 import Controller.ToPage;
 import Entity.Session;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.Comparator;
 
 public class SessionCsvControl{
 
@@ -32,7 +27,7 @@ public class SessionCsvControl{
     }
 
     public void readCSV() {
-        ObservableList<Session> slist= new CsvReader().getSessionList();
+        ObservableList<Session> slist= new InformationReader().getSessionList();
         table.setItems(slist);
         TableColumn<Session, String> table_user_id= new TableColumn<Session, String>("UserId");
         TableColumn<Session, String> table_trainer_id= new TableColumn<Session, String>("TrainerId");

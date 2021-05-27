@@ -11,7 +11,7 @@ public class Trainer {
     String gender;
     int Tel;
     String experience;
-    String Intro;
+    String Intro="None";
     ArrayList<String>students;
     Double height;
     Double weight;

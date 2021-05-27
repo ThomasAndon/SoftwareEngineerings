@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,6 +23,8 @@ public class AdminMain {
     private Button edit;
     @FXML
     private Button coachInfo;
+    @FXML
+    private Text Exit;
 
     public void toUserInfo(ActionEvent actionEvent) throws IOException {
         new ToPage().toUserCSVPage(userInfo);
@@ -46,4 +50,7 @@ public class AdminMain {
         new ToPage().toUploadVideo(uploadVideo);
     }
 
+    public void toLogin(MouseEvent mouseEvent) {
+            //todo 在topage里面实现退出
+    }
 }

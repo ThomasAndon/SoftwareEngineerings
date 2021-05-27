@@ -37,7 +37,7 @@ public class TrainerMain {
     }
 
     private void initAd() throws IOException {
-        Ad.setText(new OpenAd().readAd());
+        Ad.setText(new OpenAd().selectAd());
     }
 
     public void toSchedule(ActionEvent actionEvent) throws Exception {

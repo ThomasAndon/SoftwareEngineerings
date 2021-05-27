@@ -135,7 +135,7 @@ public class ToPage  {
         Stage stage = (Stage) text.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/CoachCsv.fxml"));
+        loader.setLocation(getClass().getResource("../view/CoachInformationUI.fxml"));
         Parent root = loader.load();
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();
@@ -144,9 +144,9 @@ public class ToPage  {
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/CoachCsv.fxml"));
+        loader.setLocation(getClass().getResource("../view/CoachInformationUI.fxml"));
         Parent root = loader.load();
-        CoachCsvControl controller = loader.getController();
+        CoachInfoControl controller = loader.getController();
         //instantiating a user
         controller.init();
         stage.setScene(new Scene(root, 1000, 700));
@@ -156,9 +156,9 @@ public class ToPage  {
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/UserCsv.fxml"));
+        loader.setLocation(getClass().getResource("../view/UserInformationUI.fxml"));
         Parent root = loader.load();
-        UserCsvControl controller = loader.getController();
+        UserInfoControl controller = loader.getController();
         //instantiating a user
         controller.init();
         stage.setScene(new Scene(root, 1000, 700));
@@ -182,8 +182,6 @@ public class ToPage  {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/EditAdUI.fxml"));
         Parent root = loader.load();
-        EditAdControl controller = loader.getController();
-        //instantiating a user
         stage.setScene(new Scene(root, 1000, 700));
         stage.show();
     }

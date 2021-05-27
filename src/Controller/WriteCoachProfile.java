@@ -9,7 +9,7 @@ public class WriteCoachProfile {
 
         String str = "coachProfile";
         String info = trainer.getTrainerID() + "#" + trainer.getGender() + "#" + trainer.getHeight()
-                + "#" + trainer.getWeight() + "#" + trainer.getTel() +"#" + trainer.getName() ;
+                + "#" + trainer.getWeight() + "#" + trainer.getTel() +"#" + trainer.getName() + "#" + trainer.getIntro();
 
         new ProfileWriter().FileWriter(info, str, trainer.getTrainerID());
         return true;
