@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-1234#Female#208.0#20.0#0#Jtyaaaaaa#none#
-=======
-1234#unKnown#0.0#0.0#2#unKnown#none#
->>>>>>> 96990c8 (111)
+1234#unKnown#0.0#0.0#1#unKnown#none#

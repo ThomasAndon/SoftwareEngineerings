@@ -55,4 +55,9 @@ public class TrainerMain {
         String s= "LoginPageUI";
         tp.toMainPage(Exit, s);*/
     }
+
+    public void exit(MouseEvent mouseEvent) throws IOException {
+        ToPage tp = new ToPage();
+        tp.exit(Exit);
+    }
 }

@@ -12,7 +12,7 @@
         <Button fx:id="coachInfo" layoutX="184.0" layoutY="126.0" mnemonicParsing="false" onAction="#toCoachInfo" prefHeight="45.0" prefWidth="207.0" text="CoachInfo" />
         <Button fx:id="sessionInfo" layoutX="184.0" layoutY="184.0" mnemonicParsing="false" onAction="#toSessionInfo" prefHeight="45.0" prefWidth="207.0" text="SessionInfo" />
         <Button fx:id="edit" layoutX="184.0" layoutY="240.0" mnemonicParsing="false" onAction="#editAd" prefHeight="45.0" prefWidth="207.0" text="EditAdvertisement" />
-        <Text fill="#007bff" layoutX="468.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit" underline="true" />
+        <Text fx:id="Exit" fill="#007bff" layoutX="468.0" layoutY="369.0" strokeType="OUTSIDE" onMouseClicked="#exit" strokeWidth="0.0" text="Exit" underline="true" />
         <Label layoutX="87.0" layoutY="8.0" prefHeight="54.0" prefWidth="401.0" text="Welcome Admin">
             <font>
                 <Font size="42.0" />

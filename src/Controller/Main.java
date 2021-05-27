@@ -8,16 +8,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-
     static Stage primaryStage;
 
-
-
-
-
-
     @Override
-
 
     public void start(Stage primaryStage) throws Exception {
 
@@ -29,7 +22,7 @@ public class Main extends Application {
         //Parent root = FXMLLoader.load(getClass().getResource("../view/UserMainUI.fxml"));
         //todo 在这里读取所有表格
 
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root);
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();

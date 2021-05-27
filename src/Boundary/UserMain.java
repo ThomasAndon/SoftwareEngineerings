@@ -19,6 +19,7 @@ public class UserMain {
     @FXML
     public Button ProfileBtn;
     public Text viewSchedule;
+    public Text Exit;
 
     @FXML
     private Text mainPage;
@@ -86,6 +87,10 @@ public class UserMain {
         ToPage tp = new ToPage();
         tp.toMainPage(mainPage, user);
 
+    }
+    public void exit(MouseEvent actionEvent) throws IOException {
+        ToPage tp = new ToPage();
+       tp.exit(Exit);
     }
 
 }

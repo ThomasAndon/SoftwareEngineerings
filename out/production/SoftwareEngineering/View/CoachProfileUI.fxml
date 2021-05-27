@@ -95,23 +95,12 @@
                                         <Font size="19.0" />
                                     </font>
                                 </Button>
-                                <VBox layoutX="564.0" layoutY="188.0" prefHeight="252.0" prefWidth="294.0">
-                                    <children>
-                                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="394.0">
-                                            <children>
-                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
-                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
-                                            </children>
-                                        </HBox>
-                                        <HBox prefHeight="166.0" prefWidth="294.0">
-                                            <children>
-                                                <VBox alignment="CENTER" prefHeight="166.0" prefWidth="300.0" spacing="30.0" />
-                                            </children>
-                                        </HBox>
-                                        <HBox prefHeight="100.0" prefWidth="200.0" />
-                                    </children>
-                                </VBox>
                                 <Text fx:id="mainPage" fill="#0018f5" layoutX="759.0" layoutY="601.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page" underline="true" />
+                        <Label layoutX="471.0" layoutY="101.0" prefHeight="59.0" prefWidth="261.0" text="Self Introduction ">
+                           <font>
+                              <Font size="28.0" />
+                           </font></Label>
+                        <TextArea fx:id="CoachIntro" layoutX="484.0" layoutY="174.0" prefHeight="192.0" prefWidth="201.0" />
                             </children>
                         </AnchorPane>
                     </content>

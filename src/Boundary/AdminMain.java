@@ -50,7 +50,9 @@ public class AdminMain {
         new ToPage().toUploadVideo(uploadVideo);
     }
 
-    public void toLogin(MouseEvent mouseEvent) {
-            //todo 在topage里面实现退出
+
+    public void exit(MouseEvent mouseEvent) throws IOException {
+        ToPage tp = new ToPage();
+        tp.exit(Exit);
     }
 }

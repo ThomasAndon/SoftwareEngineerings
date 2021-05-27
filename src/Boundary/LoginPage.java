@@ -96,7 +96,7 @@ public class LoginPage {
             controller.initData(user);
         }
         stage.setTitle("Hello World");
-        stage.setScene(new Scene(root, 1000, 700));
+        stage.setScene(new Scene(root));
         stage.show();
         //todo 此处将此user对象传递给检查存在函数（外部class），看是否存在该用户。不存在则窗口提示，存在则继续
 
@@ -198,7 +198,7 @@ public class LoginPage {
         }
 
         stage.setTitle("Hello World");
-        stage.setScene(new Scene(root, 1000, 700));
+        stage.setScene(new Scene(root));
         stage.show();
     }
 
@@ -233,7 +233,7 @@ public class LoginPage {
         AdminMain controller = loader.getController();
 
         stage.setTitle("Hello admin");
-        stage.setScene(new Scene(root, 1000, 700));
+        stage.setScene(new Scene(root));
         stage.show();
     }
 
