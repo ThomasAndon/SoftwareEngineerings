@@ -90,9 +90,6 @@ public class EditProfileInfo implements Initializable {
             }
         }
 
-        if (currentUser.getLevel()==0) {
-            CoachChoiceBox.setDisable(true);
-        }
 
     }
 
@@ -183,6 +180,16 @@ public class EditProfileInfo implements Initializable {
      */
     void onUpgradeClicked(ActionEvent event) {
 
+        if (CoachChoiceBox.getValue()==null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("You should first choose a coach to become a vip.");
+            alert.show();
+            return;
+        }
+
+
         //todo 以后如果加入了最高会员等级，在这里加一个ifelse判断，不符合就弹窗以及return来跳出此函数
         if (currentUser.getLevel()>= currentUser.MAX_VIP_LEVEL) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -199,6 +206,8 @@ public class EditProfileInfo implements Initializable {
         alert.setContentText("You are now level " + (currentUser.getLevel()+1) + " now");
         alert.show();
         //内存里的用户对象数据更改；显示的等级数字更改；永存里文件数据也要改。
+        String selectedTrainerID = (String) CoachChoiceBox.getSelectionModel().getSelectedItem().split("-")[1];
+        currentUser.setTrainerID(selectedTrainerID);
         currentUser.setLevel(currentUser.getLevel()+1);
         VIPLevelHolder.setText(String.valueOf(currentUser.getLevel()));
         try {
@@ -207,7 +216,6 @@ public class EditProfileInfo implements Initializable {
             e.printStackTrace();
         }
 
-        CoachChoiceBox.setDisable(false);
     }
 
 
