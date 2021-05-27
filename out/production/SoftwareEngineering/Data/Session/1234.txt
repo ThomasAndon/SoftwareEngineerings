@@ -1,0 +1,2 @@
+userID	trainerID		date		time	target	physical ability	note	detail
+1234	null	2021-04-15	18:00-19:00	Cutting	Medium	more exercise	null#
