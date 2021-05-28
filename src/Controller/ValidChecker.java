@@ -16,22 +16,23 @@ public class ValidChecker {
     /**
      * @Description: check the validation of the input Id and Password
      * @return: boolean
-     * @Author: CloudKing
+     * @Author: ThomasAndon
      * @Date: 2021/3/30
      */
     public boolean isInvalidID(String id) {
-        if (id.length() >= 4 && id.length() <= 15) {
-            String regex = "[ _`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！ @#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher hasSpecial = pattern.matcher(id);
-            if (!hasSpecial.find()) {
-                return hasSpecial.find();
-            } else {
-                return hasSpecial.find();
-            }
-        } else {
+
+        int length = id.length();
+        if (length < 4 || length > 15) {
             return true;
         }
+        for (int i = 0;i<length;i++) {
+            char a = id.charAt(i);
+            if ((a<'A'||a>'Z') && (a<'a' || a>'z') && ((a<'0')||(a>'9'))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public boolean isInvalidPw(String pw) {
