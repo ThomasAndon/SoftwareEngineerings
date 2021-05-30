@@ -14,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.*;
 
 public class UserInfoControl {
@@ -36,16 +35,14 @@ public class UserInfoControl {
 
         table.setItems(slist);//将集合的值 存储到tableView里
         TableColumn<User, String> table_id= new TableColumn<User, String>("ID");
-        TableColumn<User, String> table_name= new TableColumn<User, String>("Name");//创建TableColumn  列名为序号
+        TableColumn<User, String> table_name= new TableColumn<User, String>("Name");
         TableColumn<User, Double> table_height= new TableColumn<User, Double>("Height");
         TableColumn<User, Double> table_weight= new TableColumn<User, Double>("Weight");
         TableColumn<User, String> table_gender= new TableColumn<User, String>("Gender");
         TableColumn<User, String> table_trainer= new TableColumn<User, String>("Trainer");
         TableColumn<User, Integer> table_level= new TableColumn<User, Integer>("Level");
-        /**
-         * 反射取值
-         */
-        table_name.setCellValueFactory(new PropertyValueFactory<User,String>("name"));//相当于getid
+
+        table_name.setCellValueFactory(new PropertyValueFactory<User,String>("name"));
         table_id.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
         table_height.setCellValueFactory(new PropertyValueFactory<User,Double>("height"));
         table_weight.setCellValueFactory(new PropertyValueFactory<User,Double>("weight"));

@@ -14,6 +14,9 @@ import javafx.scene.text.Text;
 import java.io.*;
 import java.time.LocalDate;
 
+/**
+ * Admin can see the Session table form this interface
+ */
 public class SessionCsvControl{
 
     @FXML

@@ -56,20 +56,6 @@ public class ToPage {
 
     }
 
-
-//    public void toUserMain(Text text,User user) throws Exception {
-//        Stage stage = (Stage) text.getScene().getWindow();
-//        stage.close();
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("../view/UserMainUI.fxml"));
-//        UserMain usermain = loader.getController();
-//        usermain.initData(user);
-//
-//        Parent root = loader.load();
-//        stage.setScene(new Scene(root, 1000, 700));
-//        stage.show();
-//    }
-
     public void toSchedule(Text viewSchedule, User user) throws Exception {
         Stage stage = (Stage) viewSchedule.getScene().getWindow();
         stage.close();
@@ -173,7 +159,6 @@ public class ToPage {
         loader.setLocation(getClass().getResource("../view/CoachInformationUI.fxml"));
         Parent root = loader.load();
         CoachInfoControl controller = loader.getController();
-        //instantiating a user
         controller.init();
         stage.setScene(new Scene(root));
         stage.show();
@@ -231,8 +216,6 @@ public class ToPage {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/AddCoachUI.fxml"));
         Parent root = loader.load();
-        //  AddCoach controller = loader.getController();
-        //   controller.init();
         stage.setScene(new Scene(root));
         stage.show();
     }
@@ -243,8 +226,6 @@ public class ToPage {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/LoginPageUI.fxml"));
         Parent root = loader.load();
-        //  AddCoach controller = loader.getController();
-        //   controller.init();
         stage.setScene(new Scene(root));
         stage.show();
     }

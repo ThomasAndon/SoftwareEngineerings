@@ -1,13 +1,17 @@
 package Controller;
 
-import Entity.Trainer;
 import Entity.User;
 
 import java.io.*;
 
 public class WriteUserProfile{
 
-
+    /**
+     * Write the user information into a text file
+     * @param user
+     * @return
+     * @throws IOException
+     */
     public boolean writeUserProfile(User user) throws IOException {
 
         String str = "userProfile";

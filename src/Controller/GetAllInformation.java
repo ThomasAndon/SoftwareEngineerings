@@ -2,6 +2,9 @@ package Controller;
 
 import java.io.*;
 
+/**
+ * Get all of the users/coaches information into a file
+ */
 public class GetAllInformation {
 
     private String path = "src/Data/ProfileInfo/";

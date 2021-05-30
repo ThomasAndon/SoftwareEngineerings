@@ -4,12 +4,15 @@ import Entity.Video;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
+
+/**
+ * Read the VideoMapper text file and parse data
+ */
 public class ParseVideoMapper {
 
 

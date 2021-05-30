@@ -3,6 +3,9 @@ package Controller;
 
 import java.io.*;
 
+/**
+ * This class is used to write a user/coach information into a text tile
+ */
 public class ProfileWriter {
      String profileInfoFolderPath = "src/Data/ProfileInfo/";
 
@@ -18,9 +21,6 @@ public class ProfileWriter {
                 System.out.println("Error occurs when creating files. (path not exists)");
                 return false;
             }
-
-
-            //todo 不存在的文件会抛异常
         }
 
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f));

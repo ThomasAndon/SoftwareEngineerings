@@ -36,7 +36,10 @@ public class CoachProfile {
 
     private Trainer trainer;
 
-
+    /**
+     *Initial a trainer object and pass the values into the text field.
+     * @param trainer
+     */
     public void initData(Trainer trainer) {
         currentTrainer = trainer;
         IDHolder.setText(trainer.getTrainerID());

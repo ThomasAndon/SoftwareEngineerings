@@ -7,7 +7,6 @@ import java.io.*;
 
 public class SetUserProfile{
 
-
     /**
      * This method takes in a user, set up his personal information and return the same user back.
      * @param user this is the user known only the ID and password.

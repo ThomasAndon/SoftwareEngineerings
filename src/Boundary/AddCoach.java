@@ -37,6 +37,11 @@ public class AddCoach {
     @FXML
     private Text backBt;
 
+    /**
+     * Interface for the admin to add a new coach and save coach information
+     * @param actionEvent
+     * @throws IOException
+     */
     public void SaveInfo(ActionEvent actionEvent) throws IOException {
         String name=CoachName.getText();
         String id=CoachId.getText();
@@ -52,8 +57,13 @@ public class AddCoach {
         c.SaveInfo(name,id,pw,gender,phone,height,weight,intro);
     }
 
+    /**
+     * Click and change page
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void toLastPage(MouseEvent mouseEvent) throws IOException {
         ToPage tp = new ToPage();
-        tp.toCoachCSVPage(backBt);//TODO 检查一下需不需要init，如果需要在ToPage的方法里改
+        tp.toCoachCSVPage(backBt);
     }
 }

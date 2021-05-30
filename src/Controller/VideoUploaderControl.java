@@ -2,9 +2,6 @@ package Controller;
 
 import Entity.Video;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableView;
-
 public class VideoUploaderControl {
     public void delete(Video video, ObservableList<Video> data) {
         for(int i = 0; i<data.size();i++) {

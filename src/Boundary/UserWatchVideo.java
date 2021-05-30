@@ -6,33 +6,26 @@ import Controller.ParseVideoMapper;
 import Controller.ToPage;
 import Controller.WriteVideoMapping;
 import Entity.Video;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * The interface for user to watch the video
+ */
 public class UserWatchVideo implements Initializable {
 
 
@@ -122,14 +115,6 @@ public class UserWatchVideo implements Initializable {
 
         }
 
-/*        if (title.contains("#")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setContentText("Title should not contain char '#'");
-            alert.show();
-            return;
-        }*/
-
         // if no type specified, terminated.
         if (typeChoice.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -147,9 +132,6 @@ public class UserWatchVideo implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        //写入文件
-        //收尾工作，临时变量置空，清空输入框内容
         temporaryFilePath = null;
         titleInput.clear();
         pathBtn.setText("Path...");
@@ -177,7 +159,7 @@ public class UserWatchVideo implements Initializable {
 
         Video video = videoTable.getSelectionModel().getSelectedItem();
         String url = video.getPath();
-        String osName = System.getProperty("os.name", "");// 获取操作系统的名字
+        String osName = System.getProperty("os.name", "");
         try {
             if (osName.startsWith("Mac OS")) {
                 Runtime.getRuntime().exec("open \"" + url + "\"");
@@ -190,24 +172,6 @@ public class UserWatchVideo implements Initializable {
         }
 
 
-
-
-/*        String osName = System.getProperty("os.name", "");// 获取操作系统的名字
-        try {
-            if (osName.startsWith("Windows")) {// windows
-                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + url);
-            } else if (osName.startsWith("Mac OS")) {// Mac
-                Class fileMgr = Class.forName("com.apple.eio.FileManager");
-                Method openURL = fileMgr.getDeclaredMethod("openURL", String.class);
-                openURL.invoke(null, url);
-            }
-            System.out.println("#########"+url);
-
-        } catch(Exception e) {
-            System.out.println(url);
-        }*/
-
-
     }
 
     @Override
@@ -217,11 +181,6 @@ public class UserWatchVideo implements Initializable {
         try {
             data = new ParseVideoMapper().parseVideoMapper();
         } catch (Exception e) {
-/*            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setContentText("Error occurs when parsing the video mapper file.");
-            alert.show();*/
             try {
                 new WriteVideoMapping().writeVideoMapping(data);
             } catch (Exception ee) {

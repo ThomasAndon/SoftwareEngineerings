@@ -10,9 +10,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-
 import java.io.IOException;
 
+/**
+ * This is the trainer main interface
+ */
 public class TrainerMain {
     @FXML
     private Button SessionBtn;
@@ -29,7 +31,11 @@ public class TrainerMain {
 
     private Trainer trainer;
 
-
+    /**|
+     * Initial a trainer object
+     * @param trainer
+     * @throws IOException
+     */
     public void initData(Trainer trainer) throws IOException {
         trainerID.setText(trainer.getTrainerID());
         this.trainer = trainer;
@@ -49,13 +55,6 @@ public class TrainerMain {
         ToPage tp = new ToPage();
         tp.toCoachProfile(ProfileBtn,trainer);
     }
-
-    public void toMainPage(MouseEvent mouseEvent) throws IOException {
-        /*ToPage tp = new ToPage();
-        String s= "LoginPageUI";
-        tp.toMainPage(Exit, s);*/
-    }
-
     public void exit(MouseEvent mouseEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.exit(Exit);

@@ -10,9 +10,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-
 import java.io.IOException;
 
+/**
+ * This is the user main interface
+ */
 public class UserMain {
     @FXML
     public Button WorkoutBtn;
@@ -35,6 +37,11 @@ public class UserMain {
 
     private User user;
 
+    /**
+     * Initial a user object
+     * @param user
+     * @throws IOException
+     */
     public void initData(User user) throws IOException {
         userID.setText(user.getId());
 //        this.user = user;

@@ -4,7 +4,6 @@ import Controller.ParseVideoMapper;
 import Controller.VideoUploaderControl;
 import Controller.WriteVideoMapping;
 import Entity.Video;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,16 +14,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.io.File;;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Admin can upload the videos through this UI
+ */
 public class VideoUploader implements Initializable {
     @FXML
     private TableView<Video> videoTable;
@@ -129,11 +125,6 @@ public class VideoUploader implements Initializable {
         try {
             data = new ParseVideoMapper().parseVideoMapper();
         } catch (Exception e) {
-/*            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setContentText("Error occurs when parsing the video mapper file.");
-            alert.show();*/
             try {
                 new WriteVideoMapping().writeVideoMapping(data);
             } catch (Exception ee) {
