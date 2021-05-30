@@ -91,6 +91,7 @@ public class LoginPage {
         try {
             User user1 = new SetUserProfile().setUserProfile(user);
             controller.initData(user1);
+            controller.getUser(user1);
         } catch (Exception e) {
             System.out.println("Login Exception Caught");
             controller.initData(user);

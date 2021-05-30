@@ -37,7 +37,7 @@ public class UserMain {
 
     public void initData(User user) throws IOException {
         userID.setText(user.getId());
-        this.user = user;
+//        this.user = user;
         if(user.getLevel()==0){
             SessionBtn.setDisable(true);
             ScheduleBtn.setDisable(true);

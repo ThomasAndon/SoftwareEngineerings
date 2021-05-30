@@ -1,5 +1,7 @@
 package Boundary;
 
+import Entity.User;
+
 import Controller.ParseVideoMapper;
 import Controller.ToPage;
 import Controller.WriteVideoMapping;
@@ -8,7 +10,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -56,19 +61,22 @@ public class UserWatchVideo implements Initializable {
 
 
     private String temporaryFilePath;
-    private ObservableList<Video> data; /*= FXCollections.observableArrayList(
-        new Video("title1", "path1","type1"),
-        new Video("title2", "path2","type2")
-    );*/
+    private ObservableList<Video> data;
+
+     User currentuser;
+
+    public void initdata(User user) {
+        currentuser = user;
+    }
 
     @FXML
     void onChoosePathClicked(ActionEvent event) {
-        if(temporaryFilePath == null) {
+        if (temporaryFilePath == null) {
             Stage s = (Stage) videoTable.getScene().getWindow();
             FileChooser fc = new FileChooser();
             fc.setTitle("Select Video to Update:");
-            File f =  fc.showOpenDialog(s);
-            if(f != null) {
+            File f = fc.showOpenDialog(s);
+            if (f != null) {
                 pathBtn.setText("Clear");
                 temporaryFilePath = String.valueOf(f.toPath());
                 System.out.println(temporaryFilePath);
@@ -85,7 +93,7 @@ public class UserWatchVideo implements Initializable {
         String title = titleInput.getText();
 
         // if the title already exists, terminated.
-        for (int i = 0;i < data.size();i++) {
+        for (int i = 0; i < data.size(); i++) {
             if (data.get(i).getTitle().equals(title)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -132,7 +140,7 @@ public class UserWatchVideo implements Initializable {
         }
 
 
-        Video temp = new Video(titleInput.getText(),temporaryFilePath,typeChoice.getValue());
+        Video temp = new Video(titleInput.getText(), temporaryFilePath, typeChoice.getValue());
         data.add(temp);
         try {
             new WriteVideoMapping().writeVideoMapping(data);
@@ -151,7 +159,7 @@ public class UserWatchVideo implements Initializable {
     @FXML
     void onDeletedSelected(ActionEvent event) {
         Video video = videoTable.getSelectionModel().getSelectedItem();
-        for(int i = 0; i<data.size();i++) {
+        for (int i = 0; i < data.size(); i++) {
             if (data.get(i).getTitle().equals(video.getTitle())) {
                 data.remove(i);
             }
@@ -200,7 +208,6 @@ public class UserWatchVideo implements Initializable {
         }*/
 
 
-
     }
 
     @Override
@@ -222,12 +229,12 @@ public class UserWatchVideo implements Initializable {
             }
         }
         videoTable.setItems(data);
-        titleCol.setCellValueFactory(new PropertyValueFactory<Video,String>("title"));
-        typeCol.setCellValueFactory(new PropertyValueFactory<Video,String>("type"));
+        titleCol.setCellValueFactory(new PropertyValueFactory<Video, String>("title"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<Video, String>("type"));
     }
 
+    @FXML
     public void exit(MouseEvent actionEvent) throws IOException {
-        ToPage tp = new ToPage();
-        tp.exit(exitText);
+        new ToPage().toMainPage(exitText, currentuser);
     }
 }
