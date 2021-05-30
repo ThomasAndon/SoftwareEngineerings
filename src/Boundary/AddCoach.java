@@ -54,6 +54,6 @@ public class AddCoach {
 
     public void toLastPage(MouseEvent mouseEvent) throws IOException {
         ToPage tp = new ToPage();
-        tp.toCoachCSVPage(backBt);//TODO 检查一下需不需要init，如果需要在ToPage的方法里改
+        tp.toCoachCSVPage(backBt);
     }
 }
