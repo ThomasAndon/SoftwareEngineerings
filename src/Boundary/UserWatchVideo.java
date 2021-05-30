@@ -1,6 +1,7 @@
 package Boundary;
 
 import Controller.ParseVideoMapper;
+import Controller.ToPage;
 import Controller.WriteVideoMapping;
 import Entity.Video;
 import javafx.collections.FXCollections;
@@ -10,8 +11,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -45,6 +49,10 @@ public class UserWatchVideo implements Initializable {
 
     @FXML
     private Button pathBtn;
+
+
+    @FXML
+    private Text exitText;
 
 
     private String temporaryFilePath;
@@ -216,5 +224,10 @@ public class UserWatchVideo implements Initializable {
         videoTable.setItems(data);
         titleCol.setCellValueFactory(new PropertyValueFactory<Video,String>("title"));
         typeCol.setCellValueFactory(new PropertyValueFactory<Video,String>("type"));
+    }
+
+    public void exit(MouseEvent actionEvent) throws IOException {
+        ToPage tp = new ToPage();
+        tp.exit(exitText);
     }
 }

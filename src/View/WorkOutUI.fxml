@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.UserWatchVideo">
@@ -61,5 +62,10 @@
                 </VBox>
             </children>
         </HBox>
+      <Text fx:id="exitText" fill="#0048ff" layoutX="811.0" layoutY="594.0" onMouseClicked="#exit" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>
