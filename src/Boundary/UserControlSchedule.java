@@ -10,10 +10,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 
 public class UserControlSchedule implements ControlSchedule<User> {
     @FXML
@@ -25,14 +25,14 @@ public class UserControlSchedule implements ControlSchedule<User> {
     @FXML
     private Text mainPage;
     private User user;
-    ObservableList<Session> list;
+
     CancelScheduleControl usc = new CancelScheduleControl();
     public void getUser(User user) throws Exception {
         this.user = user;
     }
 
     /**
-     * @description Show the user's schedule on the interface, add the "cancel" function.
+     * @description show the user's schedule on the interface, add the "cancel" function.
      * @param slist
      */
     @Override
@@ -97,6 +97,7 @@ public class UserControlSchedule implements ControlSchedule<User> {
         printSchedule(us.mySchedule(user));
     }
 
+    @Override
     public void showSchedule() throws Exception {
         UserSchedule us = new UserSchedule();
         setSchedule(us);

@@ -12,9 +12,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ToPage {
+public class ToPage  {
 
-    public <T> void toMainPage(Text mainPage, T o) throws IOException {
+    public<T>void toMainPage(Text mainPage, T o) throws IOException {
         Stage stage = (Stage) mainPage.getScene().getWindow();
         stage.close();
         Parent root = null;
@@ -26,14 +26,14 @@ public class ToPage {
             User user = (User) o;
             controller.initData(user);
 
-        } else if (Trainer.class.isInstance(o)) {
+        } else if(Trainer.class.isInstance(o)){
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/TrainerMainUI.fxml"));
             root = loader.load();
             TrainerMain controller = loader.getController();
             Trainer trainer = (Trainer) o;
             controller.initData(trainer);
-        } else {
+        }else{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/AdminMainUI.fxml"));
             root = loader.load();
@@ -41,22 +41,19 @@ public class ToPage {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
     public void toWorkout(Button WorkoutBtn, User user) throws IOException {
         Stage stage = (Stage) WorkoutBtn.getScene().getWindow();
-//        stage.close();
+        stage.close();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/WorkOutUI.fxml"));
         Parent root = loader.load();
-        UserWatchVideo uwv = loader.getController();
-        uwv.initdata(user);
-
-        stage.setScene(new Scene(root, 1000, 700));
+        UserWatchVideo controller = loader.getController();
+        controller.getUser(user);
+        stage.setScene(new Scene(root));
         stage.show();
 
     }
-
-    public void toSchedule(Text viewSchedule, User user) throws Exception {
+    public void toSchedule(Text viewSchedule,User user) throws Exception {
         Stage stage = (Stage) viewSchedule.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
@@ -65,11 +62,10 @@ public class ToPage {
         UserControlSchedule controller = loader.getController();
         controller.getUser(user);
         controller.showSchedule();
-        stage.setScene(new Scene(root, 1000, 700));
+        stage.setScene(new Scene(root));
         stage.show();
     }
-
-    public <T> void toSchedule2(Button ScheduleBtn, T o) throws Exception {
+    public<T>void toSchedule2(Button ScheduleBtn,T o) throws Exception {
         Stage stage = (Stage) ScheduleBtn.getScene().getWindow();
         stage.close();
         Parent root;
@@ -90,10 +86,9 @@ public class ToPage {
             controller.getTrainer(trainer);
             controller.showSchedule();
         }
-        stage.setScene(new Scene(root, 1000, 700));
+        stage.setScene(new Scene(root));
         stage.show();
     }
-
     public void toBookSession(Button SessionBtn, User user) throws IOException {
         Stage stage = (Stage) SessionBtn.getScene().getWindow();
         stage.close();
@@ -106,7 +101,6 @@ public class ToPage {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
     public void toProfile(Button ProfileBtn, User user) throws IOException {
         Stage stage = (Stage) ProfileBtn.getScene().getWindow();
         stage.close();
@@ -118,7 +112,6 @@ public class ToPage {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
     public void toCoachProfile(Button Btn, Trainer trainer) throws IOException {
         Stage stage = (Stage) Btn.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
@@ -129,8 +122,7 @@ public class ToPage {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
-    public void toBookSuccessfulPage(Button bookBtn, User user) throws IOException {
+    public void toBookSuccessfulPage(Button bookBtn, User user) throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/BookSuccessful.fxml"));
         Parent root = loader.load();
@@ -141,8 +133,7 @@ public class ToPage {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
-    public void toCoachCSVPage(Text text) throws IOException {
+    public void toCoachCSVPage(Text text) throws IOException{
         Stage stage = (Stage) text.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
@@ -151,20 +142,19 @@ public class ToPage {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
-    public void toCoachCSVPage2(Button btn) throws IOException {
+    public void toCoachCSVPage2(Button btn) throws IOException{
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/CoachInformationUI.fxml"));
         Parent root = loader.load();
         CoachInfoControl controller = loader.getController();
+        //instantiating a user
         controller.init();
         stage.setScene(new Scene(root));
         stage.show();
     }
-
-    public void toUserCSVPage(Button btn) throws IOException {
+    public void toUserCSVPage(Button btn) throws IOException{
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
@@ -176,8 +166,7 @@ public class ToPage {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
-    public void toSessionCSVPage(Button btn) throws IOException {
+    public void toSessionCSVPage(Button btn) throws IOException{
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
@@ -189,8 +178,7 @@ public class ToPage {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
-    public void toAd(Button btn) throws IOException {
+    public void toAd(Button btn) throws IOException{
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
@@ -199,8 +187,7 @@ public class ToPage {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
-    public void toUploadVideo(Button btn) throws IOException {
+    public void toUploadVideo(Button btn) throws IOException{
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
@@ -209,26 +196,27 @@ public class ToPage {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
-    public void toAddCoach(Text text) throws IOException {
+    public void toAddCoach(Text text) throws IOException{
         Stage stage = (Stage) text.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/AddCoachUI.fxml"));
         Parent root = loader.load();
+      //  AddCoach controller = loader.getController();
+     //   controller.init();
         stage.setScene(new Scene(root));
         stage.show();
     }
-
-    public void exit(Text text) throws IOException {
+    public void exit(Text text) throws IOException{
         Stage stage = (Stage) text.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/LoginPageUI.fxml"));
         Parent root = loader.load();
+        //  AddCoach controller = loader.getController();
+        //   controller.init();
         stage.setScene(new Scene(root));
         stage.show();
     }
-
 
 }

@@ -5,13 +5,13 @@ import Entity.Trainer;
 import Entity.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * Read information from the text file and pass the values to the object
+ * This class can read information from the text file and pass the values to the object
  */
 public class InformationReader {
     private String path1="src/Data/ProfileInfo/AllCoachInfo.txt";
@@ -21,15 +21,13 @@ public class InformationReader {
         ObservableList<Trainer> slist= FXCollections.observableArrayList();
         List<Trainer> list = new ArrayList<Trainer>();
 
-
-        File AllInfo = new File(path1);
-
         try{
-            BufferedReader textFile = new BufferedReader(new FileReader(AllInfo));
+            BufferedReader reader = new BufferedReader(new FileReader(path1));
             String lineDta = "";
             int i=0;
 
-            while ((lineDta = textFile.readLine()) != null) {
+            while ((lineDta = reader.readLine()) != null) {
+                System.out.println(lineDta);
                 Trainer s = new Trainer();
                 s.setTrainerID(lineDta.split("#")[0]);
                 s.setGender(lineDta.split("#")[1]);
@@ -42,13 +40,12 @@ public class InformationReader {
                 }
 
             slist.addAll(list);
-            textFile.close();
+            reader.close();
         }catch (FileNotFoundException e){
             System.out.println("Fail to find the file.");
         }catch (IOException e){
             System.out.println("IO Exception.");
         }
-
         return slist;
 
     }
@@ -77,9 +74,9 @@ public class InformationReader {
 
             textFile.close();
         }catch (FileNotFoundException e){
-            System.out.println("Fail to find the file.");
+            System.out.println("没有找到指定文件");
         }catch (IOException e){
-            System.out.println("IO Exception.");
+            System.out.println("文件读写出错");
         }
 
         return slist;

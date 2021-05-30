@@ -8,13 +8,19 @@ import Entity.User;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.ResourceBundle;
 
 public class EditProfileInfo implements Initializable {
@@ -22,31 +28,26 @@ public class EditProfileInfo implements Initializable {
     User currentUser;
 
     String selectedTrainerID;
-
     @FXML
     public Text mainPage;
     @FXML
     private Label IDHolder;
-
     @FXML
     private TextField nameInput;
-
     @FXML
     private TextField heightInput;
-
     @FXML
     private TextField weightInput;
-
     @FXML
     private ChoiceBox<String> genderSelection;
-
+    @FXML
+    private Button saveBtn;
     @FXML
     private Label VIPLevelHolder;
-
-
     @FXML
     private ChoiceBox<String> CoachChoiceBox;
-
+    @FXML
+    private Button selectCoachBtn;
 
 
     /**
@@ -137,6 +138,7 @@ public class EditProfileInfo implements Initializable {
             a.show();
             return;
         }
+
         currentUser.setWeight(Double.parseDouble(weightInput.getText()));
         currentUser.setHeight(Double.parseDouble(heightInput.getText()));
         currentUser.setGender(gender);
@@ -185,6 +187,8 @@ public class EditProfileInfo implements Initializable {
             return;
         }
 
+
+        //todo 以后如果加入了最高会员等级，在这里加一个ifelse判断，不符合就弹窗以及return来跳出此函数
         if (currentUser.getLevel()>= currentUser.MAX_VIP_LEVEL) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -199,6 +203,7 @@ public class EditProfileInfo implements Initializable {
         alert.setHeaderText("Confirmation");
         alert.setContentText("You are now level " + (currentUser.getLevel()+1) + " now");
         alert.show();
+
         String selectedTrainerID = (String) CoachChoiceBox.getSelectionModel().getSelectedItem().split("-")[1];
         currentUser.setTrainerID(selectedTrainerID);
         currentUser.setLevel(currentUser.getLevel()+1);

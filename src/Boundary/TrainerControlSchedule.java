@@ -13,8 +13,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+
 import java.io.IOException;
 import java.time.LocalDate;
+
 
 public class TrainerControlSchedule implements ControlSchedule<Trainer>{
     @FXML
@@ -43,6 +45,7 @@ public class TrainerControlSchedule implements ControlSchedule<Trainer>{
         noteCol.setCellValueFactory(new PropertyValueFactory<>("note"));
         idCol.setText("Student ID");
         idCol.setCellValueFactory(new PropertyValueFactory<>("userID"));
+        //todo 教练可以添加训练的备注
         cancelCol.setText("Note");
         table.setItems(slist);
     }
@@ -51,7 +54,7 @@ public class TrainerControlSchedule implements ControlSchedule<Trainer>{
     public void setSchedule(MySchedule<Trainer> ts) throws Exception {
         printSchedule(ts.mySchedule(trainer));
     }
-
+    @Override
     public void showSchedule() throws Exception {
         TrainerSchedule ts = new TrainerSchedule();
         setSchedule(ts);

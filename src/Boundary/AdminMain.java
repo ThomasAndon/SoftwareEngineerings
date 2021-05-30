@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import java.io.IOException;
-
 public class AdminMain {
     public Button uploadVideo;
     @FXML

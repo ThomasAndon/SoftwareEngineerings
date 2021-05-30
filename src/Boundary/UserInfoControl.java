@@ -2,6 +2,7 @@ package Boundary;
 
 import Controller.InformationReader;
 import Controller.GetAllInformation;
+import Controller.ToPage;
 import Entity.User;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 import java.io.*;
 
 public class UserInfoControl {
@@ -21,7 +23,6 @@ public class UserInfoControl {
     private TableView<User> table;
     @FXML
     private Text adminMain;
-
 
     private InformationReader cr = new InformationReader();
     private GetAllInformation get = new GetAllInformation();
@@ -33,7 +34,7 @@ public class UserInfoControl {
     public void readCSV()  {
         ObservableList<User> slist= cr.getUserList();
 
-        table.setItems(slist);//将集合的值 存储到tableView里
+        table.setItems(slist);
         TableColumn<User, String> table_id= new TableColumn<User, String>("ID");
         TableColumn<User, String> table_name= new TableColumn<User, String>("Name");
         TableColumn<User, Double> table_height= new TableColumn<User, Double>("Height");
@@ -61,12 +62,6 @@ public class UserInfoControl {
     }
 
     public void toMainPage(MouseEvent actionEvent) throws IOException {
-        Stage stage = (Stage) adminMain.getScene().getWindow();
-        stage.close();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/AdminMainUI.fxml"));
-        Parent root = loader.load();
-        stage.setScene(new Scene(root, 1000, 700));
-        stage.show();
+        new ToPage().toMainPage(adminMain,0);
     }
 }

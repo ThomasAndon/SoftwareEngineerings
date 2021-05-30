@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+
 import java.io.IOException;
 
 /**
@@ -31,7 +32,7 @@ public class TrainerMain {
 
     private Trainer trainer;
 
-    /**|
+    /**
      * Initial a trainer object
      * @param trainer
      * @throws IOException
@@ -39,10 +40,6 @@ public class TrainerMain {
     public void initData(Trainer trainer) throws IOException {
         trainerID.setText(trainer.getTrainerID());
         this.trainer = trainer;
-        initAd();
-    }
-
-    private void initAd() throws IOException {
         Ad.setText(new OpenAd().selectAd());
     }
 
@@ -55,6 +52,7 @@ public class TrainerMain {
         ToPage tp = new ToPage();
         tp.toCoachProfile(ProfileBtn,trainer);
     }
+
     public void exit(MouseEvent mouseEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.exit(Exit);

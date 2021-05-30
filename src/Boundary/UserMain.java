@@ -10,10 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import java.io.IOException;
 
+import java.io.IOException;
 /**
- * This is the user main interface
+ * This class is the user main interface
  */
 public class UserMain {
     @FXML
@@ -36,7 +36,6 @@ public class UserMain {
     private TextArea Ad;
 
     private User user;
-
     /**
      * Initial a user object
      * @param user
@@ -44,24 +43,19 @@ public class UserMain {
      */
     public void initData(User user) throws IOException {
         userID.setText(user.getId());
-//        this.user = user;
+        this.user = user;
         if(user.getLevel()==0){
             SessionBtn.setDisable(true);
             ScheduleBtn.setDisable(true);
         }
-        initAd();
-    }
-
-    private void initAd() throws IOException {
         Ad.setText(new OpenAd().selectAd());
-
     }
 
     public void getUser(User user) {
         this.user = user;
     }
 
-    public void toWorkout(ActionEvent actionEvent) throws IOException{
+    public void toWorkout(ActionEvent actionEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.toWorkout(WorkoutBtn, user);
     }

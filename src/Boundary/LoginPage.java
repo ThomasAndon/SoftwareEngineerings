@@ -64,6 +64,7 @@ public class LoginPage {
                 return;
             }
         }
+        System.out.println("OK");
 
         // If ID not exists or not matching pw, error occurs.
         if(!check.isValidAccount(id,pw)){
@@ -89,7 +90,6 @@ public class LoginPage {
         try {
             User user1 = new SetUserProfile().setUserProfile(user);
             controller.initData(user1);
-            controller.getUser(user1);
         } catch (Exception e) {
             System.out.println("Login Exception Caught");
             controller.initData(user);
@@ -169,6 +169,7 @@ public class LoginPage {
             alert.show();
             return;
         }
+
         System.out.println("Coach login OK");
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         stage.close();
@@ -190,7 +191,7 @@ public class LoginPage {
             controller.initData(trainer);
         }
 
-        stage.setTitle("Hello Coach");
+        stage.setTitle("Hello World");
         stage.setScene(new Scene(root));
         stage.show();
     }
@@ -211,6 +212,7 @@ public class LoginPage {
             alert.show();
             return;
         }
+
         System.out.println("Admin Login OK");
 
         Stage stage = (Stage) loginBtn.getScene().getWindow();
@@ -220,7 +222,6 @@ public class LoginPage {
         FXMLLoader loader = new FXMLLoader();;
         loader.setLocation(getClass().getResource("../view/AdminMainUI.fxml"));
         Parent root = loader.load();
-        //  ProfileInfo controller = loader.getController();
         AdminMain controller = loader.getController();
 
         stage.setTitle("Hello admin");

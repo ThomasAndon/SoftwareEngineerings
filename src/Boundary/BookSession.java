@@ -2,21 +2,28 @@ package Boundary;
 
 import Controller.BookSessionControl;
 import Controller.ToPage;
+import Entity.Session;
 import Entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+
 import java.io.*;
 import java.time.LocalDate;
+
 import javafx.fxml.Initializable;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+
 import java.net.URL;
 import java.util.ResourceBundle;
-
 
 public class BookSession implements Initializable{
     @FXML
@@ -63,7 +70,7 @@ public class BookSession implements Initializable{
      * Control the "Book NOW" button.
      */
     @FXML
-    void addSession (ActionEvent event) throws Exception{
+    void chooseSession (ActionEvent event) throws Exception{
         BookSessionControl bsc = new BookSessionControl();
         String time = sdate.getValue().toString()+" "+stime.getSelectionModel().getSelectedItem().toString();
         if(!bsc.checkSchedule(user, time)){

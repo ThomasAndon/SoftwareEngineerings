@@ -51,7 +51,7 @@
            </FXCollections>
        </items>
       </ComboBox>
-      <Button fx:id="bookBtn" layoutX="240.0" layoutY="307.0" mnemonicParsing="false" onAction="#addSession" text="Book NOW" />
+      <Button fx:id="bookBtn" layoutX="240.0" layoutY="307.0" mnemonicParsing="false" onAction="#chooseSession" text="Book NOW" />
       <Text fx:id="mainPage" fill="#0018f5" layoutX="350.0" layoutY="376.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page" underline="true" />
       <Text fx:id="viewSchedule" fill="#0018f5" layoutX="109.0" layoutY="376.0" onMouseClicked="#toSchedule" strokeType="OUTSIDE" strokeWidth="0.0" text="View my schedule" underline="true" />
    </children>
