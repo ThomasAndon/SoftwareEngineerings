@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Random select an advertisement from the text files
+ */
 public class OpenAd {
 
 
@@ -17,8 +20,6 @@ public class OpenAd {
 
     public String selectAd() throws IOException {
         Random i=new Random();
-
-
         int con = 0;
         File file = new File(AdPath);
         File[] fs = file.listFiles();

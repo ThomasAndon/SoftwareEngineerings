@@ -16,7 +16,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Comparator;
+
 
 public class TrainerControlSchedule implements ControlSchedule<Trainer>{
     @FXML
@@ -54,7 +54,7 @@ public class TrainerControlSchedule implements ControlSchedule<Trainer>{
     public void setSchedule(MySchedule<Trainer> ts) throws Exception {
         printSchedule(ts.mySchedule(trainer));
     }
-
+    @Override
     public void showSchedule() throws Exception {
         TrainerSchedule ts = new TrainerSchedule();
         setSchedule(ts);

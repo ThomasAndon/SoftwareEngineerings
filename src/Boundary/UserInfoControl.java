@@ -2,6 +2,7 @@ package Boundary;
 
 import Controller.InformationReader;
 import Controller.GetAllInformation;
+import Controller.ToPage;
 import Entity.User;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,7 +24,6 @@ public class UserInfoControl {
     @FXML
     private Text adminMain;
 
-
     private InformationReader cr = new InformationReader();
     private GetAllInformation get = new GetAllInformation();
 
@@ -34,18 +34,16 @@ public class UserInfoControl {
     public void readCSV()  {
         ObservableList<User> slist= cr.getUserList();
 
-        table.setItems(slist);//将集合的值 存储到tableView里
+        table.setItems(slist);
         TableColumn<User, String> table_id= new TableColumn<User, String>("ID");
-        TableColumn<User, String> table_name= new TableColumn<User, String>("Name");//创建TableColumn  列名为序号
+        TableColumn<User, String> table_name= new TableColumn<User, String>("Name");
         TableColumn<User, Double> table_height= new TableColumn<User, Double>("Height");
         TableColumn<User, Double> table_weight= new TableColumn<User, Double>("Weight");
         TableColumn<User, String> table_gender= new TableColumn<User, String>("Gender");
         TableColumn<User, String> table_trainer= new TableColumn<User, String>("Trainer");
         TableColumn<User, Integer> table_level= new TableColumn<User, Integer>("Level");
-        /**
-         * 反射取值
-         */
-        table_name.setCellValueFactory(new PropertyValueFactory<User,String>("name"));//相当于getid
+
+        table_name.setCellValueFactory(new PropertyValueFactory<User,String>("name"));
         table_id.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
         table_height.setCellValueFactory(new PropertyValueFactory<User,Double>("height"));
         table_weight.setCellValueFactory(new PropertyValueFactory<User,Double>("weight"));
@@ -64,12 +62,6 @@ public class UserInfoControl {
     }
 
     public void toMainPage(MouseEvent actionEvent) throws IOException {
-        Stage stage = (Stage) adminMain.getScene().getWindow();
-        stage.close();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/AdminMainUI.fxml"));
-        Parent root = loader.load();
-        stage.setScene(new Scene(root, 1000, 700));
-        stage.show();
+        new ToPage().toMainPage(adminMain,0);
     }
 }

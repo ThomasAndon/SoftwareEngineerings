@@ -13,6 +13,9 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
+/**
+ * This is the trainer main interface
+ */
 public class TrainerMain {
     @FXML
     private Button SessionBtn;
@@ -29,14 +32,14 @@ public class TrainerMain {
 
     private Trainer trainer;
 
-
+    /**
+     * Initial a trainer object
+     * @param trainer
+     * @throws IOException
+     */
     public void initData(Trainer trainer) throws IOException {
         trainerID.setText(trainer.getTrainerID());
         this.trainer = trainer;
-        initAd();
-    }
-
-    private void initAd() throws IOException {
         Ad.setText(new OpenAd().selectAd());
     }
 
@@ -48,12 +51,6 @@ public class TrainerMain {
     public void toProfile(ActionEvent actionEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.toCoachProfile(ProfileBtn,trainer);
-    }
-
-    public void toMainPage(MouseEvent mouseEvent) throws IOException {
-        /*ToPage tp = new ToPage();
-        String s= "LoginPageUI";
-        tp.toMainPage(Exit, s);*/
     }
 
     public void exit(MouseEvent mouseEvent) throws IOException {

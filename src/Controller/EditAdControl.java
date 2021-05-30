@@ -3,6 +3,7 @@ package Controller;
 import java.io.*;
 
 public class EditAdControl {
+
     /**
      *@Description: write an new advertisement into the file
      *@param: path,content

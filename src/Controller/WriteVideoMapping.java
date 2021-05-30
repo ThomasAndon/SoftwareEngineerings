@@ -11,6 +11,11 @@ import java.io.OutputStreamWriter;
 public class WriteVideoMapping {
 
     public String videoMapperFilePath = "src/Data/VideoMapper.txt";
+    /**
+     * Write the video mapping into a text file
+     * @param data
+     * @throws Exception
+     */
 
     public void writeVideoMapping(ObservableList<Video> data) throws Exception {
 
@@ -23,8 +28,6 @@ public class WriteVideoMapping {
 
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f,false));
         BufferedWriter bw = new BufferedWriter(out);
-
-
         for (int i = 0;i < data.size();i++) {
             String title = data.get(i).getTitle();
             String type = data.get(i).getType();

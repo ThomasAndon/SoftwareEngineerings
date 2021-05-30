@@ -1,6 +1,5 @@
 package Controller;
 
-import Boundary.TrainerControlSchedule;
 import Entity.Session;
 import Entity.User;
 import javafx.collections.FXCollections;

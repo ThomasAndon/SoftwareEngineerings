@@ -25,7 +25,7 @@ public class UserControlSchedule implements ControlSchedule<User> {
     @FXML
     private Text mainPage;
     private User user;
-    ObservableList<Session> list;
+
     CancelScheduleControl usc = new CancelScheduleControl();
     public void getUser(User user) throws Exception {
         this.user = user;
@@ -97,6 +97,7 @@ public class UserControlSchedule implements ControlSchedule<User> {
         printSchedule(us.mySchedule(user));
     }
 
+    @Override
     public void showSchedule() throws Exception {
         UserSchedule us = new UserSchedule();
         setSchedule(us);

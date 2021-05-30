@@ -8,6 +8,7 @@ public class CancelScheduleControl {
      * @return return ture if cancel the session successfully
      * @throws Exception
      */
+
     public boolean cancelSession(File file, String i, String userID)throws Exception {
         File temp = null;
         BufferedReader br = null;

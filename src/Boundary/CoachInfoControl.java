@@ -14,6 +14,9 @@ import javafx.scene.text.Text;
 
 import java.io.*;
 
+/**
+ * Display the coaches information in the UI
+ */
 public class CoachInfoControl {
     @FXML
     private TableView<Trainer> table;
@@ -26,6 +29,10 @@ public class CoachInfoControl {
     private InformationReader cr = new InformationReader();
     private GetAllInformation get = new GetAllInformation();
 
+    /**
+     *Get the coaches information
+     * @throws IOException
+     */
     public void init() throws IOException {
         get.GetInfo("coachProfile","AllCoachInfo.txt");
         addToTable();
@@ -37,21 +44,23 @@ public class CoachInfoControl {
 
     }
 
+    /**
+     * Pass value to the table
+     * @throws IOException
+     */
     private void addToTable() throws IOException {
         ObservableList<Trainer> slist= returnCoachList();
 
-        table.setItems(slist);//将集合的值 存储到tableView里
-        TableColumn<Trainer, String> table_name= new TableColumn<Trainer, String>("Name");//创建TableColumn  列名为序号
+        table.setItems(slist);
+        TableColumn<Trainer, String> table_name= new TableColumn<Trainer, String>("Name");
         TableColumn<Trainer, String> table_id= new TableColumn<Trainer, String>("ID");
         TableColumn<Trainer, Double> table_height= new TableColumn<Trainer, Double>("Height");
         TableColumn<Trainer, Double> table_weight= new TableColumn<Trainer, Double>("Weight");
         TableColumn<Trainer, String> table_gender= new TableColumn<Trainer, String>("Gender");
         TableColumn<Trainer, Integer> table_phone= new TableColumn<Trainer, Integer>("Phone");
         TableColumn<Trainer, String> table_intro= new TableColumn<Trainer, String>("Introduction");
-        /**
-         * 反射取值
-         */
-        table_name.setCellValueFactory(new PropertyValueFactory<Trainer,String>("name"));//相当于getid
+
+        table_name.setCellValueFactory(new PropertyValueFactory<Trainer,String>("name"));
         table_id.setCellValueFactory(new PropertyValueFactory<Trainer,String>("trainerID"));
         table_height.setCellValueFactory(new PropertyValueFactory<Trainer,Double>("height"));
         table_weight.setCellValueFactory(new PropertyValueFactory<Trainer,Double>("weight"));

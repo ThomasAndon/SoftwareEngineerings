@@ -2,6 +2,9 @@ package Controller;
 
 import java.io.*;
 
+/**
+ * Read the personal profile information
+ */
 public class profilePath {
      String profileInfoFolderPath = "src/Data/ProfileInfo/";
 
@@ -22,7 +25,6 @@ public class profilePath {
 
 
     public String[] parseProfileString(String info) {
-
         String[] res = info.split("#");
         return res;
     }

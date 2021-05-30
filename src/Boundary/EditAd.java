@@ -26,12 +26,18 @@ public class EditAd {
         new ToPage().toMainPage(adminMain,0);
     }
 
+    /**
+     * Save an advertisement into a new file
+     * @param actionEvent
+     * @throws IOException
+     */
     public void saveAd(ActionEvent actionEvent) throws IOException {
         advertisement.setName(AdName.getText());
 
-        new EditAdControl().saveAd(advertisement.getName(), Ad.getText());//todo 去这个方法里写你没写完的方法
+        new EditAdControl().saveAd(advertisement.getName(), Ad.getText());
 
     }
 
 
 }
+
