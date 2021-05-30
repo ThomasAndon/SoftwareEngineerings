@@ -54,7 +54,7 @@ public class UserMain {
         this.user = user;
     }
 
-    public void toWorkout(ActionEvent actionEvent) throws IOException{
+    public void toWorkout(ActionEvent actionEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.toWorkout(WorkoutBtn, user);
     }

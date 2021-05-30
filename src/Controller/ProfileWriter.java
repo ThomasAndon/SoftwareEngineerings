@@ -5,7 +5,6 @@ import java.io.*;
 
 public class ProfileWriter {
      String profileInfoFolderPath = "src/Data/ProfileInfo/";
-
     public boolean FileWriter(String s,String type, String id) throws IOException {
         File f = new File(profileInfoFolderPath+ type + "/"+ id +".txt");
 
@@ -19,8 +18,6 @@ public class ProfileWriter {
                 return false;
             }
 
-
-            //todo 不存在的文件会抛异常
         }
 
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f));

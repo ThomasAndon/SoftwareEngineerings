@@ -42,11 +42,7 @@ public class AdminMain {
         new ToPage().toAd(edit);
     }
 
-    @FXML
-    /** This function is invocated when the admin tries to upload a video
-     * @author Thomas Andon
-     */
-    void onUploadVideoClicked(ActionEvent event) throws IOException {
+    public void onUploadVideoClicked(ActionEvent event) throws IOException {
         new ToPage().toUploadVideo(uploadVideo);
     }
 

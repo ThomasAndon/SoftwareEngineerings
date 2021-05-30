@@ -1,17 +1,13 @@
 package Boundary;
 
-import Controller.AddCoachControl;
+import Controller.AddTrainerControl;
 import Controller.ToPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.*;
 
@@ -48,7 +44,7 @@ public class AddCoach {
         String intro=CoachIntro.getText();
 
 
-        AddCoachControl c = new AddCoachControl();
+        AddTrainerControl c = new AddTrainerControl();
         c.SaveInfo(name,id,pw,gender,phone,height,weight,intro);
     }
 

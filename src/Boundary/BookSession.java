@@ -70,7 +70,7 @@ public class BookSession implements Initializable{
      * Control the "Book NOW" button.
      */
     @FXML
-    void addSession (ActionEvent event) throws Exception{
+    void chooseSession (ActionEvent event) throws Exception{
         BookSessionControl bsc = new BookSessionControl();
         String time = sdate.getValue().toString()+" "+stime.getSelectionModel().getSelectedItem().toString();
         if(!bsc.checkSchedule(user, time)){

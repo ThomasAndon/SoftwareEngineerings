@@ -41,7 +41,7 @@ public class VideoUploader implements Initializable {
 
     private String temporaryFilePath;
     private ObservableList<Video> data;
-    Video video = videoTable.getSelectionModel().getSelectedItem();
+    Video video;
 
     @FXML
     void onChoosePathClicked(ActionEvent event) {
@@ -124,6 +124,7 @@ public class VideoUploader implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        video = videoTable.getSelectionModel().getSelectedItem();
         typeChoice.getItems().addAll("type1", "type2", "type3");
 
         try {

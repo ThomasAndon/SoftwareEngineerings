@@ -28,34 +28,24 @@ public class EditProfileInfo implements Initializable {
     User currentUser;
 
     String selectedTrainerID;
-
     @FXML
     public Text mainPage;
     @FXML
     private Label IDHolder;
-
     @FXML
     private TextField nameInput;
-
     @FXML
     private TextField heightInput;
-
     @FXML
     private TextField weightInput;
-
     @FXML
     private ChoiceBox<String> genderSelection;
-
     @FXML
     private Button saveBtn;
-
     @FXML
     private Label VIPLevelHolder;
-
-
     @FXML
     private ChoiceBox<String> CoachChoiceBox;
-
     @FXML
     private Button selectCoachBtn;
 
@@ -149,7 +139,6 @@ public class EditProfileInfo implements Initializable {
             return;
         }
 
-        //todo 成功，存储信息 (内存、永存、显示）
         currentUser.setWeight(Double.parseDouble(weightInput.getText()));
         currentUser.setHeight(Double.parseDouble(heightInput.getText()));
         currentUser.setGender(gender);
@@ -214,7 +203,7 @@ public class EditProfileInfo implements Initializable {
         alert.setHeaderText("Confirmation");
         alert.setContentText("You are now level " + (currentUser.getLevel()+1) + " now");
         alert.show();
-        //内存里的用户对象数据更改；显示的等级数字更改；永存里文件数据也要改。
+
         String selectedTrainerID = (String) CoachChoiceBox.getSelectionModel().getSelectedItem().split("-")[1];
         currentUser.setTrainerID(selectedTrainerID);
         currentUser.setLevel(currentUser.getLevel()+1);

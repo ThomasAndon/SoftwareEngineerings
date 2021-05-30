@@ -49,7 +49,7 @@ public class BookSessionControl {
      * @Param:  time is the time chosen by the user while booking a session
      * @return:  whether the time is available for the trainer
      */
-    public Boolean checkSchedule(User user,String time) throws IOException {
+    public boolean checkSchedule(User user,String time) throws IOException {
         String line;
         BufferedReader reader = new BufferedReader(new FileReader("src//Data//Schedule.csv"));
         while((line=reader.readLine())!=null){

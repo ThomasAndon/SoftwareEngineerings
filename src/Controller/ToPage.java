@@ -41,13 +41,15 @@ public class ToPage  {
         stage.setScene(new Scene(root));
         stage.show();
     }
-    public void toWorkout(Button WorkoutBtn, User user) throws IOException{
+    public void toWorkout(Button WorkoutBtn, User user) throws IOException {
         Stage stage = (Stage) WorkoutBtn.getScene().getWindow();
         stage.close();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/WorkOutUI.fxml"));
         Parent root = loader.load();
-        stage.setScene(new Scene(root, 1000, 700));
+        UserWatchVideo controller = loader.getController();
+        controller.getUser(user);
+        stage.setScene(new Scene(root));
         stage.show();
 
     }
@@ -60,7 +62,7 @@ public class ToPage  {
         UserControlSchedule controller = loader.getController();
         controller.getUser(user);
         controller.showSchedule();
-        stage.setScene(new Scene(root, 1000, 700));
+        stage.setScene(new Scene(root));
         stage.show();
     }
     public<T>void toSchedule2(Button ScheduleBtn,T o) throws Exception {
@@ -84,7 +86,7 @@ public class ToPage  {
             controller.getTrainer(trainer);
             controller.showSchedule();
         }
-        stage.setScene(new Scene(root, 1000, 700));
+        stage.setScene(new Scene(root));
         stage.show();
     }
     public void toBookSession(Button SessionBtn, User user) throws IOException {

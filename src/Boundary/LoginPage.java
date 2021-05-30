@@ -64,7 +64,6 @@ public class LoginPage {
                 return;
             }
         }
-        //todo 此处是格式通过验证
         System.out.println("OK");
 
         // If ID not exists or not matching pw, error occurs.
@@ -98,9 +97,6 @@ public class LoginPage {
         stage.setTitle("Hello World");
         stage.setScene(new Scene(root));
         stage.show();
-        //todo 此处将此user对象传递给检查存在函数（外部class），看是否存在该用户。不存在则窗口提示，存在则继续
-
-        //todo 存在该用户，跳转到登陆后页面，并且将User对象传递给下一个页面的Controller（外部class，进入下一环节）
 
     }
 
@@ -142,8 +138,7 @@ public class LoginPage {
                 }
             }
         }
-        // end if-else
-        //todo 字符串格式通过
+
         System.out.println("OK");
         if(!new WriteUserAccounts().writeNewUser(id, pw1)) {
             alert.setContentText("Failed reason : ID already exists.");
@@ -151,7 +146,6 @@ public class LoginPage {
             return;
         }
 
-        //todo 弹出成功窗口，注册成功
         Alert affir = new Alert(Alert.AlertType.CONFIRMATION);
         affir.setTitle("Register Succeeded");
         affir.setContentText("Done! Your ID is \"" + id+"\"");
@@ -175,7 +169,7 @@ public class LoginPage {
             alert.show();
             return;
         }
-        // todo 此处是登录成功
+
         System.out.println("Coach login OK");
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         stage.close();
@@ -219,7 +213,6 @@ public class LoginPage {
             return;
         }
 
-        // todo 此处是登录成功
         System.out.println("Admin Login OK");
 
         Stage stage = (Stage) loginBtn.getScene().getWindow();
@@ -229,7 +222,6 @@ public class LoginPage {
         FXMLLoader loader = new FXMLLoader();;
         loader.setLocation(getClass().getResource("../view/AdminMainUI.fxml"));
         Parent root = loader.load();
-        //  ProfileInfo controller = loader.getController();
         AdminMain controller = loader.getController();
 
         stage.setTitle("Hello admin");
