@@ -30,7 +30,7 @@ public class VideoUploaderControl {
 
         try {
             if (osName.startsWith("Mac OS")) {
-                Runtime.getRuntime().exec("open \"" + url + "\"");
+                Runtime.getRuntime().exec("open " + url);
             } else {
                 Runtime.getRuntime().exec("cmd /c start " + url);
             }
