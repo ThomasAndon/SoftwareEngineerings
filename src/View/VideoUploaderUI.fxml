@@ -74,5 +74,6 @@
          <font>
             <Font size="21.0" />
          </font></Text>
+      <Text fx:id="mainPage" fill="#0018f5" layoutX="695.0" layoutY="534.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page" underline="true" />
    </children>
 </AnchorPane>

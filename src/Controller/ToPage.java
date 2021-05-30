@@ -3,6 +3,7 @@ package Controller;
 import Boundary.*;
 import Entity.Trainer;
 import Entity.User;
+import Entity.Video;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

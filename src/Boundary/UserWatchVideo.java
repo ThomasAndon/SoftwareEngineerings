@@ -1,9 +1,6 @@
 package Boundary;
 
-import Controller.ParseVideoMapper;
-import Controller.ToPage;
-import Controller.WatchVideoControl;
-import Controller.WriteVideoMapping;
+import Controller.*;
 import Entity.User;
 import Entity.Video;
 import javafx.collections.FXCollections;
@@ -63,7 +60,9 @@ public class UserWatchVideo implements Initializable {
         } catch (Exception e) {
 
             try {
-                new WriteVideoMapping().writeVideoMapping(data);
+
+              //  new WriteVideoMapping().writeVideoMapping(data);
+                new VideoUploaderControl().write(data);
             } catch (Exception ee) {
                 System.out.println("error when writing video mapper");
             }

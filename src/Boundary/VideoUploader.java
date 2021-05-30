@@ -1,8 +1,8 @@
 package Boundary;
 
 import Controller.ParseVideoMapper;
+import Controller.ToPage;
 import Controller.VideoUploaderControl;
-import Controller.WriteVideoMapping;
 import Entity.Video;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,9 +12,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -22,6 +25,8 @@ import java.util.ResourceBundle;
  * Admin can upload the videos through this interface
  */
 public class VideoUploader implements Initializable {
+    @FXML
+    public Text mainPage;
     @FXML
     private TableView<Video> videoTable;
     @FXML
@@ -37,7 +42,7 @@ public class VideoUploader implements Initializable {
 
     private String temporaryFilePath;
     private ObservableList<Video> data;
-    Video video;
+  //  Video video;
 
     @FXML
     void onChoosePathClicked(ActionEvent event) {
@@ -97,7 +102,7 @@ public class VideoUploader implements Initializable {
         Video temp = new Video(titleInput.getText(),temporaryFilePath,typeChoice.getValue());
         data.add(temp);
         try {
-            new WriteVideoMapping().writeVideoMapping(data);
+            new VideoUploaderControl().write(data);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -110,30 +115,37 @@ public class VideoUploader implements Initializable {
 
     @FXML
     void onDeletedSelected(ActionEvent event) {
+        Video video = videoTable.getSelectionModel().getSelectedItem();
         new VideoUploaderControl().delete(video,data);
     }
 
     @FXML
     void onOpenClicked(ActionEvent event) {
+        Video video = videoTable.getSelectionModel().getSelectedItem();
         new VideoUploaderControl().open(video);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        video = videoTable.getSelectionModel().getSelectedItem();
+       // video = videoTable.getSelectionModel().getSelectedItem();
         typeChoice.getItems().addAll("type1", "type2", "type3");
 
         try {
             data = new ParseVideoMapper().parseVideoMapper();
         } catch (Exception e) {
             try {
-                new WriteVideoMapping().writeVideoMapping(data);
+               new VideoUploaderControl().write(data);
             } catch (Exception ee) {
                 System.out.println("error when writing video mapper");
             }
         }
         videoTable.setItems(data);
+       // video = videoTable.getSelectionModel().getSelectedItem();
         titleCol.setCellValueFactory(new PropertyValueFactory<Video,String>("title"));
         typeCol.setCellValueFactory(new PropertyValueFactory<Video,String>("type"));
+    }
+
+    public void toMainPage(MouseEvent mouseEvent) throws IOException {
+        new ToPage().toMainPage(mainPage,0);
     }
 }
