@@ -51,17 +51,9 @@ public class ValidChecker {
      * @return Whether this account is valid
      * @throws Exception
      */
-    public boolean isValidAccount(String id, String pw) throws Exception {
-
-        return isAccountExists(new MatchAccount().userAccountFilePath, id, pw);
-    }
-
-
     public boolean isValidAccount(String path, String id, String pw) throws Exception {
         return isAccountExists(path, id, pw);
     }
-
-
 
     public boolean isAccountExists(String path, String id, String pw) throws Exception {
 
@@ -82,34 +74,10 @@ public class ValidChecker {
         return true;
     }
 
-    /**
-     * This method checks whether this ID has already exists.
-     *
-     * @param id
-     * @return Whether this is an existed ID.
-     * @throws Exception
-     * @author Thomas Andon
-     */
-    public boolean checkIDExists(String id) throws Exception {
-        HashMap accounts = new MatchAccount().readAllAccount();
-        if (accounts.containsKey(id)) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean checkIDExists(String path, String id) throws Exception {
-        HashMap accounts = new MatchAccount().readAllAccount(path);
-        if (accounts.containsKey(id)) {
-            return true;
-        }
-        return false;
-    }
-
     public boolean isNameValid(String name) {
 
         int length = name.length();
-        if (length < 4 || length > 15) {
+        if (length < 2 || length > 15) {
             return false;
         }
         for (int i = 0;i<length;i++) {
@@ -123,6 +91,17 @@ public class ValidChecker {
 
     }
 
+    public boolean isValidDouble(String str){
+        try{
+            Double d= Double.parseDouble(str);
+            System.out.println(d);
+            return true;
+        }catch (NumberFormatException e){
+            System.out.println("wrong");
+            return false;
+        }
+
+    }
 
 
 }

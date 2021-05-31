@@ -1,7 +1,5 @@
 package Controller;
 
-import Boundary.LoginPage;
-
 import java.io.*;
 public class WriteUserAccounts {
     /**
@@ -32,10 +30,6 @@ public class WriteUserAccounts {
         File f = new File(path);
         if (!(f.isFile() && f.exists())) {
             System.out.println("Writing - Account file doesn't exist, new one created");
-        }
-
-        if (new ValidChecker().checkIDExists(id)) {
-            return false;
         }
 
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(f,true));

@@ -21,9 +21,9 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-        <Text fx:id="adminMain" fill="#008cf5" layoutX="402.0" layoutY="379.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page">
+        <Text fx:id="adminMain" fill="#008cf5" layoutX="427.0" layoutY="381.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page" underline="true">
          <font>
-            <Font size="17.0" />
+            <Font size="15.0" />
          </font></Text>
         
     </children>

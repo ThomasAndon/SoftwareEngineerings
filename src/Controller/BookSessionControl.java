@@ -18,7 +18,7 @@ public class BookSessionControl {
     public boolean addSession (User user, String target, String pAbility, String note, String time) throws Exception{
         Session session = new Session();
         session.setUserID(user.getId());
-        user.setTrainerID("8159"); //TODO 教练
+        user.setTrainerID(user.getTrainerID()); //TODO 教练
         session.setTrainerID(user.getTrainerID());
         session.setTarget(target);
         session.setPhysicalAbility(pAbility);

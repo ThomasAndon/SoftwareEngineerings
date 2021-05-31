@@ -45,7 +45,6 @@ public class TrainerControlSchedule implements ControlSchedule<Trainer>{
         noteCol.setCellValueFactory(new PropertyValueFactory<>("note"));
         idCol.setText("Student ID");
         idCol.setCellValueFactory(new PropertyValueFactory<>("userID"));
-        //todo 教练可以添加训练的备注
         cancelCol.setText("Note");
         table.setItems(slist);
     }

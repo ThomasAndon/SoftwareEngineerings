@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TrainerSchedule extends MySchedule<Trainer>{
+    ArrayList<String> students = new ArrayList<String>();
     /**
      * @description get the schedule of a particular trainer.
      * @return trainer's schedule
@@ -18,7 +19,8 @@ public class TrainerSchedule extends MySchedule<Trainer>{
      */
     @Override
     public ObservableList<Session> mySchedule(Trainer trainer) throws Exception {
-        trainer.setStudents(new ArrayList<String>(Arrays.asList("1234", "12345")));
+       // trainer.setStudents();
+       // trainer.setStudents(new ArrayList<String>(Arrays.asList("1234", "12345")));
         ObservableList<Session> tlist = FXCollections.observableArrayList();
         List<Session> list = readCSV(trainer.getStudents().get(0));
         for(int i =1; i<trainer.getStudents().size();i++){

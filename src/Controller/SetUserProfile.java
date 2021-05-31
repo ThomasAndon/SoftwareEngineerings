@@ -5,7 +5,7 @@ import Entity.User;
 
 import java.io.*;
 
-public class SetUserProfile{
+public class SetUserProfile implements SetProfile<User>{
 
     /**
      * This method takes in a user, set up his personal information and return the same user back.
@@ -13,7 +13,9 @@ public class SetUserProfile{
      * @return return the user with his/her full information.
      * @author Thomas Andon
      */
-    public User setUserProfile(User user) throws IOException {
+
+    @Override
+    public User setProfile(User user) throws Exception {
         String[] info=new profilePath().readFile("userProfile/", user.getId());
         user.setGender(info[1]);
         user.setHeight(Double.parseDouble(info[2]));
@@ -22,10 +24,6 @@ public class SetUserProfile{
         user.setName(info[5]);
         user.setTrainerID(info[6]);
 
-
         return user;
     }
-
-
-
 }

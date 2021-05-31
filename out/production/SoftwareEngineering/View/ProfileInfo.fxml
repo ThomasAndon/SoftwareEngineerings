@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
@@ -14,15 +19,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.EditProfileInfo">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.EditProfileInfo">
    <children>
-      <TabPane prefHeight="700.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="500.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab style="-fx-background-color: #87c9ff; -fx-font-family: &quot;Futura&quot;;" text="Personal Info">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="658.0" prefWidth="1000.0" styleClass="bg-color" stylesheets="@style.css">
                      <children>
-                        <VBox alignment="CENTER" layoutX="97.0" layoutY="83.0" prefHeight="438.0" prefWidth="291.0">
+                        <VBox alignment="CENTER" layoutX="83.0" layoutY="16.0" prefHeight="371.0" prefWidth="283.0">
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                  <children>
@@ -83,12 +88,12 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <Button fx:id="saveBtn" layoutX="175.0" layoutY="557.0" mnemonicParsing="false" onAction="#onSaveBtnClicked" styleClass="saveButton" stylesheets="@Profile.css" text="Save" textFill="WHITE">
+                        <Button fx:id="saveBtn" layoutX="157.0" layoutY="393.0" mnemonicParsing="false" onAction="#onSaveBtnClicked" styleClass="saveButton" stylesheets="@Profile.css" text="Save" textFill="WHITE">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Button>
-                        <VBox layoutX="565.0" layoutY="124.0" prefHeight="252.0" prefWidth="294.0">
+                        <VBox layoutX="400.0" layoutY="49.0" prefHeight="237.0" prefWidth="374.0">
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="394.0">
                                  <children>
@@ -129,9 +134,9 @@
                            </children>
                         </VBox>
                         <Text fx:id="mainPage" fill="#0018f5" layoutX="759.0" layoutY="601.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page" underline="true" />
-                        <HBox alignment="CENTER" layoutX="561.0" layoutY="376.0" prefHeight="132.0" prefWidth="302.0">
+                        <HBox alignment="CENTER" layoutX="431.0" layoutY="281.0" prefHeight="167.0" prefWidth="287.0">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="132.0" prefWidth="222.0">
+                              <VBox alignment="CENTER" prefHeight="227.0" prefWidth="383.0">
                                  <children>
                                     <VBox>
                                        <children>
@@ -143,6 +148,11 @@
                               <Button fx:id="selectCoachBtn" disable="true" mnemonicParsing="false" onAction="#onSelectCoachBtnClicked" opacity="0.0" prefHeight="26.0" prefWidth="77.0" text="Select" />
                            </children>
                         </HBox>
+                        <Text fx:id="adminMain" fill="#008cf5" layoutX="640.0" layoutY="429.0" onMouseClicked="#toMainPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Back to main page" underline="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
             </content>

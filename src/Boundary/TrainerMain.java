@@ -40,7 +40,7 @@ public class TrainerMain {
     public void initData(Trainer trainer) throws IOException {
         trainerID.setText(trainer.getTrainerID());
         this.trainer = trainer;
-        Ad.setText(new OpenAd().selectAd());
+   //     Ad.setText(new OpenAd().selectAd());
     }
 
     public void toSchedule(ActionEvent actionEvent) throws Exception {

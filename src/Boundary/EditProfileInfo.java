@@ -1,8 +1,6 @@
 package Boundary;
 
-import Controller.ToPage;
-import Controller.ValidChecker;
-import Controller.WriteUserProfile;
+import Controller.*;
 import Entity.Trainer;
 import Entity.User;
 import javafx.collections.ObservableList;
@@ -16,13 +14,16 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EditProfileInfo implements Initializable {
-
+    @FXML
+    public Text adminMain;
     User currentUser;
-
+    Trainer chosenTrainer = new Trainer();
     String selectedTrainerID;
+    ArrayList<String> students = new ArrayList<>();
     @FXML
     public Text mainPage;
     @FXML
@@ -68,8 +69,6 @@ public class EditProfileInfo implements Initializable {
 
         VIPLevelHolder.setText(String.valueOf(user.getLevel()));
 
-        // 下面部分是初始化教练选择
-
         TrainerInfo ccc = new TrainerInfo();
         ObservableList<Trainer> coachList = null;
         try {
@@ -109,7 +108,6 @@ public class EditProfileInfo implements Initializable {
             alert.setContentText("Height and weight must be numbers bigger than 0");
             alert.show();
             return;
-
         }
 
         //Following part prompts the username.
@@ -144,7 +142,11 @@ public class EditProfileInfo implements Initializable {
             try {
                 String selectedTrainerID = (String) CoachChoiceBox.getSelectionModel().getSelectedItem().split("-")[1];
                 currentUser.setTrainerID(selectedTrainerID);
-            } catch (Exception e) {
+                chosenTrainer.setTrainerID(selectedTrainerID);
+                students.add(currentUser.getId());
+                chosenTrainer = new SetTrainerProfile().setProfile(chosenTrainer);
+                chosenTrainer.setStudents(students);
+           } catch (Exception e) {
                 System.out.println("Trainer not selected");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("Error");
@@ -156,11 +158,14 @@ public class EditProfileInfo implements Initializable {
 
         try {
             new WriteUserProfile().writeUserProfile(currentUser);
+            new WriteTrainerProfile().writeCoachProfile(chosenTrainer);
         } catch (IOException e) {
             System.out.println("Error occurs when writing user profile");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setContentText("Error occurs when writing user profile");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
 

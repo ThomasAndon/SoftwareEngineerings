@@ -9,7 +9,7 @@ public class Trainer {
     String name;
     Date DoB;
     String gender;
-    int Tel;
+    String Tel;
     String experience;
     String Intro="None";
     ArrayList<String>students;
@@ -70,11 +70,11 @@ public class Trainer {
         this.gender = gender;
     }
 
-    public int getTel() {
+    public String getTel() {
         return Tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         Tel = tel;
     }
 

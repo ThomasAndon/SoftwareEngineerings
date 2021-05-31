@@ -33,7 +33,7 @@ public class InformationReader {
                 s.setGender(lineDta.split("#")[1]);
                 s.setHeight(Double.parseDouble(lineDta.split("#")[2]));
                 s.setWeight(Double.parseDouble(lineDta.split("#")[3]));
-                s.setTel(Integer.parseInt(lineDta.split("#")[4]));
+                s.setTel(lineDta.split("#")[4]);
                 s.setName(lineDta.split("#")[5]);
                 s.setIntro(lineDta.split("#")[6]);
                 list.add(s);

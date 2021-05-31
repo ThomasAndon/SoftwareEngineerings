@@ -24,14 +24,19 @@ public class OpenAd {
         File file = new File(AdPath);
         File[] fs = file.listFiles();
 
-        for(File f:fs){
-            con = con + 1;
-
-            fileName.add(f.getName());
+        if(fs.length== 0){
+            return "None";
         }
+        else {
+            for (File f : fs) {
+                con = con + 1;
 
-        int a=i.nextInt(con-1);
-        return readAd(fileName.get(a));
+                fileName.add(f.getName());
+            }
+
+            int a = i.nextInt(con);
+            return readAd(fileName.get(a));
+        }
     }
     public String readAd(String name) throws IOException {
 

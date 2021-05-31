@@ -43,10 +43,10 @@ public class LoginPage {
      */
     @FXML
     void onLoginBtnClicked(ActionEvent event) throws Exception {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Login failed");
-
+        MatchAccount io = new MatchAccount();
 
         //ValidChecker Checker = new ValidChecker();
         String id = idInput.getText();
@@ -66,7 +66,7 @@ public class LoginPage {
         System.out.println("OK");
 
         // If ID not exists or not matching pw, error occurs.
-        if(!check.isValidAccount(id,pw)){
+        if(!check.isValidAccount(io.userAccountFilePath,id,pw)){
             alert.setContentText("Failed reason : Unidentified user");
             alert.show();
             return;
@@ -87,7 +87,7 @@ public class LoginPage {
         User user = new User(id,pw);
 
         try {
-            User user1 = new SetUserProfile().setUserProfile(user);
+            User user1 = new SetUserProfile().setProfile(user);
             controller.initData(user1);
         } catch (Exception e) {
             System.out.println("Login Exception Caught");
@@ -101,8 +101,8 @@ public class LoginPage {
 
     @FXML
     void onRegBtnClicked(ActionEvent event) throws Exception {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        ValidChecker vc=new ValidChecker();
         alert.setTitle("Error");
         alert.setHeaderText("Register failed");
 
@@ -139,11 +139,13 @@ public class LoginPage {
         }
 
         System.out.println("OK");
-        if(!new WriteUserAccounts().writeNewUser(id, pw1)) {
+        if(vc.isAccountExists("src/Data/Account/account.txt",regUserName.getText(),regPw.getText())) {
             alert.setContentText("Failed reason : ID already exists.");
             alert.show();
             return;
         }
+        WriteUserAccounts writeUserAccounts= new WriteUserAccounts();
+        writeUserAccounts.writeNewUser(id,pw1);
 
         Alert affir = new Alert(Alert.AlertType.CONFIRMATION);
         affir.setTitle("Register Succeeded");
@@ -158,16 +160,22 @@ public class LoginPage {
     void onCALoginClicked(MouseEvent event) throws Exception {
         String id = idInput.getText();
         String pw = pwInput.getText();
-       // ValidChecker vc = new ValidChecker();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         MatchAccount io = new MatchAccount();
-        if ((check.isInvalidID(id)) || check.isInvalidPw(pw) || !check.isValidAccount(io.coachAccountFilePath,id,pw)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        if ((check.isInvalidID(id)) || check.isInvalidPw(pw) ){
             alert.setTitle("Login error");
             alert.setHeaderText("Coach Login Error");
             alert.setContentText("Wrong input. Try again.");
             alert.show();
             return;
         }
+        if(!check.isValidAccount(io.coachAccountFilePath,id,pw)) {
+            alert.setContentText("Failed reason : Unidentified coach");
+            alert.show();
+            return;
+        }
+
 
         System.out.println("Coach login OK");
         Stage stage = (Stage) loginBtn.getScene().getWindow();
@@ -183,14 +191,14 @@ public class LoginPage {
         Trainer trainer = new Trainer(id,pw);
 
         try {
-            Trainer trainer1 = new SetTrainerProfile().setCoachProfile(trainer);
+            Trainer trainer1 = new SetTrainerProfile().setProfile(trainer);
             controller.initData(trainer1);
         } catch (Exception e) {
             System.out.println("Login Exception Caught");
             controller.initData(trainer);
         }
 
-        stage.setTitle("Welcome to London Fitness");
+        stage.setTitle("London Fitness - Trainer");
         stage.setScene(new Scene(root));
         stage.show();
     }
@@ -200,7 +208,7 @@ public class LoginPage {
     void onAdminLoginClicked(MouseEvent event) throws Exception {
         String id = idInput.getText();
         String pw = pwInput.getText();
-      //  ValidChecker vc = new ValidChecker();
+        //  ValidChecker vc = new ValidChecker();
         MatchAccount io = new MatchAccount();
 
         if ((check.isInvalidID(id)) || check.isInvalidPw(pw) || !check.isValidAccount(io.adminAccountFilePath,id,pw)) {

@@ -30,11 +30,10 @@ public class AddTrainerControl {
         trainer.setName(name);
         trainer.setTrainerID(id);
         trainer.setGender(gender);
-        trainer.setTel(Integer.parseInt(phone));
+        trainer.setTel(phone);
         trainer.setHeight(height);
         trainer.setWeight(weight);
         trainer.setIntro(intro);
-
         writeCoachProfile.writeCoachProfile(trainer);
 
 

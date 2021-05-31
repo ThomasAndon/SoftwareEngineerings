@@ -106,7 +106,7 @@ public class CoachProfile {
             return;
         }
 
-        int inputPhone = Integer.parseInt(Phone.getText());
+        String inputPhone = Phone.getText();
 
         String intro = CoachIntro.getText();
 
