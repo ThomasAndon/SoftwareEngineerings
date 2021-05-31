@@ -1,2 +1,0 @@
-userID	trainerID	date	time	target	physical ability	note	detail
-Cutting 13:00-14:00 #
