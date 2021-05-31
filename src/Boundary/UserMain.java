@@ -33,7 +33,7 @@ public class UserMain {
     @FXML
     private Label userID;
     @FXML
-    private TextArea Ad;
+    private Label Ad;
 
     private User user;
     /**

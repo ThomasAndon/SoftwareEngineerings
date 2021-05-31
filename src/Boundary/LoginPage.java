@@ -93,7 +93,7 @@ public class LoginPage {
             System.out.println("Login Exception Caught");
             controller.initData(user);
         }
-        stage.setTitle("Hello World");
+        stage.setTitle("Welcome to London Fitness");
         stage.setScene(new Scene(root));
         stage.show();
 
@@ -190,7 +190,7 @@ public class LoginPage {
             controller.initData(trainer);
         }
 
-        stage.setTitle("Hello World");
+        stage.setTitle("Welcome to London Fitness");
         stage.setScene(new Scene(root));
         stage.show();
     }
@@ -223,7 +223,7 @@ public class LoginPage {
         Parent root = loader.load();
         AdminMain controller = loader.getController();
 
-        stage.setTitle("Hello admin");
+        stage.setTitle("London Fitness - Manager");
         stage.setScene(new Scene(root));
         stage.show();
     }

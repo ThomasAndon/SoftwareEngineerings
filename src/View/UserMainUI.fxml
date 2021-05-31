@@ -13,24 +13,33 @@
 
 <AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.UserMain">
     <children>
-        <Button fx:id="WorkoutBtn" layoutX="215.0" layoutY="149.0" mnemonicParsing="false" onAction="#toWorkout" prefHeight="45.0" prefWidth="207.0" styleClass="saveButton" stylesheets="@Profile.css" text="Workout videos" />
-        <Button fx:id="SessionBtn" layoutX="215.0" layoutY="206.0" mnemonicParsing="false" onAction="#toBookSession" prefHeight="45.0" prefWidth="207.0" styleClass="saveButton" stylesheets="@Profile.css" text="Book a live session" />
-        <Button fx:id="ScheduleBtn" layoutX="215.0" layoutY="266.0" mnemonicParsing="false" onMouseClicked="#toSchedule" prefHeight="45.0" prefWidth="207.0" styleClass="saveButton" stylesheets="@Profile.css" text="My schedule" />
-        <Button fx:id="ProfileBtn" layoutX="215.0" layoutY="327.0" mnemonicParsing="false" onAction="#toProfile" prefHeight="45.0" prefWidth="207.0" styleClass="saveButton" stylesheets="@Profile.css" text="My profile" />
-        <Text fx:id="Exit" fill="#007bff" layoutX="520.0" layoutY="378.0" onMouseClicked="#exit" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit">
+        <Button fx:id="WorkoutBtn" layoutX="215.0" layoutY="149.0" mnemonicParsing="false" onAction="#toWorkout" prefHeight="45.0" prefWidth="207.0" styleClass="saveButton" stylesheets="@Profile.css" text="Workout Videos" />
+        <Button fx:id="SessionBtn" layoutX="215.0" layoutY="206.0" mnemonicParsing="false" onAction="#toBookSession" prefHeight="45.0" prefWidth="207.0" styleClass="saveButton" stylesheets="@Profile.css" text="Book a Live Session" />
+        <Button fx:id="ScheduleBtn" layoutX="215.0" layoutY="266.0" mnemonicParsing="false" onMouseClicked="#toSchedule" prefHeight="45.0" prefWidth="207.0" styleClass="saveButton" stylesheets="@Profile.css" text="My Schedule" />
+        <Button fx:id="ProfileBtn" layoutX="215.0" layoutY="327.0" mnemonicParsing="false" onAction="#toProfile" prefHeight="45.0" prefWidth="207.0" styleClass="saveButton" stylesheets="@Profile.css" text="My Profile" />
+        <Text fx:id="Exit" fill="#007bff" layoutX="520.0" layoutY="378.0" onMouseClicked="#exit" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit" underline="true">
          <font>
-            <Font size="19.0" />
+            <Font size="15.0" />
          </font></Text>
-      <Label layoutX="95.0" layoutY="30.0" prefHeight="54.0" prefWidth="241.0" text="Welcome,">
+      <Label contentDisplay="CENTER" layoutX="142.0" layoutY="36.0" prefHeight="54.0" prefWidth="241.0" text="Welcome," textAlignment="CENTER">
          <font>
-            <Font size="42.0" />
+            <Font name="Footlight MT Light" size="35.0" />
          </font>
       </Label>
-      <Label fx:id="userID" layoutX="294.0" layoutY="30.0" prefHeight="54.0" prefWidth="241.0">
+      <Label fx:id="userID" contentDisplay="CENTER" layoutX="316.0" layoutY="36.0" prefHeight="54.0" prefWidth="241.0" textAlignment="CENTER">
          <font>
-            <Font size="42.0" />
+            <Font name="Footlight MT Light" size="35.0" />
          </font>
       </Label>
-      <TextArea fx:id="Ad" layoutX="73.0" layoutY="95.0" prefHeight="41.0" prefWidth="442.0" />
+      <Label fx:id="Ad" alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="78.0" prefHeight="41.0" prefWidth="552.0" textAlignment="CENTER" textFill="#c90707" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="Georgia Italic" size="23.0" />
+         </font>
+      </Label>
+      <Text fill="#0000008c" layoutX="177.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upgrade VIP level in &quot;My Profile&quot;">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>
