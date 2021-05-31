@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 
-public class UserInfoControl {
+public class UserInfo {
     @FXML
     private TableView<User> table;
     @FXML

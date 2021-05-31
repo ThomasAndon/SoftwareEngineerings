@@ -39,7 +39,6 @@ public class LoginPage {
      * @Description: Login and register check, check if the input string is correct.
      * @Param:
      * @return:
-     * @Author: CloudKing
      * @Date: 2021/3/30
      */
     @FXML
@@ -184,7 +183,7 @@ public class LoginPage {
         Trainer trainer = new Trainer(id,pw);
 
         try {
-            Trainer trainer1 = new SetCoachProfile().setCoachProfile(trainer);
+            Trainer trainer1 = new SetTrainerProfile().setCoachProfile(trainer);
             controller.initData(trainer1);
         } catch (Exception e) {
             System.out.println("Login Exception Caught");

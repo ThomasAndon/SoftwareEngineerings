@@ -4,7 +4,7 @@ import Entity.Trainer;
 
 import java.io.IOException;
 
-public class WriteCoachProfile {
+public class WriteTrainerProfile {
     public boolean writeCoachProfile(Trainer trainer) throws IOException {
 
         String str = "coachProfile";

@@ -3,7 +3,6 @@ package Controller;
 import Boundary.*;
 import Entity.Trainer;
 import Entity.User;
-import Entity.Video;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -149,9 +148,9 @@ public class ToPage  {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/CoachInformationUI.fxml"));
         Parent root = loader.load();
-        CoachInfoControl controller = loader.getController();
+        TrainerInfo controller = loader.getController();
         //instantiating a user
-        controller.init();
+        controller.addToTable();
         stage.setScene(new Scene(root));
         stage.show();
     }
@@ -161,7 +160,7 @@ public class ToPage  {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/UserInformationUI.fxml"));
         Parent root = loader.load();
-        UserInfoControl controller = loader.getController();
+        UserInfo controller = loader.getController();
         //instantiating a user
         controller.init();
         stage.setScene(new Scene(root));
@@ -173,9 +172,9 @@ public class ToPage  {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/SessionCsv.fxml"));
         Parent root = loader.load();
-        SessionCsvControl controller = loader.getController();
+        SessionInfo controller = loader.getController();
         //instantiating a user
-        controller.init();
+        controller.readCSV();
         stage.setScene(new Scene(root));
         stage.show();
     }

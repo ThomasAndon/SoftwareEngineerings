@@ -26,7 +26,7 @@ public class AddTrainerControl {
         /**
          * Add the information into the coach file
          */
-        WriteCoachProfile writeCoachProfile= new WriteCoachProfile();
+        WriteTrainerProfile writeCoachProfile= new WriteTrainerProfile();
         trainer.setName(name);
         trainer.setTrainerID(id);
         trainer.setGender(gender);

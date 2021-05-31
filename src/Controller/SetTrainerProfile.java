@@ -6,9 +6,9 @@ import java.io.IOException;
 
 
 
-public class SetCoachProfile{
+public class SetTrainerProfile {
     /**
-     * This method takes in a user, set up his personal information and return the same user back.
+     * This method takes in a trainer, set up his personal information and return the same trainer back.
      * @param trainer this is the user known only the ID and password.
      * @return return the user with his/her full information.
      * @author Thomas Andon

@@ -74,9 +74,9 @@ public class InformationReader {
 
             textFile.close();
         }catch (FileNotFoundException e){
-            System.out.println("没有找到指定文件");
+            System.out.println("Fail to find the file.");
         }catch (IOException e){
-            System.out.println("文件读写出错");
+            System.out.println("IO Exception.");
         }
 
         return slist;

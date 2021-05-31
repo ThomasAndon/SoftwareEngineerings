@@ -17,7 +17,7 @@ import java.io.*;
 /**
  * Display the coaches information in the UI
  */
-public class CoachInfoControl {
+public class TrainerInfo {
     @FXML
     private TableView<Trainer> table;
     @FXML
@@ -33,23 +33,22 @@ public class CoachInfoControl {
      *Get the coaches information
      * @throws IOException
      */
-    public void init() throws IOException {
-        get.GetInfo("coachProfile","AllCoachInfo.txt");
-        addToTable();
-    }
+//    public void init() throws IOException {
+//        get.GetInfo("coachProfile","AllCoachInfo.txt");
+//        addToTable();
+//    }
 
     public ObservableList<Trainer> returnCoachList() throws IOException {
-
         return cr.getCoachList();
-
     }
 
     /**
      * Pass value to the table
      * @throws IOException
      */
-    private void addToTable() throws IOException {
-        ObservableList<Trainer> slist= returnCoachList();
+    public void addToTable() throws IOException {
+        get.GetInfo("coachProfile","AllCoachInfo.txt");
+        ObservableList<Trainer> slist= cr.getCoachList();
 
         table.setItems(slist);
         TableColumn<Trainer, String> table_name= new TableColumn<Trainer, String>("Name");

@@ -8,19 +8,14 @@ import Entity.User;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.FileAlreadyExistsException;
 import java.util.ResourceBundle;
 
 public class EditProfileInfo implements Initializable {
@@ -75,7 +70,7 @@ public class EditProfileInfo implements Initializable {
 
         // 下面部分是初始化教练选择
 
-        CoachInfoControl ccc = new CoachInfoControl();
+        TrainerInfo ccc = new TrainerInfo();
         ObservableList<Trainer> coachList = null;
         try {
             coachList = ccc.returnCoachList();

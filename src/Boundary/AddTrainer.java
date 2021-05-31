@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
 
 import java.io.*;
 
-public class AddCoach {
+public class AddTrainer {
 
     @FXML
     private TextField CoachPw;
@@ -33,11 +33,6 @@ public class AddCoach {
     @FXML
     private Text backBt;
 
-    /**
-     * Interface for the admin to add a new coach and save coach information
-     * @param actionEvent
-     * @throws IOException
-     */
     public void SaveInfo(ActionEvent actionEvent) throws IOException {
         String name=CoachName.getText();
         String id=CoachId.getText();
@@ -48,18 +43,11 @@ public class AddCoach {
         Double weight=Double.parseDouble(CoachWeight.getText());
         String intro=CoachIntro.getText();
 
-
         AddTrainerControl c = new AddTrainerControl();
         c.SaveInfo(name,id,pw,gender,phone,height,weight,intro);
     }
 
-    /**
-     * Click and change page
-     * @param mouseEvent
-     * @throws IOException
-     */
     public void toLastPage(MouseEvent mouseEvent) throws IOException {
-        ToPage tp = new ToPage();
-        tp.toCoachCSVPage(backBt);//TODO 检查一下需不需要init，如果需要在ToPage的方法里改
+        new ToPage().toMainPage(backBt,0);
     }
 }
