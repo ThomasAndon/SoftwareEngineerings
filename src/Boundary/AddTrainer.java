@@ -91,7 +91,11 @@ public class AddTrainer implements Initializable {
         }
     }
 
-
+    /**
+     * Leads the UI to go back to last page.
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void toLastPage(MouseEvent mouseEvent) throws IOException {
         new ToPage().toMainPage(backBt,0);
     }

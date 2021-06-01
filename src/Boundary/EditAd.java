@@ -12,6 +12,9 @@ import javafx.event.ActionEvent;
 
 import java.io.*;
 
+/**
+ * This class controls the ad edit page
+ */
 public class EditAd {
     @FXML
     private Text adminMain;

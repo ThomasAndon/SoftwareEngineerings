@@ -18,6 +18,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 
+/**
+ * This is the controller of Trainer's schedule
+ */
 public class TrainerControlSchedule implements ControlSchedule<Trainer>{
     @FXML
     private TableColumn<Session, LocalDate> timeCol;
@@ -50,15 +53,26 @@ public class TrainerControlSchedule implements ControlSchedule<Trainer>{
     }
 
     @Override
+    /**
+     * print the schedule on the table
+     */
     public void setSchedule(MySchedule<Trainer> ts) throws Exception {
         printSchedule(ts.mySchedule(trainer));
     }
     @Override
+    /**
+     * show schedule of the trainer
+     */
     public void showSchedule() throws Exception {
         TrainerSchedule ts = new TrainerSchedule();
         setSchedule(ts);
     }
 
+    /**
+     * go to main page
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void toMainPage(MouseEvent mouseEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.toMainPage(mainPage, trainer);

@@ -4,6 +4,9 @@ import Entity.Session;
 import Entity.User;
 import java.io.*;
 
+/**
+ * controller of booking session
+ */
 public class BookSessionControl {
     /**
      * @description  add a new living session for a particular user.

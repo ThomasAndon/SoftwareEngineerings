@@ -2,6 +2,9 @@ package Controller;
 
 import java.io.*;
 
+/**
+ * controller of adding ad
+ */
 public class EditAdControl {
 
     /**
@@ -25,6 +28,12 @@ public class EditAdControl {
         bw.close();
     }
 
+    /**
+     * after adding ad, save it
+     * @param name
+     * @param txt
+     * @throws IOException
+     */
     public void saveAd(String name, String txt)throws IOException{
         EditAdControl wa = new EditAdControl();
         wa.writeAd(name,txt);

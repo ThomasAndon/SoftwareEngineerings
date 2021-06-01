@@ -12,6 +12,9 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
+/**
+ * This class is about coach profile page
+ */
 public class CoachProfile {
     Trainer currentTrainer;
     @FXML
@@ -61,10 +64,18 @@ public class CoachProfile {
         this.trainer = trainer;
 
     }
+    /**
+     * go to main page
+     * @param actionEvent
+     */
     public void toMainPage(MouseEvent mouseEvent) throws Exception {
         new ToPage().toMainPage(mainPage, trainer);
     }
 
+    /**
+     * save user profile info
+     * @param actionEvent
+     */
     public void onSaveBtnClicked(ActionEvent actionEvent) {
 
         //Following part checks the height and weight.

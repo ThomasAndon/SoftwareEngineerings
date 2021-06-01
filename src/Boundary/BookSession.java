@@ -25,6 +25,9 @@ import javafx.scene.control.DatePicker;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * This class controls the book session page
+ */
 public class BookSession implements Initializable{
     @FXML
     public Text mainPage;
@@ -87,11 +90,21 @@ public class BookSession implements Initializable{
         }
     }
 
+    /**
+     *  Go to schedule page
+     * @param actionEvent
+     * @throws Exception
+     */
     public void toSchedule(MouseEvent actionEvent) throws Exception {
         ToPage tp = new ToPage();
         tp.toSchedule(viewSchedule, user);
     }
 
+    /**
+     *  Go to Main page
+     * @param actionEvent
+     * @throws Exception
+     */
     public void toMainPage(MouseEvent actionEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.toMainPage(mainPage, user);

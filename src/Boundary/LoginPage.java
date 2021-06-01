@@ -15,6 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * This class is the controller of the login page
+ */
 public class LoginPage {
     @FXML
     private TextField idInput;
@@ -100,6 +103,9 @@ public class LoginPage {
     }
 
     @FXML
+    /**
+     * This is invoked when regiser button is clicked
+     */
     void onRegBtnClicked(ActionEvent event) throws Exception {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         ValidChecker vc=new ValidChecker();
@@ -205,6 +211,9 @@ public class LoginPage {
 
 
     @FXML
+    /**
+     * This is invoked when admin login button is clicked.
+     */
     void onAdminLoginClicked(MouseEvent event) throws Exception {
         String id = idInput.getText();
         String pw = pwInput.getText();

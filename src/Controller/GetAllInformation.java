@@ -9,6 +9,12 @@ public class GetAllInformation {
 
     private String path = "src/Data/ProfileInfo/";
 
+    /**
+     * get info of specific user
+     * @param s1
+     * @param s2
+     * @throws IOException
+     */
     public void GetInfo(String s1, String s2) throws IOException {
         String Data ="";
         File AllInfo = new File(path + s2);

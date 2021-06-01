@@ -17,6 +17,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * This class controls the edit profile info page
+ */
 public class EditProfileInfo implements Initializable {
     @FXML
     public Text adminMain;
@@ -188,7 +191,7 @@ public class EditProfileInfo implements Initializable {
         }
 
 
-        //todo 以后如果加入了最高会员等级，在这里加一个ifelse判断，不符合就弹窗以及return来跳出此函数
+
         if (currentUser.getLevel()>= currentUser.MAX_VIP_LEVEL) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");

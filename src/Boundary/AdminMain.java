@@ -7,6 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import java.io.IOException;
+
+/**
+ * This class contains the control methods of admin page
+ */
 public class AdminMain {
     public Button uploadVideo;
     @FXML
@@ -20,18 +24,38 @@ public class AdminMain {
     @FXML
     private Text Exit;
 
+    /**
+     * go to userinfo page
+     * @param actionEvent
+     * @throws IOException
+     */
     public void toUserInfo(ActionEvent actionEvent) throws IOException {
         new ToPage().toUserCSVPage(userInfo);
     }
 
+    /**
+     * go to coach info page
+     * @param actionEvent
+     * @throws IOException
+     */
     public void toCoachInfo(ActionEvent actionEvent) throws IOException {
         new ToPage().toCoachCSVPage2(coachInfo);
     }
 
+    /**
+     * go to session info page
+     * @param actionEvent
+     * @throws IOException
+     */
     public void toSessionInfo(ActionEvent actionEvent) throws IOException {
         new ToPage().toSessionCSVPage(sessionInfo);
     }
 
+    /**
+     * go to edit ad page
+     * @param actionEvent
+     * @throws IOException
+     */
     public void editAd(ActionEvent actionEvent) throws IOException {
         new ToPage().toAd(edit);
     }
@@ -45,6 +69,11 @@ public class AdminMain {
     }
 
 
+    /**
+     * User exit the admin page
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void exit(MouseEvent mouseEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.exit(Exit);

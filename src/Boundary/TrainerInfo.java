@@ -79,11 +79,20 @@ public class TrainerInfo {
     }
 
 
-
+    /**
+     * go to main page
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void toMainPage(MouseEvent mouseEvent) throws IOException {
         new ToPage().toMainPage(adminMain,0);
     }
 
+    /**
+     * go to add coach page
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void toAddCoach(MouseEvent mouseEvent) throws IOException {
         new ToPage().toAddCoach(addCoach);
     }

@@ -27,10 +27,18 @@ public class UserInfo {
     private InformationReader cr = new InformationReader();
     private GetAllInformation get = new GetAllInformation();
 
+    /**
+     * Initial method called when loading the page
+     * @throws IOException
+     */
     public void init() throws IOException {
         get.GetInfo("userProfile","AllUserInfo.txt");
         readCSV();
     }
+
+    /**
+     * set csv to table
+     */
     public void readCSV()  {
         ObservableList<User> slist= cr.getUserList();
 

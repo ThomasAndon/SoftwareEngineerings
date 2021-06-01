@@ -44,6 +44,9 @@ public class UserWatchVideo implements Initializable {
     private ObservableList<Video> data;
 
     @FXML
+    /**
+     * open the selected video
+     */
     void onOpenClicked(ActionEvent event) {
 
         Video video = videoTable.getSelectionModel().getSelectedItem();
@@ -53,6 +56,9 @@ public class UserWatchVideo implements Initializable {
     }
 
     @Override
+    /**
+     * init function when loading the page
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
@@ -74,6 +80,12 @@ public class UserWatchVideo implements Initializable {
     public void getUser(User user) throws IOException {
         this.user = user;
     }
+
+    /**
+     * go to main page
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void toMainPage(MouseEvent mouseEvent) throws IOException {
         new ToPage().toMainPage(mainPage,user);
     }

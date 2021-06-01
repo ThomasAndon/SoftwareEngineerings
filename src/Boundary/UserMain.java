@@ -55,24 +55,42 @@ public class UserMain {
         this.user = user;
     }
 
+    /**
+     * go to workout page
+     * @param actionEvent
+     * @throws IOException
+     */
     public void toWorkout(ActionEvent actionEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.toWorkout(WorkoutBtn, user);
     }
 
+    /**
+     * to book session page
+     * @param actionEvent
+     * @throws IOException
+     */
     public void toBookSession(ActionEvent actionEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.toBookSession(SessionBtn, user);
     }
 
-
+    /**
+     * to profile page
+     * @param actionEvent
+     * @throws IOException
+     */
     public void toProfile(ActionEvent actionEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.toProfile(ProfileBtn, user);
 
     }
 
-
+    /**
+     * to schedule page
+     * @param actionEvent
+     * @throws Exception
+     */
     public void toSchedule(MouseEvent actionEvent) throws Exception {
         ToPage tp = new ToPage();
         tp.toSchedule2(ScheduleBtn, user);
@@ -84,11 +102,22 @@ public class UserMain {
         tp.toSchedule(viewSchedule, user);
     }
 
+    /**
+     * to main page
+     * @param actionEvent
+     * @throws IOException
+     */
     public void toMainPage(MouseEvent actionEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.toMainPage(mainPage, user);
 
     }
+
+    /**
+     * exit current id
+     * @param actionEvent
+     * @throws IOException
+     */
     public void exit(MouseEvent actionEvent) throws IOException {
         ToPage tp = new ToPage();
        tp.exit(Exit);

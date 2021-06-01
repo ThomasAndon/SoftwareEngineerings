@@ -103,6 +103,11 @@ public class UserControlSchedule implements ControlSchedule<User> {
         setSchedule(us);
     }
 
+    /**
+     * to main page
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void toMainPage(MouseEvent mouseEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.toMainPage(mainPage, user);

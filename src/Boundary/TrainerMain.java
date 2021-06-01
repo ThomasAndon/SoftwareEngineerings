@@ -43,16 +43,31 @@ public class TrainerMain {
    //     Ad.setText(new OpenAd().selectAd());
     }
 
+    /**
+     * go to schedule page
+     * @param actionEvent
+     * @throws Exception
+     */
     public void toSchedule(ActionEvent actionEvent) throws Exception {
         ToPage tp = new ToPage();
         tp.toSchedule2(ScheduleBtn, trainer);
     }
 
+    /**
+     * to profile page
+     * @param actionEvent
+     * @throws IOException
+     */
     public void toProfile(ActionEvent actionEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.toCoachProfile(ProfileBtn,trainer);
     }
 
+    /**
+     * exit current id
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void exit(MouseEvent mouseEvent) throws IOException {
         ToPage tp = new ToPage();
         tp.exit(Exit);

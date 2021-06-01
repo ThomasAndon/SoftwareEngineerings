@@ -2,6 +2,9 @@ package Controller;
 
 import java.io.*;
 
+/**
+ * controller of cancelling schedule
+ */
 public class CancelScheduleControl {
     /**
      * @descriotion user cancels the booked living session.

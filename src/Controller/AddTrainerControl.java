@@ -4,6 +4,9 @@ import Entity.Trainer;
 
 import java.io.*;
 
+/**
+ * controller of add trainer
+ */
 public class AddTrainerControl {
 
     public void SaveInfo(String name,String id,String pw,String gender,String phone,Double height, Double weight,String intro) throws IOException {

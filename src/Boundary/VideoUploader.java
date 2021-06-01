@@ -45,6 +45,9 @@ public class VideoUploader implements Initializable {
   //  Video video;
 
     @FXML
+    /**
+     * choose the path to target file
+     */
     void onChoosePathClicked(ActionEvent event) {
         if(temporaryFilePath == null) {
             Stage s = (Stage) videoTable.getScene().getWindow();
@@ -64,6 +67,9 @@ public class VideoUploader implements Initializable {
     }
 
     @FXML
+    /**
+     * check and add the video
+     */
     void onAddBtnClicked(ActionEvent event) {
         String title = titleInput.getText();
 
@@ -114,12 +120,18 @@ public class VideoUploader implements Initializable {
     }
 
     @FXML
+    /**
+     * delete selected video
+     */
     void onDeletedSelected(ActionEvent event) {
         Video video = videoTable.getSelectionModel().getSelectedItem();
         new VideoUploaderControl().delete(video,data);
     }
 
     @FXML
+    /**
+     * when open button is clicked
+     */
     void onOpenClicked(ActionEvent event) {
         Video video = videoTable.getSelectionModel().getSelectedItem();
         new VideoUploaderControl().open(video);

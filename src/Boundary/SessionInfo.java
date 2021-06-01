@@ -25,6 +25,9 @@ public class SessionInfo {
     @FXML
     private Text adminMain;
 
+    /**
+     * paarse csv and print in on the table
+     */
     public void readCSV() {
         ObservableList<Session> slist= new InformationReader().getSessionList();
         table.setItems(slist);
@@ -42,6 +45,11 @@ public class SessionInfo {
 
     }
 
+    /**
+     * go to main page
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void toMainPage(MouseEvent mouseEvent) throws IOException {
         new ToPage().toMainPage(adminMain,0);
     }
