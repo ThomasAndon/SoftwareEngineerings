@@ -4,6 +4,9 @@ import Entity.Session;
 
 import java.util.Comparator;
 
+/**
+ * controller of sorting
+ */
 public class Sort implements Comparator< Session > {
 
     /**

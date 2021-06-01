@@ -7,6 +7,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * controller of schedule
+ * @param <T>
+ */
 public abstract class MySchedule<T>{
 
     public abstract ObservableList<Session> mySchedule(T o) throws Exception;

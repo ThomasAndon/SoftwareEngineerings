@@ -5,13 +5,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.stage.Stage;
 
-
+/**
+ * Load the main page
+ */
 public class Main extends Application {
 
     static Stage primaryStage;
 
     @Override
 
+    /**
+     * main starter of the page
+     */
     public void start(Stage primaryStage) throws Exception {
 
         this.primaryStage = primaryStage;

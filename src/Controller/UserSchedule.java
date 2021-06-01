@@ -7,6 +7,9 @@ import javafx.collections.ObservableList;
 
 import java.util.List;
 
+/**
+ * controller of user's schedule
+ */
 public class UserSchedule extends MySchedule<User> {
     /**
      * @description get the schedule of a particular user.

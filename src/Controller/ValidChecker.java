@@ -74,6 +74,11 @@ public class ValidChecker {
         return true;
     }
 
+    /**
+     * check if the name is valid
+     * @param name input name
+     * @return whether name is valid
+     */
     public boolean isNameValid(String name) {
 
         int length = name.length();
@@ -91,6 +96,9 @@ public class ValidChecker {
 
     }
 
+    /**
+     * check if its a valid double
+     */
     public boolean isValidDouble(String str){
         try{
             Double d= Double.parseDouble(str);

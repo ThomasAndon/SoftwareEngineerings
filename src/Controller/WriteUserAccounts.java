@@ -1,6 +1,10 @@
 package Controller;
 
 import java.io.*;
+
+/**
+ * controller of writing user accounts
+ */
 public class WriteUserAccounts {
     /**
      * This methods write new account into the file

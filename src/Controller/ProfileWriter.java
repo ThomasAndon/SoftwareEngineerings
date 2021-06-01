@@ -8,6 +8,10 @@ import java.io.*;
  */
 public class ProfileWriter {
      String profileInfoFolderPath = "src/Data/ProfileInfo/";
+
+    /**
+     *Write data to file
+     */
     public boolean FileWriter(String s,String type, String id) throws IOException {
         File f = new File(profileInfoFolderPath+ type + "/"+ id +".txt");
 

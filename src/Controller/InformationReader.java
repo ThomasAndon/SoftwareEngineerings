@@ -17,6 +17,10 @@ public class InformationReader {
     private String path1="src/Data/ProfileInfo/AllCoachInfo.txt";
     private String path2="src/Data/ProfileInfo/AllUserInfo.txt";
 
+    /**
+     * get a coach list
+     * @return
+     */
     public ObservableList<Trainer> getCoachList() {
         ObservableList<Trainer> slist= FXCollections.observableArrayList();
         List<Trainer> list = new ArrayList<Trainer>();
@@ -50,6 +54,10 @@ public class InformationReader {
 
     }
 
+    /**
+     * get a user list
+     * @return
+     */
     public ObservableList<User> getUserList() {
         ObservableList<User> slist= FXCollections.observableArrayList();
         List<User> list = new ArrayList<User>();
@@ -83,6 +91,10 @@ public class InformationReader {
 
     }
 
+    /**
+     * get a session list
+     * @return
+     */
     public ObservableList<Session> getSessionList(){
         ObservableList<Session> slist = FXCollections.observableArrayList();
         List<Session> list = new ArrayList<Session>();

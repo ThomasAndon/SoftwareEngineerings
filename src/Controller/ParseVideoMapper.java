@@ -18,6 +18,11 @@ public class ParseVideoMapper {
 
     public String videoMapperFilePath = "src/Data/VideoMapper.txt";
 
+    /**
+     * retur a video list
+     * @return
+     * @throws Exception
+     */
     public ObservableList<Video> parseVideoMapper() throws Exception {
 
         File f = new File(videoMapperFilePath);

@@ -8,6 +8,11 @@ import java.io.*;
 public class profilePath {
      String profileInfoFolderPath = "src/Data/ProfileInfo/";
 
+    /**
+     * read data from file
+     * @param kind type of user
+     * @param id if of user
+     */
     public String[] readFile(String kind, String id) throws IOException {
         File f = new File(profileInfoFolderPath + kind + id + ".txt");
 
@@ -23,7 +28,11 @@ public class profilePath {
         return info;
     }
 
-
+    /**
+     * parse profile info string
+     * @param info
+     * @return
+     */
     public String[] parseProfileString(String info) {
         String[] res = info.split("#");
         return res;

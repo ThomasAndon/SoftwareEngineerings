@@ -5,11 +5,18 @@ import Entity.Trainer;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * controller of writing trainer profile
+ */
 public class WriteTrainerProfile {
     String str = "coachProfile";
     String students;
     ArrayList<String> list;
     String info;
+
+    /**
+     * writing coach profile
+     */
     public boolean writeCoachProfile(Trainer trainer) throws IOException {
 
         if(trainer.getStudents()!=null){

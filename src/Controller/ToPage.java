@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * controller of going to different page
+ */
 public class ToPage  {
 
     public<T>void toMainPage(Text mainPage, T o) throws IOException {

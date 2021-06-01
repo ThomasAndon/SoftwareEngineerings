@@ -10,14 +10,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * controller of seeing trainer schedule
+ */
 public class TrainerSchedule extends MySchedule<Trainer>{
     ArrayList<String> students = new ArrayList<String>();
+
+    @Override
     /**
      * @description get the schedule of a particular trainer.
      * @return trainer's schedule
      * @throws Exception
      */
-    @Override
     public ObservableList<Session> mySchedule(Trainer trainer) throws Exception {
        // trainer.setStudents();
        // trainer.setStudents(new ArrayList<String>(Arrays.asList("1234", "12345")));

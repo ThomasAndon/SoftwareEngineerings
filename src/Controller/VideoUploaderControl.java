@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
+/**
+ * controller of video uploader
+ */
 public class VideoUploaderControl {
     public String videoMapperFilePath = "src/Data/VideoMapper.txt";
     public void delete(Video video, ObservableList<Video> data) {
@@ -24,6 +27,11 @@ public class VideoUploaderControl {
         }
 
     }
+
+    /**
+     * open a video
+     * @param video
+     */
     public void open(Video video){
         String url = video.getPath();
         String osName = System.getProperty("os.name", "");// 获取操作系统的名字

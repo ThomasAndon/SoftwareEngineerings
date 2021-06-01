@@ -3,7 +3,9 @@ package Controller;
 import java.io.*;
 import java.util.HashMap;
 
-
+/**
+ * Controller of accounts
+ */
 public class MatchAccount {
 
     // This is the path where the test files are.

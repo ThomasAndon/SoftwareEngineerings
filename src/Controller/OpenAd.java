@@ -18,6 +18,11 @@ public class OpenAd {
 
     ArrayList<String> fileName= new ArrayList<String>();
 
+    /**
+     * invoked when ad selected
+     * @return
+     * @throws IOException
+     */
     public String selectAd() throws IOException {
         Random i=new Random();
         int con = 0;
@@ -38,6 +43,13 @@ public class OpenAd {
             return readAd(fileName.get(a));
         }
     }
+
+    /**
+     * read ad from file
+     * @param name
+     * @return
+     * @throws IOException
+     */
     public String readAd(String name) throws IOException {
 
         File ad=new File(AdPath+name);

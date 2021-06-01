@@ -5,7 +5,9 @@ import Entity.Trainer;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+/**
+ * controller of set trainer profile
+ */
 public class SetTrainerProfile implements SetProfile<Trainer>{
     String[] info;
     ArrayList<String> students=new ArrayList<>();
